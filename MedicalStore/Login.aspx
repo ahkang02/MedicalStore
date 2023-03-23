@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="MedicalStore.Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MedicalStore.Login" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="Content/bootstrap.css" rel="stylesheet" />
-    <title>Sign Up</title>
+    <title>Login</title>
 
     <style>
         .glass {
@@ -27,11 +27,15 @@
                     <div class="card text-black" style="border-radius: 25px;">
                         <div class="card-body p-md-5 glass-css">
                             <div class="row justify-content-center">
-                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-2 order-lg-1">
+                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                        class="img-fluid" alt="Sample image" />
+                                </div>
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-1 order-lg-2">
 
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign Up</p>
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
 
-                                    <form id="registerForm" class="mx-1 mx-md-4" runat="server">
+                                    <form id="loginForm" class="mx-1 mx-md-4" runat="server">
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <asp:Label ID="lblError" runat="server" CssClass="text-danger"></asp:Label>
@@ -45,14 +49,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-
-                                                <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" ToolTip="Your Email" TextMode="Email"></asp:TextBox>
-                                                <label class="form-label" for="txtEmail">Email</label>
-                                            </div>
-                                        </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
@@ -62,37 +58,18 @@
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <asp:TextBox ID="txtRepeatPw" CssClass="form-control" runat="server" ToolTip="Your Repeat Password" TextMode="Password"></asp:TextBox>
-                                                <label class="form-label" for="txtRepeatPw">Repeat your password</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-check d-flex justify-content-center mb-3">
-                                            <asp:CheckBox ID="formCheck" runat="server" />
-                                            <label class="form-check-label" for="form2Example3">
-                                                &nbsp;
-                                                I agree all statements in <a href="#!">Terms of service</a>
-                                            </label>
-                                        </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-2 mb-lg-4">
                                             <label class="form-check-label" for="form2Example3">
-                                                Already had an account? Login <a href="Login.aspx">Here</a>
+                                                Don't Have An Account Yet? Register <a href="Register.aspx">Here</a>
                                             </label>
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <asp:Button ID="btnRegister" CssClass="btn btn-primary btn-lg" Text="Register" runat="server" OnClick="btnRegister_Click" />
+                                            <asp:Button ID="btnLogin" CssClass="btn btn-primary btn-lg" Text="Login" runat="server" OnClick="btnLogin_Click" />
                                         </div>
                                     </form>
 
-                                </div>
-                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                                        class="img-fluid" alt="Sample image" />
                                 </div>
                             </div>
                         </div>
