@@ -94,6 +94,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Web.config" />
     <Content Include="Homepage.aspx" />
+    <Content Include="ProductCRUD.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.Master.cs">
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCRUD.aspx.cs">
+      <DependentUpon>ProductCRUD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductCRUD.aspx.designer.cs">
+      <DependentUpon>ProductCRUD.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
