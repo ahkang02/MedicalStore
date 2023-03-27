@@ -65,6 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="App_Data\MedicalStore.mdf" />
+    <Content Include="App_Data\MedicalStore_log.ldf">
+      <DependentUpon>MedicalStore.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
