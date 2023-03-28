@@ -154,7 +154,7 @@
 
     <!--Main layout-->
     <main style="margin-top: 58px;">
-        <div class="container pt-4">
+        <div class="container-fluid pt-4">
             <form id="form1" runat="server">
                 <div>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
