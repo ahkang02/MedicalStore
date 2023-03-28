@@ -56,7 +56,8 @@
 </head>
 <body>
     <form class="navForm" runat="server">
-        <!--Main Navigation-->
+
+        <!-- Header -->
         <header>
             <!-- Sidebar -->
             <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
@@ -68,10 +69,10 @@
                             aria-current="true">
                             <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <a href="ProductMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
                             <i class="fas fa-solid fa-tag fa-fw me-3"></i><span>Product</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <a href="StaffMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
                             <i class="fas fa-users fa-fw me-3"></i><span>Users</span>
                         </a>
                         <a href="#" class="list-group-item list-group-item-action py-2 ripple">
@@ -109,7 +110,9 @@
 
                     <!-- Right links -->
                     <ul class="navbar-nav ms-auto d-flex flex-row">
-
+                        <li class="nav-item">
+                            <asp:Label Text="Staff" runat="server" ID="lblUser" CssClass=""></asp:Label>
+                        </li>
                         <!-- Avatar -->
                         <li class="nav-item dropdown">
                             <a
@@ -150,6 +153,14 @@
             </div>
         </main>
         <!--Main layout-->
+
+        <!-- Footer -->
+        <div class="container-fluid">
+            <footer class="py-3 my-4">
+                <p class="text-center text-muted">© 2023 e-Healthy</p>
+            </footer>
+        </div>
+
     </form>
 </body>
 <script src="../Scripts/bootstrap.min.js"></script>
