@@ -8,6 +8,6 @@
     <h2> User Maintenance</h2>
     </div>
     <div class="container-fluid">
-            <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" CssClass="table table-hover table-responsive table-bordered"></asp:GridView>
+        <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" CssClass="table table-hover table-responsive table-bordered" DataSourceID=""></asp:GridView>
     </div>
 </asp:Content>
