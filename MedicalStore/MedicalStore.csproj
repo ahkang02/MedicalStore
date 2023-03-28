@@ -99,6 +99,7 @@
     <Content Include="Web.config" />
     <Content Include="Homepage.aspx" />
     <Content Include="Admin\ProductCRUD.aspx" />
+    <Content Include="Cart.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\Admin.Master.cs">
@@ -157,6 +158,13 @@
     </Compile>
     <Compile Include="Admin\ProductCRUD.aspx.designer.cs">
       <DependentUpon>ProductCRUD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
