@@ -64,7 +64,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\ProductMaintenance.aspx" />
+    <Content Include="Admin\StaffMaintenance.aspx" />
     <Content Include="App_Data\MedicalStore.mdf" />
     <Content Include="App_Data\MedicalStore_log.ldf">
       <DependentUpon>MedicalStore.mdf</DependentUpon>
@@ -99,7 +100,6 @@
     <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
     <Content Include="Homepage.aspx" />
-    <Content Include="Admin\ProductCRUD.aspx" />
     <Content Include="Cart.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -110,12 +110,19 @@
     <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
+    <Compile Include="Admin\ProductMaintenance.aspx.cs">
+      <DependentUpon>ProductMaintenance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
+    <Compile Include="Admin\ProductMaintenance.aspx.designer.cs">
+      <DependentUpon>ProductMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\StaffMaintenance.aspx.cs">
+      <DependentUpon>StaffMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\StaffMaintenance.aspx.designer.cs">
+      <DependentUpon>StaffMaintenance.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer.Master.cs">
       <DependentUpon>Customer.Master</DependentUpon>
@@ -152,13 +159,6 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\ProductCRUD.aspx.cs">
-      <DependentUpon>ProductCRUD.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\ProductCRUD.aspx.designer.cs">
-      <DependentUpon>ProductCRUD.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cart.aspx.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
