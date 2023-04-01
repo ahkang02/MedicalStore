@@ -7,17 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace MedicalStore
 {
-    public partial class Profile : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+	public partial class Delivery : System.Web.UI.Page
+	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
 
-        }
-
-        protected void editBtn_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("EditProfile.aspx");
-        }
+		}
 
         protected void lbProfile_Click(object sender, EventArgs e)
         {

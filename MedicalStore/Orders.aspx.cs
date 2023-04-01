@@ -13,5 +13,20 @@ namespace MedicalStore
         {
 
         }
+
+        protected void lbOrder_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Orders.aspx");
+        }
+
+        protected void lbProfile_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Profile.aspx");
+        }
+
+        protected void lbDelivery_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Delivery.aspx");
+        }
     }
 }
