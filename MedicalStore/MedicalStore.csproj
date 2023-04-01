@@ -89,6 +89,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Delivery.aspx" />
     <Content Include="Images\banner-1.png" />
     <Content Include="Images\banner-2.png" />
     <Content Include="Images\banner-3.png" />
@@ -96,6 +97,7 @@
     <Content Include="Images\e-healthy-logo.png" />
     <Content Include="Login.aspx" />
     <Content Include="Orders.aspx" />
+    <Content Include="Payment.aspx" />
     <Content Include="Product.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Register.aspx" />
@@ -161,6 +163,13 @@
     <Compile Include="Customer.Master.designer.cs">
       <DependentUpon>Customer.Master</DependentUpon>
     </Compile>
+    <Compile Include="Delivery.aspx.cs">
+      <DependentUpon>Delivery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Delivery.aspx.designer.cs">
+      <DependentUpon>Delivery.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -174,6 +183,13 @@
     </Compile>
     <Compile Include="Orders.aspx.designer.cs">
       <DependentUpon>Orders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Product.aspx.cs">
       <DependentUpon>Product.aspx</DependentUpon>

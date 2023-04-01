@@ -162,10 +162,7 @@
                     <h5 class="text-uppercase">Total price</h5>
                     <h5>€ 137.00</h5>
                   </div>
-
-                  <button type="button" class="btn btn-dark btn-block btn-lg"
-                    data-mdb-ripple-color="dark">Register</button>
-
+                    <asp:Button ID="btnCheckout" CssClass="btn btn-dark btn-block btn-lg" Text="Checkout" runat="server" />
                 </div>
               </div>
             </div>
