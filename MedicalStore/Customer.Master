@@ -15,47 +15,43 @@
 <body>
 
     <%-- Header --%>
-<div class="container-fluid">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <a href="Homepage.aspx" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-          <img src="Images/e-healthy-logo.png" class="bi me-2 img-fluid" width="100" height="40" />
-      </a>
+    <div class="container-fluid">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom">
+            <a href="Homepage.aspx" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <img src="Images/e-healthy-logo.png" class="bi me-2 img-fluid" width="100" height="40" />
+            </a>
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="Homepage.aspx" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="Product.aspx" class="nav-link px-2 link-dark">Products</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-      </ul>
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="Homepage.aspx" class="nav-link px-2 link-secondary">Home</a></li>
+                <li><a href="Product.aspx" class="nav-link px-2 link-dark">Products</a></li>
+                <li><a href="Profile.aspx" class="nav-link px-2 link-dark">Profile</a></li>
+                <li><a href="Orders.aspx" class="nav-link px-2 link-dark">My Orders</a></li>
+            </ul>
 
-      <div class="col-md-3 text-end">
-        <a href="Cart.aspx"><img src="Images/cart-icon.png" class="bi me-2 img-fluid" width="30" height="30" /></a>
-        <a href="Login.aspx"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
-        <a href="Register.aspx"><button type="button" class="btn btn-primary" >Sign-up</button></a>
-          
-      </div>
-    </header>
-  </div>
+            <div class="col-md-3 text-end">
+                <a href="Cart.aspx">
+                    <img src="Images/cart-icon.png" class="bi me-2 img-fluid" width="30" height="30" /></a>
+                <a href="Login.aspx">
+                    <button type="button" class="btn btn-outline-primary me-2">Login</button></a>
+                <a href="Register.aspx">
+                    <button type="button" class="btn btn-primary">Sign-up</button></a>
+
+            </div>
+        </header>
+    </div>
 
     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
-
     </asp:ContentPlaceHolder>
 
 
     <%-- Footer --%>
-<div class="container-fluid">
-  <footer class="py-3 my-4">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-    </ul>
-    <p class="text-center text-muted">© 2023 e-Healthy</p>
-  </footer>
-</div>
+    <div class="container-fluid">
+        <footer class="py-3">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            </ul>
+            <p class="text-center text-muted">© 2023 e-Healthy</p>
+        </footer>
+    </div>
 
     <form id="form1" runat="server">
         <div>
@@ -65,6 +61,6 @@
     </form>
 </body>
 <script src="Scripts/bootstrap.js"></script>
-    <script src="https://kit.fontawesome.com/3bc98c6174.js" crossorigin="anonymous"></script>
-
+<script src="Scripts/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/3bc98c6174.js" crossorigin="anonymous"></script>
 </html>

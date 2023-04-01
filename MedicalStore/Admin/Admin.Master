@@ -72,10 +72,16 @@
                         <a href="ProductMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
                             <i class="fas fa-solid fa-tag fa-fw me-3"></i><span>Product</span>
                         </a>
-                        <a href="StaffMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
-                            <i class="fas fa-users fa-fw me-3"></i><span>Users</span>
+                        <a href="CustomerMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
+                            <i class="fas fa-users fa-fw me-3"></i><span>Customers</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <a href="StaffMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
+                            <i class="fas fa-users fa-fw me-3"></i><span>Staffs</span>
+                        </a>
+                        <a href="ManagerMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
+                            <i class="fas fa-users fa-fw me-3"></i><span>Managers</span>
+                        </a>
+                        <a href="OrdersTracking.aspx" class="list-group-item list-group-item-action py-2 ripple">
                             <i class="fa-solid fa-fw fa-bag-shopping me-3"></i><span>Order</span>
                         </a>
                     </div>

@@ -64,7 +64,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\OrdersTracking.aspx" />
     <Content Include="Admin\ProductMaintenance.aspx" />
+    <Content Include="Admin\CustomerMaintenance.aspx" />
+    <Content Include="Admin\ManagerMaintenance.aspx" />
     <Content Include="Admin\StaffMaintenance.aspx" />
     <Content Include="App_Data\MedicalStore.mdf" />
     <Content Include="App_Data\MedicalStore_log.ldf">
@@ -86,6 +89,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Images\banner-1.png" />
+    <Content Include="Images\banner-2.png" />
+    <Content Include="Images\banner-3.png" />
     <Content Include="Images\cart-icon.png" />
     <Content Include="Images\e-healthy-logo.png" />
     <Content Include="Login.aspx" />
@@ -110,12 +116,33 @@
     <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="Admin\OrdersTracking.aspx.cs">
+      <DependentUpon>OrdersTracking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\OrdersTracking.aspx.designer.cs">
+      <DependentUpon>OrdersTracking.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\ProductMaintenance.aspx.cs">
       <DependentUpon>ProductMaintenance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\ProductMaintenance.aspx.designer.cs">
       <DependentUpon>ProductMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CustomerMaintenance.aspx.cs">
+      <DependentUpon>CustomerMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CustomerMaintenance.aspx.designer.cs">
+      <DependentUpon>CustomerMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManagerMaintenance.aspx.cs">
+      <DependentUpon>ManagerMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManagerMaintenance.aspx.designer.cs">
+      <DependentUpon>ManagerMaintenance.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\StaffMaintenance.aspx.cs">
       <DependentUpon>StaffMaintenance.aspx</DependentUpon>
