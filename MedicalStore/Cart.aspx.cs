@@ -14,7 +14,12 @@ namespace MedicalStore
 
         }
 
-        protected void btnCheckout(object sender, EventArgs e)
+        //protected void btnCheckout(object sender, EventArgs e)
+        //{
+            
+        //}
+
+        protected void btnCheckout_Click(object sender, EventArgs e)
         {
             Response.Redirect("Payment.aspx");
         }
