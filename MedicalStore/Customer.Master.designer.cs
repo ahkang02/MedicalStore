@@ -11,7 +11,7 @@ namespace MedicalStore
 {
 
 
-    public partial class Customer
+    public partial class Site1
     {
 
         /// <summary>

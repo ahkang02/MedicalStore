@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="MedicalStore.WebForm1" %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Customer.Master" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="MedicalStore.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -37,22 +37,22 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-5 mb-md-5 mb-lg-0 position-relative">
                     <i class="fas fa-cubes fa-3x text-primary mb-4"></i>
-                    <h5 class="text-primary fw-bold mb-3">5000+</h5>
-                    <h6 class="fw-normal mb-0">Components</h6>
+                    <h5 class="text-primary fw-bold mb-3">1000+</h5>
+                    <h6 class="fw-normal mb-0">Products</h6>
                     <div class="vr vr-blurry position-absolute my-0 h-100 d-none d-md-block top-0 end-0"></div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 mb-5 mb-md-5 mb-lg-0 position-relative">
                     <i class="fas fa-layer-group fa-3x text-primary mb-4"></i>
                     <h5 class="text-primary fw-bold mb-3">490+</h5>
-                    <h6 class="fw-normal mb-0">Design blocks</h6>
+                    <h6 class="fw-normal mb-0">Medicines</h6>
                     <div class="vr vr-blurry position-absolute my-0 h-100 d-none d-md-block top-0 end-0"></div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 mb-5 mb-md-0 position-relative">
                     <i class="fas fa-image fa-3x text-primary mb-4"></i>
                     <h5 class="text-primary fw-bold mb-3">100+</h5>
-                    <h6 class="fw-normal mb-0">Templates</h6>
+                    <h6 class="fw-normal mb-0">Health Care Products</h6>
                     <div class="vr vr-blurry position-absolute my-0 h-100 d-none d-md-block top-0 end-0"></div>
                 </div>
 
