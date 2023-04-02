@@ -94,6 +94,8 @@
     <Content Include="Images\banner-3.png" />
     <Content Include="Images\cart-icon.png" />
     <Content Include="Images\e-healthy-logo.png" />
+    <Content Include="Images\ProductImg\P0001.jpg" />
+    <Content Include="Images\ProductImg\P0002.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Orders.aspx" />
     <Content Include="Product.aspx" />
@@ -238,7 +240,6 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Admin\Admin.Master" />
-    <Content Include="Images\ProductImg\P0001.webp" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
