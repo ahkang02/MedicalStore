@@ -97,6 +97,7 @@
     <Content Include="Images\e-healthy-logo.png" />
     <Content Include="Images\ProductImg\P0001.jpg" />
     <Content Include="Images\ProductImg\P0002.jpg" />
+    <Content Include="Images\profile-icon.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Orders.aspx" />
     <Content Include="Payment.aspx" />
@@ -236,6 +237,13 @@
     <Compile Include="EditProfile.aspx.designer.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Customer.Master" />
@@ -263,6 +271,7 @@
     <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
