@@ -13,13 +13,13 @@
                 </div>
                 <div class="carousel-inner mt-5">
                     <div class="carousel-item active">
-                        <img src="Images/banner-1.png" class="d-block img-fluid" alt="...">
+                        <img src="Images/banner-1-new.png" class="d-block img-fluid" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="Images/banner-2.png" class="d-block img-fluid" alt="...">
+                        <img src="Images/banner-2-new.png" class="d-block img-fluid" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="Images/banner-3.png" class="d-block img-fluid" alt="...">
+                        <img src="Images/banner-3-new.png" class="d-block img-fluid" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">

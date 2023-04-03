@@ -90,13 +90,14 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Delivery.aspx" />
-    <Content Include="Images\banner-1.png" />
-    <Content Include="Images\banner-2.png" />
-    <Content Include="Images\banner-3.png" />
+    <Content Include="Images\banner-1-new.png" />
+    <Content Include="Images\banner-2-new.png" />
+    <Content Include="Images\banner-3-new.png" />
     <Content Include="Images\cart-icon.png" />
     <Content Include="Images\e-healthy-logo.png" />
     <Content Include="Images\ProductImg\P0001.jpg" />
     <Content Include="Images\ProductImg\P0002.jpg" />
+    <Content Include="Images\profile-icon.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Orders.aspx" />
     <Content Include="Payment.aspx" />
@@ -111,7 +112,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
     <Content Include="Homepage.aspx" />
     <Content Include="Cart.aspx" />
