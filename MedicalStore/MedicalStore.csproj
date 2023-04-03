@@ -103,6 +103,7 @@
     <Content Include="Product.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Receipt.aspx" />
+    <Content Include="Refund.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -222,6 +223,13 @@
     </Compile>
     <Compile Include="Receipt.aspx.designer.cs">
       <DependentUpon>Receipt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Refund.aspx.cs">
+      <DependentUpon>Refund.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Refund.aspx.designer.cs">
+      <DependentUpon>Refund.aspx</DependentUpon>
     </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
