@@ -36,30 +36,30 @@
         <section class="text-center container mt-5">
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-5 mb-md-5 mb-lg-0 position-relative">
-                    <i class="fas fa-cubes fa-3x text-primary mb-4"></i>
-                    <h5 class="text-primary fw-bold mb-3">5000+</h5>
-                    <h6 class="fw-normal mb-0">Components</h6>
+                    <i class="fas fa-tag fa-3x text-primary mb-4"></i>
+                    <h5 class="text-primary fw-bold mb-3">Products</h5>
+                    <h6 class="fw-normal mb-0">Over 999</h6>
                     <div class="vr vr-blurry position-absolute my-0 h-100 d-none d-md-block top-0 end-0"></div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 mb-5 mb-md-5 mb-lg-0 position-relative">
-                    <i class="fas fa-layer-group fa-3x text-primary mb-4"></i>
-                    <h5 class="text-primary fw-bold mb-3">490+</h5>
-                    <h6 class="fw-normal mb-0">Design blocks</h6>
+                    <i class="fas fa-truck-fast fa-3x text-primary mb-4"></i>
+                    <h5 class="text-primary fw-bold mb-3">Fast Delivery</h5>
+                    <h6 class="fw-normal mb-0">Same Day Delivery</h6>
                     <div class="vr vr-blurry position-absolute my-0 h-100 d-none d-md-block top-0 end-0"></div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 mb-5 mb-md-0 position-relative">
-                    <i class="fas fa-image fa-3x text-primary mb-4"></i>
-                    <h5 class="text-primary fw-bold mb-3">100+</h5>
-                    <h6 class="fw-normal mb-0">Templates</h6>
+                    <i class="fas fa-certificate fa-3x text-primary mb-4"></i>
+                    <h5 class="text-primary fw-bold mb-3">Certified Products</h5>
+                    <h6 class="fw-normal mb-0">Authentic</h6>
                     <div class="vr vr-blurry position-absolute my-0 h-100 d-none d-md-block top-0 end-0"></div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 mb-5 mb-md-0 position-relative">
-                    <i class="fas fa-plug fa-3x text-primary mb-4"></i>
-                    <h5 class="text-primary fw-bold mb-3">28</h5>
-                    <h6 class="fw-normal mb-0">Plugins</h6>
+                    <i class="fas fa-star fa-3x text-primary mb-4"></i>
+                    <h5 class="text-primary fw-bold mb-3">High Return Rate</h5>
+                    <h6 class="fw-normal mb-0">5 Stars Service!</h6>
                 </div>
             </div>
         </section>
@@ -103,11 +103,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-md-10 col-xl-8 text-center">
                     <h3 class="mb-4">Testimonials</h3>
-                    <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
-        numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
-        quisquam eum porro a pariatur veniam.
-                    </p>
+
                 </div>
             </div>
 
@@ -117,12 +113,9 @@
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
                             class="rounded-circle shadow-1-strong" width="150" height="150" />
                     </div>
-                    <h5 class="mb-3">Maria Smantha</h5>
-                    <h6 class="text-primary mb-3">Web Developer</h6>
+                    <h5 class="mb-3">Sarah Johnson</h5>
                     <p class="px-xl-3">
-                        <i class="fas fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet, consectetur
-        adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic
-        tenetur.
+                        <i class="fas fa-quote-left pe-2"></i>I have been using this online pharmacy store for over a year now, and I have to say I'm thoroughly impressed with their service. The prices are very competitive, the delivery is prompt, and the customer support team is always there to help. Thank you, John, for making my life easier!
                     </p>
                     <ul class="list-unstyled d-flex justify-content-center mb-0">
                         <li>
@@ -147,11 +140,9 @@
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
                             class="rounded-circle shadow-1-strong" width="150" height="150" />
                     </div>
-                    <h5 class="mb-3">Lisa Cudrow</h5>
-                    <h6 class="text-primary mb-3">Graphic Designer</h6>
+                    <h5 class="mb-3">Mark Davis</h5>
                     <p class="px-xl-3">
-                        <i class="fas fa-quote-left pe-2"></i>Ut enim ad minima veniam, quis nostrum
-        exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid commodi.
+                        <i class="fas fa-quote-left pe-2"></i>I recently placed my first order with this online pharmacy store, and I have to say I'm blown away by their professionalism. The website is easy to use, the checkout process is straightforward, and the medication arrived on time. I will definitely be a repeat customer. Thank you, Emily, for your excellent service!
                     </p>
                     <ul class="list-unstyled d-flex justify-content-center mb-0">
                         <li>
@@ -176,11 +167,9 @@
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
                             class="rounded-circle shadow-1-strong" width="150" height="150" />
                     </div>
-                    <h5 class="mb-3">John Smith</h5>
-                    <h6 class="text-primary mb-3">Marketing Specialist</h6>
+                    <h5 class="mb-3">Lisa Wilson</h5>
                     <p class="px-xl-3">
-                        <i class="fas fa-quote-left pe-2"></i>At vero eos et accusamus et iusto odio
-        dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
+                        <i class="fas fa-quote-left pe-2"></i>I've been a customer of this online pharmacy store for years, and they have never let me down. Their vast selection, unbeatable prices, and reliable delivery make them my go-to source for medication. I highly recommend this store to anyone looking for a trustworthy online pharmacy.
                     </p>
                     <ul class="list-unstyled d-flex justify-content-center mb-0">
                         <li>
