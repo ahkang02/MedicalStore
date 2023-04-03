@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-lg-8 text-center">
                     <h1>Order History</h1>
-                    <asp:Repeater ID="repeaterOrder" runat="server">
+                    <asp:Repeater ID="repeaterOrder" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <table class="table table-hover table-striped table-bordered table-responsive">
                                 <tr>
@@ -47,16 +47,22 @@
                         <ItemTemplate>
                             <tr>
                                 <td><%#DataBinder.Eval(Container.DataItem, "OrderID") %></td>
-                                <td><%#DataBinder.Eval(Container.DataItem, "ProductID") %></td>
-                                <td><%#DataBinder.Eval(Container.DataItem, "OrderType") %></td>
+                                <td><%#DataBinder.Eval(Container.DataItem, "Name") %></td>
+                                <td><%#DataBinder.Eval(Container.DataItem, "Status") %></td>
                                 <td><%#DataBinder.Eval(Container.DataItem, "OrderDate") %></td>
-                                <td><%#DataBinder.Eval(Container.DataItem, "Amount") %></td>
+                                <td><%#DataBinder.Eval(Container.DataItem, "TotalAmount") %></td>
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>
                             </table>
                         </FooterTemplate>
                     </asp:Repeater>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Orders.OrderID, Orders.OrderDate, Orders.TotalAmount, Orders.Status, Products.Name FROM Order_Details INNER JOIN Orders ON Order_Details.OrderID = Orders.OrderID INNER JOIN Products ON Order_Details.ProductID = Products.ProductID WHERE Orders.CustomerID = @CustomerID">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="C001" Name="CustomerID" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </div>
             </div>
     </section>

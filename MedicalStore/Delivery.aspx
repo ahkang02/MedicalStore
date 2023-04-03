@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Customer.Master" AutoEventWireup="true" CodeBehind="Delivery.aspx.cs" Inherits="MedicalStore.Delivery" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
@@ -32,7 +33,7 @@
                 </div>
                 <div class="col-lg-8 text-center">
                     <h1>Delivery Tracking History</h1>
-                    <asp:Repeater ID="repeaterOrder" runat="server">
+                    <asp:Repeater ID="repeaterOrder" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <table class="table table-hover table-striped table-bordered table-responsive">
                                 <tr>
@@ -46,16 +47,21 @@
                         <ItemTemplate>
                             <tr>
                                 <td><%#DataBinder.Eval(Container.DataItem, "DeliveryID") %></td>
-                                <td><%#DataBinder.Eval(Container.DataItem, "DeliveryDate") %></td>
-                                <td><%#DataBinder.Eval(Container.DataItem, "DeliveryFee") %></td>
-                                <td><%#DataBinder.Eval(Container.DataItem, "DeliveryAddress") %></td>
-                                <td><%#DataBinder.Eval(Container.DataItem, "DeliveryStatus") %></td>
+                                <td><%#DataBinder.Eval(Container.DataItem, "Date") %></td>
+                                <td><%#DataBinder.Eval(Container.DataItem, "Fee") %></td>
+                                <td><%#DataBinder.Eval(Container.DataItem, "Address") %></td>
+                                <td><%#DataBinder.Eval(Container.DataItem, "Status") %></td>
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>
                             </table>
                         </FooterTemplate>
                     </asp:Repeater>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT D.DeliveryID, D.Date, D.Fee, D.Address, D.Status, D.StaffID From Deliveries D, Orders O Where O.DeliveryID = D.DeliveryID AND O.CustomerID = @CustomerID">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="C001" Name="CustomerID" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </div>
             </div>
     </section>

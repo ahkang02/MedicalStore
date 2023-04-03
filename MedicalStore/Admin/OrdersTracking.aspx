@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Repeater -->
     <div class="container-fluid">
-        <asp:Repeater ID="repeatUser" runat="server">
+        <asp:Repeater ID="repeatUser" runat="server" DataSourceID="SqlDataSource1">
             <HeaderTemplate>
                 <table class="table table-hover table-responsive table-bordered">
                     <tr>
@@ -14,19 +14,22 @@
                         <th>Delivery Date</th>
                         <th>Delivery Fee</th>
                         <th>Handle By Staff</th>
+                        <th>Actions</th>
                     </tr>
             </HeaderTemplate>
+
             <ItemTemplate>
                 <tr>
                     <td><%#DataBinder.Eval(Container.DataItem,"DeliveryID")%></td>
                     <td>
-                        <asp:DropDownList ID="ddlStatus" CssClass="form-control" runat="server">
-
+                        <asp:DropDownList ID="ddlStatus" CssClass="form-control" runat="server" DataSourceID="SqlDataSource2" DataTextField="Status" DataValueField="Status">
                         </asp:DropDownList>
                     </td>
-                    <td><%#DataBinder.Eval(Container.DataItem, "DeliveryDate") %></td>
-                    <td><%#DataBinder.Eval(Container.DataItem, "DeliveryFee") %></td>
+                    <td><%#DataBinder.Eval(Container.DataItem, "Date") %></td>
+                    <td>RM<%#DataBinder.Eval(Container.DataItem, "Fee") %></td>
                     <td><%#DataBinder.Eval(Container.DataItem, "Name") %></td>
+                    <td>
+                        <asp:Button ID="btnSave" Text="Save" CssClass="btn btn-primary" runat="server" /></td>
                 </tr>
 
                 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -67,5 +70,7 @@
 
             </ItemTemplate>
         </asp:Repeater>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT DISTINCT [Status] From Deliveries"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT D.DeliveryID, D.Status, D.Date, D.Fee, D.Address, S.Name FROM Deliveries D, Orders O, Staffs S Where O.DeliveryID = D.DeliveryID AND D.StaffID = S.StaffID "></asp:SqlDataSource>
     </div>
 </asp:Content>
