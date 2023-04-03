@@ -23,12 +23,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="PD" class="form-label">Product ID</label>
+                        <label for="PDID" class="form-label">Product ID</label>
                         <asp:TextBox ID="txtID" runat="server" CssClass="form-control" />
                     </div>
                     <div class="mb-3">
                         <label for="Name" class="form-label">Product Name</label>
                         <asp:TextBox ID="txtName" runat="server" CssClass="form-control" />
+                    </div>
+                     <div class="mb-3">
+                        <label for="Desciption" class="form-label">Product Description</label>
+                        <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" />
                     </div>
                     <div class="mb-3">
                         <label for="Type" class="form-label">Product Type</label>
@@ -39,19 +43,20 @@
                         <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" />
                     </div>
                     <div class="mb-3">
-                        <label for="Price" class="form-label">Product Image</label>
+                        <label for="PDImage" class="form-label">Product Image</label>
                         <asp:FileUpload ID="fuProduct" runat="server" CssClass="form-control" />
                     </div>
                     <div class="mb-3">
-                        <label for="Price" class="form-label">Manufacturer</label>
-                        <asp:DropDownList ID="ddlManufacturer" runat="server">
-
+                        <label for="Manufacturer" class="form-label">Manufacturer</label>
+                        <asp:DropDownList ID="ddlManufacturer" runat="server" DataSourceID="SqlDataSource1" DataTextField="ManufacturerID" DataValueField="ManufacturerID">
                         </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [ManufacturerID] FROM [Manufacturers]"></asp:SqlDataSource>
+                  
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <asp:Button ID="btnSubmit" CssClass="btn btn-primary" Text="Save changes" runat="server" />
+                    <asp:Button ID="btnSubmit" CssClass="btn btn-primary" Text="Save changes" runat="server" OnClick="btnSubmit_Click" />
                 </div>
             </div>
         </div>
