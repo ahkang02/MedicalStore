@@ -60,7 +60,7 @@
 
     <!-- Repeater -->
     <div class="container-fluid">
-        <asp:Repeater ID="repeatUser" runat="server">
+        <asp:Repeater ID="repeatUser" runat="server" DataSourceID="SqlDataSource1">
             <HeaderTemplate>
                 <table class="table table-hover table-responsive table-bordered">
                     <tr>
@@ -119,5 +119,10 @@
 
             </ItemTemplate>
         </asp:Repeater>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT S.StaffID, S.Name, R.RoleName FROM Staffs S, Role R WHERE S.RoleID = R.RoleID AND R.RoleID = @RoleID">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="R002" Name="RoleID" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </div>
 </asp:Content>
