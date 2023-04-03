@@ -97,6 +97,14 @@
     <Content Include="Images\e-healthy-logo.png" />
     <Content Include="Images\ProductImg\P0001.jpg" />
     <Content Include="Images\ProductImg\P0002.jpg" />
+    <Content Include="Images\ProductImg\P0003.jpg" />
+    <Content Include="Images\ProductImg\P0004.jpg" />
+    <Content Include="Images\ProductImg\P0005.jpg" />
+    <Content Include="Images\ProductImg\P0006.jpg" />
+    <Content Include="Images\ProductImg\P0007.jpg" />
+    <Content Include="Images\ProductImg\P0008.jpg" />
+    <Content Include="Images\ProductImg\P0009.jpg" />
+    <Content Include="Images\ProductImg\P0010.jpg" />
     <Content Include="Images\profile-icon.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Orders.aspx" />

@@ -5,223 +5,297 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 
     <style>
-        body {
-            color: #444444;
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        @import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+
+        :root {
+            --font1: 'Heebo', sans-serif;
+            --font2: 'Fira Sans Extra Condensed', sans-serif;
+            --font3: 'Roboto', sans-serif;
+            --btnbg: #2e72fd;
+            --btnfontcolor: rgb(255, 255, 255);
+            --btnfontcolorhover: rgb(255, 255, 255);
+            --btnbghover: #2761d7;
+            --btnactivefs: rgb(241, 195, 46);
+            --label-index: #960796;
+            --danger-index: #5bc257;
+            /* PAGINATE */
+            --link-color: #000;
+            --link-color-hover: #fff;
+            --bg-content-color: #ffcc00;
         }
 
-        a,
-        a:hover {
+        .container-fluid {
+            max-width: 1400px;
+        }
+
+        .card {
+            background: #fff;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+            transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+            border: 0;
+            border-radius: 1rem;
+        }
+
+        .card-img,
+        .card-img-top {
+            border-top-left-radius: calc(1rem - 1px);
+            border-top-right-radius: calc(1rem - 1px);
+        }
+
+
+        .card h5 {
+            overflow: hidden;
+            height: 55px;
+            font-weight: 300;
+            font-size: 1rem;
+        }
+
+            .card h5 a {
+                color: black;
+                text-decoration: none;
+            }
+
+        .card-img-top {
+            width: 100%;
+            min-height: 250px;
+            max-height: 250px;
+            object-fit: contain;
+            padding: 30px;
+        }
+
+        .card h2 {
+            font-size: 1rem;
+        }
+
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+        }
+
+        /* Centered text */
+        .label-top {
+            position: absolute;
+            background-color: var(--label-index);
+            color: #fff;
+            top: 8px;
+            right: 8px;
+            padding: 5px 10px 5px 10px;
+            font-size: .7rem;
+            font-weight: 600;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        .top-right {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: 900;
+            background: #8bc34a;
+            line-height: 90px;
+            text-align: center;
+            color: white;
+        }
+
+            .top-right span {
+                display: inline-block;
+                vertical-align: middle;
+                /* line-height: normal; */
+                /* padding: 0 25px; */
+            }
+
+        .aff-link {
+            /* text-decoration: overline; */
+            font-weight: 500;
+        }
+
+        .over-bg {
+            background: rgba(53, 53, 53, 0.85);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(0.0px);
+            -webkit-backdrop-filter: blur(0.0px);
+            border-radius: 10px;
+        }
+
+        .bold-btn {
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding: 5px 50px 5px 50px;
+        }
+
+        .box .btn {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 1025px) {
+            .btn {
+                padding: 5px 40px 5px 40px;
+            }
+        }
+
+        @media (max-width: 250px) {
+            .btn {
+                padding: 5px 30px 5px 30px;
+            }
+        }
+
+        /* START BUTTON */
+        .btn-warning {
+            background: var(--btnbg);
+            color: var(--btnfontcolor);
+            fill: #ffffff;
+            border: none;
             text-decoration: none;
-            color: inherit;
+            outline: 0;
+            /* box-shadow: -1px 6px 19px rgba(247, 129, 10, 0.25); */
+            border-radius: 100px;
         }
 
-        .section-products {
-            padding: 80px 0 54px;
+            .btn-warning:hover {
+                background: var(--btnbghover);
+                color: var(--btnfontcolorhover);
+                /* box-shadow: -1px 6px 13px rgba(255, 150, 43, 0.35); */
+            }
+
+            .btn-check:focus + .btn-warning, .btn-warning:focus {
+                background: var(--btnbghover);
+                color: var(--btnfontcolorhover);
+                /* box-shadow: -1px 6px 13px rgba(255, 150, 43, 0.35); */
+            }
+
+            .btn-warning:active:focus {
+                box-shadow: 0 0 0 0.25rem var(--btnactivefs);
+            }
+
+            .btn-warning:active {
+                background: var(--btnbghover);
+                color: var(--btnfontcolorhover);
+                /* box-shadow: -1px 6px 13px rgba(255, 150, 43, 0.35); */
+            }
+
+        /* END BUTTON */
+
+        .bg-success {
+            font-size: 1rem;
+            background-color: var(--btnbg) !important;
+            color: var(--btnfontcolor) !important;
         }
 
-            .section-products .header {
-                margin-bottom: 50px;
-            }
+        .bg-danger {
+            font-size: 1rem;
+        }
 
-                .section-products .header h3 {
-                    font-size: 1rem;
-                    color: #fe302f;
-                    font-weight: 500;
-                }
 
-                .section-products .header h2 {
-                    font-size: 2.2rem;
-                    font-weight: 400;
-                    color: #444444;
-                }
+        .price-hp {
+            font-size: 1rem;
+            font-weight: 600;
+            color: darkgray;
+        }
 
-            .section-products .single-product {
-                margin-bottom: 26px;
-            }
+        .amz-hp {
+            font-size: .7rem;
+            font-weight: 600;
+            color: darkgray;
+        }
 
-                .section-products .single-product .part-1 {
-                    position: relative;
-                    height: 290px;
-                    max-height: 290px;
-                    margin-bottom: 20px;
-                    overflow: hidden;
-                }
+        .fa-question-circle:before {
+            /* content: "\f059"; */
+            color: darkgray;
+        }
 
-                    .section-products .single-product .part-1::before {
-                        position: absolute;
-                        content: "";
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        z-index: -1;
-                        transition: all 0.3s;
-                    }
+        .fa-heart:before {
+            color: crimson;
+        }
 
-                .section-products .single-product:hover .part-1::before {
-                    transform: scale(1.2,1.2) rotate(5deg);
-                }
-
-                /*            .section-products #product-1 .part-1::before {
-                background: url("https://i.ibb.co/L8Nrb7p/1.jpg") no-repeat center;
-                background-size: cover;
-                transition: all 0.3s;
-            }
-
-            .section-products #product-2 .part-1::before {
-                background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
-                background-size: cover;
-            }
-
-            .section-products #product-3 .part-1::before {
-                background: url("https://i.ibb.co/L8Nrb7p/1.jpg") no-repeat center;
-                background-size: cover;
-            }
-
-            .section-products #product-4 .part-1::before {
-                background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
-                background-size: cover;
-            }*/
-
-                .section-products .single-product .part-1 .discount,
-                .section-products .single-product .part-1 .new {
-                    position: absolute;
-                    top: 15px;
-                    left: 20px;
-                    color: #ffffff;
-                    background-color: #fe302f;
-                    padding: 2px 8px;
-                    text-transform: uppercase;
-                    font-size: 0.85rem;
-                }
-
-                .section-products .single-product .part-1 .new {
-                    left: 0;
-                    background-color: #444444;
-                }
-
-                .section-products .single-product .part-1 ul {
-                    position: absolute;
-                    bottom: -41px;
-                    left: 20px;
-                    margin: 0;
-                    padding: 0;
-                    list-style: none;
-                    opacity: 0;
-                    transition: bottom 0.5s, opacity 0.5s;
-                }
-
-                .section-products .single-product:hover .part-1 ul {
-                    bottom: 30px;
-                    opacity: 1;
-                }
-
-                .section-products .single-product .part-1 ul li {
-                    display: inline-block;
-                    margin-right: 4px;
-                }
-
-                    .section-products .single-product .part-1 ul li a {
-                        display: inline-block;
-                        width: 40px;
-                        height: 40px;
-                        line-height: 40px;
-                        background-color: #ffffff;
-                        color: #444444;
-                        text-align: center;
-                        box-shadow: 0 2px 20px rgb(50 50 50 / 10%);
-                        transition: color 0.2s;
-                    }
-
-                        .section-products .single-product .part-1 ul li a:hover {
-                            color: #fe302f;
-                        }
-
-                .section-products .single-product .part-2 .product-title {
-                    font-size: 1rem;
-                }
-
-                .section-products .single-product .part-2 h4 {
-                    display: inline-block;
-                    font-size: 1rem;
-                }
-
-                .section-products .single-product .part-2 .product-old-price {
-                    position: relative;
-                    padding: 0 7px;
-                    margin-right: 2px;
-                    opacity: 0.6;
-                }
-
-                    .section-products .single-product .part-2 .product-old-price::after {
-                        position: absolute;
-                        content: "";
-                        top: 50%;
-                        left: 0;
-                        width: 100%;
-                        height: 1px;
-                        background-color: #444444;
-                        transform: translateY(-50%);
-                    }
+        .fa-chevron-circle-right:before {
+            color: darkgray;
+        }
     </style>
 
 
-
-    <section class="section-products">
-        <div class="container">
-            <div class="row justify-content-center text-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="header">
-                        <h3>Featured Product</h3>
-                        <h2>Popular Products</h2>
+    <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative">
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+<%--<%--section class="section-products">
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-md-8 col-lg-6">
+                            <div class="header">
+                                <h3>Featured Product</h3>
+                                <h2>Popular Products</h2>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <asp:ListView ID="ListView1" runat="server" DataKeyNames="ProductID" DataSourceID="SqlDataSource1">
+                    <div class="row">--%>
+                        <asp:ListView ID="ListView1" runat="server" DataKeyNames="ProductID" DataSourceID="SqlDataSource1">
 
 
-                    <EmptyDataTemplate>
-                        <table runat="server" style="">
-                            <tr>
-                                <td>No data was returned.</td>
-                            </tr>
-                        </table>
-                    </EmptyDataTemplate>
+                            <EmptyDataTemplate>
+                                <table runat="server" style="">
+                                    <tr>
+                                        <td>No data was returned.</td>
+                                    </tr>
+                                </table>
+                            </EmptyDataTemplate>
 
-                    <ItemTemplate>
-                        <tr style="">
-                            <td>
+                            <ItemTemplate>
+                                <tr style="">
+                                    <td>
 
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div id="product-1" class="single-product">
+                                        <div class="col hp">
+                                            <div class="card h-100 shadow-sm">
+                                                <a href="#">
+                                                    <img src="Images/ProductImg/<%# Eval("ImageName") %>" class="card-img-top" alt="product.title" />
+                                                </a>
 
-                                        <div class="part-1" >
-                                            <ul>
-                                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
-                                            </ul>
+                                                <div class="label-top shadow-sm">
+                                                    <a class="text-white" href="#"><%# Eval("Name") %></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="clearfix mb-3">
+                                                        <span class="float-start badge rounded-pill bg-success"><%# Eval("Price") %></span>
+
+                                                        <span class="float-end"><a href="#" class="small text-muted text-uppercase aff-link">reviews</a></span>
+                                                    </div>
+                                                    <h5 class="card-title">
+                                                        <a target="_blank" href="#"><%# Eval("Description") %></a>
+                                                    </h5>
+
+                                                    <div class="d-grid gap-2 my-4">
+
+                                                        <a href="#" class="btn btn-warning bold-btn">add to cart</a>
+
+                                                    </div>
+                                                    <div class="clearfix mb-1">
+
+                                                        <span class="float-start"><a href="#"><i class="fas fa-question-circle"></i></a></span>
+
+                                                        <span class="float-end">
+                                                            <i class="far fa-heart" style="cursor: pointer"></i>
+
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="part-2">
-                                            <h3 class="product-title">Here Product Title</h3>
-                                            <h4 class="product-old-price">$79.99</h4>
-                                            <h4 class="product-price">$49.99</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
 
-                        </tr>
-                    </ItemTemplate>
+                                </tr>
+                            </ItemTemplate>
 
 
-                </asp:ListView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
-            </div>
+                        </asp:ListView>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
+
         </div>
-    </section>
+    </div>
 
 </asp:Content>
 
