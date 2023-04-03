@@ -14,7 +14,7 @@ namespace MedicalStore
     public partial class ProductMaintenance : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Documents\GitHub\MedicalStore\MedicalStore\App_Data\MedicalStore.mdf;Integrated Security=True");
-        string imageRename, imageSave;
+        string imageNameSave;
         string date = DateTime.Now.ToString("dd/MM/yy"); // includes leading zeros
 
         protected void Page_Load(object sender, EventArgs e)
@@ -26,12 +26,12 @@ namespace MedicalStore
         {   
             fuProduct.SaveAs(Request.PhysicalApplicationPath + @"\Images\ProductImg\" + fuProduct.FileName.ToString());
 
-            imageSave = imageRename + fuProduct.FileName.ToString();
+            imageNameSave = fuProduct.FileName.ToString();
 
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into Products values('"+txtID.Text+"','"+txtName.Text+"','"+txtDescription.Text+"','"+txtType.Text+"',"+txtPrice.Text+ ",CURRENT_TIMESTAMP,'"+imageSave.ToString()+"','"+ddlManufacturer.SelectedItem.Value+"')";
+            cmd.CommandText = "insert into Products values('"+txtID.Text+"','"+txtName.Text+"','"+txtDescription.Text+"','"+txtType.Text+"',"+txtPrice.Text+ ",CURRENT_TIMESTAMP,'"+ imageNameSave.ToString()+"','"+ddlManufacturer.SelectedItem.Value+"')";
             cmd.ExecuteNonQuery();
             con.Close();
         }
