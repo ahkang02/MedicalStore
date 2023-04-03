@@ -48,9 +48,9 @@
                     </div>
                     <div class="mb-3">
                         <label for="Manufacturer" class="form-label">Manufacturer</label>
-                        <asp:DropDownList ID="ddlManufacturer" runat="server" DataSourceID="SqlDataSource1" DataTextField="ManufacturerID" DataValueField="ManufacturerID">
+                        <asp:DropDownList ID="ddlManufacturer" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="ManufacturerID" CssClass="form-control">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [ManufacturerID] FROM [Manufacturers]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [ManufacturerID], [Name] FROM [Manufacturers]"></asp:SqlDataSource>
                   
                     </div>
                 </div>
@@ -64,7 +64,7 @@
 
     <!-- Repeater -->
     <div class="container-fluid">
-        <asp:Repeater ID="repeatUser" runat="server">
+        <asp:Repeater ID="repeatUser" runat="server" DataSourceID="SqlDataSource2">
             <HeaderTemplate>
                 <table class="table table-hover table-responsive table-bordered">
                     <tr>
@@ -77,31 +77,61 @@
             <ItemTemplate>
                 <tr>
                     <td><%#DataBinder.Eval(Container.DataItem,"ProductID")%></td>
-                    <td><%#DataBinder.Eval(Container.DataItem, "ProductName") %></td>
-                    <td><%#DataBinder.Eval(Container.DataItem, "ProductImage") %></td>
+                    <td><%#DataBinder.Eval(Container.DataItem, "Name") %></td>
+                    <td><img src="../Images/ProductImg/<%#DataBinder.Eval(Container.DataItem, "ImageName") %>" class="img-fluid" style="width:100px"/></td>
                     <td>
                         <asp:Button ID="btnEdit" CssClass="btn btn-sm btn-primary ms-2" Text="Edit" runat="server" data-bs-toggle="modal" data-bs-target="#editModal" UseSutmitBehavior="false" CommandName="Edit" CommandArgument="" OnClientClick="return false;" />
                         <asp:Button ID="btnDelete" CssClass="btn btn-sm btn-danger ms-2" Text="Delete" runat="server" data-bs-toggle="modal" data-bs-target="#deleteModal" UseSubmitBehavior="false" CommandName="Delete" CommandArgument="" OnClientClick="return false;" />
                     </td>
                 </tr>
 
-                <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="editModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editModalLabel">Edit Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="PDID" class="form-label">Product ID</label>
+                        <asp:TextBox ID="txtID" runat="server" CssClass="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="Name" class="form-label">Product Name</label>
+                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control" />
+                    </div>
+                     <div class="mb-3">
+                        <label for="Desciption" class="form-label">Product Description</label>
+                        <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="Type" class="form-label">Product Type</label>
+                        <asp:TextBox ID="txtType" runat="server" CssClass="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="Price" class="form-label">Selling Price</label>
+                        <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="PDImage" class="form-label">Product Image</label>
+                        <asp:FileUpload ID="fuProduct" runat="server" CssClass="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="Manufacturer" class="form-label">Manufacturer</label>
+                        <asp:DropDownList ID="ddlManufacturer" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="ManufacturerID" CssClass="form-control">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [ManufacturerID], [Name] FROM [Manufacturers]"></asp:SqlDataSource>
+                  
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <asp:Button ID="btnSubmit" CssClass="btn btn-primary" Text="Save changes" runat="server" OnClick="btnSubmit_Click" />
+                </div>
+            </div>
+        </div>
+    </div>
 
                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -123,5 +153,6 @@
 
             </ItemTemplate>
         </asp:Repeater>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [ProductID], [Name], [ImageName] FROM [Products]"></asp:SqlDataSource>
     </div>
 </asp:Content>

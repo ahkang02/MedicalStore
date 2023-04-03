@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="ms-3">
-        <h2>User Maintenance</h2>
+        <h2>Staff Maintenance</h2>
     </div>
 
     <div class="d-flex container-fluid justify-content-end align-items-end">
@@ -85,15 +85,41 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="editModalLabel">Modal title</h1>
+                                <h1 class="modal-title fs-5" id="editModalLabel">Edit Staffs</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                ...
+                                <div class="mb-3">
+                                    <label for="Name" class="form-label">Staff Name</label>
+                                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Gender" class="form-label">Gender</label>
+                                    <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-control">
+                                        <asp:ListItem Value="" Selected="True">Select</asp:ListItem>
+                                        <asp:ListItem Value="Male">Male</asp:ListItem>
+                                        <asp:ListItem Value="Female">Female</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Address" class="form-label">Address</label>
+                                    <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ContactNumber" class="form-label">Contact Number</label>
+                                    <asp:TextBox ID="txtContact" runat="server" CssClass="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Password</label>
+                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" TextMode="Password" />
+                                </div>
+                                <div class="mb-3">
+                                    <asp:HiddenField ID="hdfRole" runat="server" />
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <asp:Button ID="btnSubmit" CssClass="btn btn-primary" Text="Save changes" runat="server" />
                             </div>
                         </div>
                     </div>
