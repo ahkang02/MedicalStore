@@ -15,7 +15,6 @@ namespace MedicalStore
     {
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Documents\GitHub\MedicalStore\MedicalStore\App_Data\MedicalStore.mdf;Integrated Security=True");
         string imageNameSave;
-        string date = DateTime.Now.ToString("dd/MM/yy"); // includes leading zeros
 
         protected void Page_Load(object sender, EventArgs e)
         {
