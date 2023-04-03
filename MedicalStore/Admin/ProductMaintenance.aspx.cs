@@ -23,11 +23,10 @@ namespace MedicalStore
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            imageRename=ProductMaintenance.GetRandomEncryptedText(10).ToString();    
-            fuProduct.SaveAs(Request.PhysicalApplicationPath + "./images/" + fuProduct.FileName.ToString());
+        {   
+            fuProduct.SaveAs(Request.PhysicalApplicationPath + @"\Images\ProductImg\" + fuProduct.FileName.ToString());
 
-            imageSave = "./images/" + imageRename + fuProduct.FileName.ToString();
+            imageSave = imageRename + fuProduct.FileName.ToString();
 
             con.Open();
             SqlCommand cmd = con.CreateCommand();
@@ -37,21 +36,6 @@ namespace MedicalStore
             con.Close();
         }
 
-        public static string GetRandomEncryptedText(int length)
-        {
-            char[] chars = "abcdefghijklmnopqrstuvwxyz123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-            string password = string.Empty;
-            Random random = new Random();
-
-            for (int i = 0; i < length; i++)
-            {
-                int x = random.Next(1, chars.Length);
-                if (!password.Contains(chars.GetValue(x).ToString()))
-                    password += chars.GetValue(x);
-                else
-                    i = i - 1;
-            }
-            return password;
-        }
+       
     }
 }
