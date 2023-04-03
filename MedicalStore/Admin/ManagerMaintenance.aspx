@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Staff Maintenance" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="ManagerMaintenance.aspx.cs" Inherits="MedicalStore.Admin.ManagerMaintenance" %>
+﻿<%@ Page Title="Manager Maintenance" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="ManagerMaintenance.aspx.cs" Inherits="MedicalStore.Admin.ManagerMaintenance" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -60,7 +60,7 @@
 
     <!-- Repeater -->
     <div class="container-fluid">
-        <asp:Repeater ID="repeatUser" runat="server">
+        <asp:Repeater ID="repeatUser" runat="server" DataSourceID="SqlDataSource1">
             <HeaderTemplate>
                 <table class="table table-hover table-responsive table-bordered">
                     <tr>
@@ -85,15 +85,41 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="editModalLabel">Modal title</h1>
+                                <h1 class="modal-title fs-5" id="editModalLabel">Edit Manager</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                ...
+                                <div class="mb-3">
+                                    <label for="Name" class="form-label">Manager Name</label>
+                                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Gender" class="form-label">Gender</label>
+                                    <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-control">
+                                        <asp:ListItem Value="" Selected="True">Select</asp:ListItem>
+                                        <asp:ListItem Value="Male">Male</asp:ListItem>
+                                        <asp:ListItem Value="Female">Female</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Address" class="form-label">Address</label>
+                                    <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ContactNumber" class="form-label">Contact Number</label>
+                                    <asp:TextBox ID="txtContact" runat="server" CssClass="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Password</label>
+                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" TextMode="Password" />
+                                </div>
+                                <div class="mb-3">
+                                    <asp:HiddenField ID="hdfRole" runat="server" />
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <asp:Button ID="btnSubmit" CssClass="btn btn-primary" Text="Save changes" runat="server" />
                             </div>
                         </div>
                     </div>
@@ -119,5 +145,10 @@
 
             </ItemTemplate>
         </asp:Repeater>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT S.StaffID, S.Name, R.RoleName FROM Staffs S, Role R WHERE S.RoleID = R.RoleID AND R.RoleID = @RoleID">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="R003" Name="RoleID" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </div>
 </asp:Content>

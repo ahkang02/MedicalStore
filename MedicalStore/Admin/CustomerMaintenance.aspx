@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Staff Maintenance" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="CustomerMaintenance.aspx.cs" Inherits="MedicalStore.Admin.CustomerMaintenance" %>
+﻿<%@ Page Title="Customer Maintenance" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="CustomerMaintenance.aspx.cs" Inherits="MedicalStore.Admin.CustomerMaintenance" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -74,7 +74,7 @@
                     <td><%#DataBinder.Eval(Container.DataItem,"CustomerID")%></td>
                     <td><%#DataBinder.Eval(Container.DataItem, "Name") %></td>
                     <td>
-                        <asp:Button ID="btnEdit" CssClass="btn btn-sm btn-primary ms-2" Text="Edit" runat="server" data-bs-toggle="modal" data-bs-target="#editModal" UseSutmitBehavior="false" CommandName="Edit" CommandArgument="<%# Container.ItemIndex %>" OnClientClick="return false;" />
+                        <asp:Button ID="btnEdit" CssClass="btn btn-sm btn-primary ms-2" Text="Edit" runat="server" data-bs-toggle="modal" data-bs-target="#editModal" UseSutmitBehavior="false" CommandName="Edit" CommandArgument="" OnClientClick="return false;" />
                         <asp:Button ID="btnDelete" CssClass="btn btn-sm btn-danger ms-2" Text="Delete" runat="server" data-bs-toggle="modal" data-bs-target="#deleteModal" UseSubmitBehavior="false" CommandName="Delete" CommandArgument="" OnClientClick="return false;" />
                     </td>
                 </tr>
