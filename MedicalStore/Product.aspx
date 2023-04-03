@@ -27,9 +27,9 @@
             --bg-content-color: #ffcc00;
         }
 
-        .container-fluid {
+        /*.container-fluid {
             max-width: 1400px;
-        }
+        }*/
 
         .card {
             background: #fff;
