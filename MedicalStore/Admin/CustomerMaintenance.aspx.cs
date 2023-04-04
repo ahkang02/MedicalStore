@@ -25,5 +25,10 @@ namespace MedicalStore.Admin
         {
 
         }
+
+        protected void repeatUser_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            //e.CommandArgument
+        }
     }
 }

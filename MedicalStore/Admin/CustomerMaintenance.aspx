@@ -60,7 +60,7 @@
 
     <!-- Repeater -->
     <div class="container-fluid">
-        <asp:Repeater ID="repeatUser" runat="server" DataSourceID="SqlDataSource1">
+        <asp:Repeater ID="repeatUser" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="repeatUser_ItemCommand">
             <HeaderTemplate>
                 <table class="table table-hover table-responsive table-bordered">
                     <tr>
@@ -75,7 +75,7 @@
                     <td><%#DataBinder.Eval(Container.DataItem, "Name") %></td>
                     <td>
                         <asp:Button ID="btnEdit" CssClass="btn btn-sm btn-primary ms-2" Text="Edit" runat="server" data-bs-toggle="modal" data-bs-target="#editModal" UseSutmitBehavior="false" CommandName="Edit" CommandArgument="" OnClientClick="return false;" />
-                        <asp:Button ID="btnDelete" CssClass="btn btn-sm btn-danger ms-2" Text="Delete" runat="server" data-bs-toggle="modal" data-bs-target="#deleteModal" UseSubmitBehavior="false" CommandName="Delete" CommandArgument="" OnClientClick="return false;" />
+                        <asp:Button ID="btnDelete" CssClass="btn btn-sm btn-danger ms-2" Text="Delete" runat="server" data-bs-toggle="modal" data-bs-target="#deleteModal" UseSubmitBehavior="false" CommandName="Delete" CommandArgument='<%#Eval ("CustomerID") %>' OnClientClick="return false;" />
                     </td>
                 </tr>
 
