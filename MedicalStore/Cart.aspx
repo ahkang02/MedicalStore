@@ -13,11 +13,11 @@
               <div class="col-lg-8">
                 <div class="p-5">
                   <div class="d-flex justify-content-between align-items-center mb-5">
-                    <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                    <h1 class="fw-bold mb-0 text-black">Shopping Carts</h1>
                     <h6 class="mb-0 text-muted">3 items</h6>
                   </div>
                   <hr class="my-4">
-
+                    asdasd
                   <div class="row mb-4 d-flex justify-content-between align-items-center">
                     <div class="col-md-2 col-lg-2 col-xl-2">
                       <img
