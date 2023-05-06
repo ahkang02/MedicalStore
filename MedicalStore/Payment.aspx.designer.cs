@@ -33,31 +33,49 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Repeater cartRepeater;
 
         /// <summary>
-        /// txtName control.
+        /// txtDeliveryName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtName;
+        protected global::System.Web.UI.WebControls.TextBox txtDeliveryName;
 
         /// <summary>
-        /// txtEmail control.
+        /// txtDeliveryPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtDeliveryPhone;
 
         /// <summary>
-        /// txtAddress control.
+        /// txtDeliveryAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+        protected global::System.Web.UI.WebControls.TextBox txtDeliveryAddress;
+
+        /// <summary>
+        /// txtDeliveryCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeliveryCity;
+
+        /// <summary>
+        /// txtDeliveryPostCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeliveryPostCode;
 
         /// <summary>
         /// paymentMethod control.
@@ -69,40 +87,121 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.RadioButtonList paymentMethod;
 
         /// <summary>
-        /// txtCardName control.
+        /// creditCardPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCardName;
+        protected global::System.Web.UI.WebControls.Panel creditCardPanel;
 
         /// <summary>
-        /// txtCardNum control.
+        /// txtBillingCardNum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCardNum;
+        protected global::System.Web.UI.WebControls.TextBox txtBillingCardNum;
 
         /// <summary>
-        /// txtExpiry control.
+        /// txtBillingExpiry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExpiry;
+        protected global::System.Web.UI.WebControls.TextBox txtBillingExpiry;
 
         /// <summary>
-        /// txtCvv control.
+        /// txtBillingCvv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCvv;
+        protected global::System.Web.UI.WebControls.TextBox txtBillingCvv;
+
+        /// <summary>
+        /// txtBillingName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBillingName;
+
+        /// <summary>
+        /// txtBillingPhoneNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBillingPhoneNo;
+
+        /// <summary>
+        /// txtBillingAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBillingAddress;
+
+        /// <summary>
+        /// txtBillingCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBillingCity;
+
+        /// <summary>
+        /// txtBillingPostCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBillingPostCode;
+
+        /// <summary>
+        /// fpxPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel fpxPanel;
+
+        /// <summary>
+        /// bankname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList bankname;
+
+        /// <summary>
+        /// eWalletPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel eWalletPanel;
+
+        /// <summary>
+        /// cashOnDeliveryPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel cashOnDeliveryPanel;
 
         /// <summary>
         /// btnCheckout control.
