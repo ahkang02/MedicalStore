@@ -37,19 +37,35 @@ namespace MedicalStore
             DateTime paymentDateTime = Convert.ToDateTime(Session["PaymentDateTime"]);
 
             string deliveryID = GenerateNewDeliveryID();
-            string status = "Preparing";
+            string deliveryStatus = "Preparing";
             DateTime date = DateTime.Now;
-            DateTime dateOnly = date.Date;
-            float fee = 5;
-            string name = Session["DeliveryName"] as string;
-            string address = Session["DeliveryAddress"] as string;
-            string phoneno = Session["DeliveryPhoneNo"] as string;
+            DateTime deliveryDate = date.Date;
+            float deliveryFee = 5;
+            string deliveryName = Session["DeliveryName"] as string;
+            string deliveryAddress = Session["DeliveryAddress"] as string;
+            string deliveryPhoneNo = Session["DeliveryPhoneNo"] as string;
             string staffID = GetRandomStaffID();
 
-            // Save the payment details to the database
-            SavePaymentToDatabase(paymentID, paymentMethod, paymentAmount, paymentDateTime);
-            SaveDeliveryToDatabase(deliveryID, status, dateOnly, fee, name, address, phoneno, staffID);
+            string orderID = GenerateNewOrderID();
+            DateTime orderDate = date.Date;
+            string orderStatus = "Preparing";
+            string[] user = Session["user"] as string[];
 
+            if (user != null)
+            {
+                string customerId = user[0];
+                string customerName = user[1];
+                string email = user[2];
+                string gender = user[3];
+                string contactNumber = user[4];
+                string address = user[5];
+                string username = user[6];
+
+                // Save the payment details to the database
+                SavePaymentToDatabase(paymentID, paymentMethod, paymentAmount, paymentDateTime);
+                SaveDeliveryToDatabase(deliveryID, deliveryStatus, deliveryDate, deliveryFee, deliveryName, deliveryAddress, deliveryPhoneNo, staffID);
+                SaveOrderToDatabase(orderID, orderDate, paymentAmount, orderStatus, paymentID, customerId, deliveryID);
+            }
 
             // Redirect to the receipt page
             Response.Redirect("Receipt.aspx");
@@ -185,7 +201,6 @@ namespace MedicalStore
 
             return latestDeliveryID;
         }
-
         private string GetRandomStaffID()
         {
             try
@@ -232,5 +247,94 @@ namespace MedicalStore
             }
         }
 
+        private void SaveOrderToDatabase(string orderID, DateTime orderDate, decimal totalamount, string status, string paymentID, string customerID, string deliveryID)
+        {
+            try
+            {
+                // Retrieve the connection string from the web.config file
+                string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Create a SQL command to insert a new order record
+                    string query = "INSERT INTO Orders (OrderID, OrderDate, TotalAmount, Status, PaymentID, CustomerID, DeliveryID, RefundID) VALUES (@OrderID, @OrderDate, @OrderTotalAmount, @OrderStatus, @PaymentID, @CustomerID, @DeliveryID, @RefundID)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Set the parameter values
+                        command.Parameters.AddWithValue("@OrderID", orderID);
+                        command.Parameters.AddWithValue("@OrderDate", orderDate);
+                        command.Parameters.AddWithValue("@OrderTotalAmount", totalamount);
+                        command.Parameters.AddWithValue("@OrderStatus", status);
+                        command.Parameters.AddWithValue("@PaymentID", paymentID);
+                        command.Parameters.AddWithValue("@CustomerID", customerID);
+                        command.Parameters.AddWithValue("@DeliveryID", deliveryID);
+                        command.Parameters.AddWithValue("@RefundID", DBNull.Value);
+
+                        // Open the database connection and execute the command
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception or display an error message
+                // Logging or displaying a user-friendly error message is recommended
+                // For simplicity, this example just throws the exception again
+                throw ex;
+            }
+
+
+        }
+
+        // Generate a new order ID
+        private string GenerateNewOrderID()
+        {
+
+            // Retrieve the latest order ID from the database
+            string latestOrderID = GetLatestOrderIDFromDatabase();
+
+            // Generate the new order ID
+            int newOrderIndex = 1;
+            if (!string.IsNullOrEmpty(latestOrderID))
+            {
+                int.TryParse(latestOrderID.Substring(1), out newOrderIndex);
+                newOrderIndex++; // Increment the index by 1
+            }
+
+            string newOrderID = "O" + newOrderIndex.ToString("D3"); // Format the index as a 3-digit number with leading zeros
+
+
+            return newOrderID;
+        }
+
+        // Retrieve the latest order ID from the database
+        private string GetLatestOrderIDFromDatabase()
+        {
+            // Assuming you have a connection string defined in your web.config file
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            string latestOrderID = "";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT TOP 1 OrderID FROM Orders ORDER BY OrderID DESC";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    latestOrderID = reader["OrderID"].ToString();
+                }
+
+                reader.Close();
+                connection.Close();
+            }
+
+            return latestOrderID;
+        }
     }
 }
