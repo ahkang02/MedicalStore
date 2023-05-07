@@ -84,11 +84,11 @@ namespace MedicalStore.Admin
 
                     if (n > 0)
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Staff Registered has been successfully registered!'); location.reload(true)", true);
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Staff Registered has been successfully registered!');", true);
                     }
                     else
                     {
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Registration with issue'); location.reload(true)", true);
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Registration with issue');", true);
                     }
                     con3.Close();
 
