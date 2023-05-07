@@ -101,7 +101,7 @@
                     <td><%#DataBinder.Eval(Container.DataItem, "Name") %></td>
                     <td>
                         <asp:Button ID="btnEdit" CssClass="btn btn-sm btn-primary ms-2" Text="Edit" runat="server" CommandName="Edit" CommandArgument='<%#Eval ("CustomerID") %>' UseSubmitBehavior="false" CausesValidation="false" />
-                        <asp:Button ID="btnDelete" CssClass="btn btn-sm btn-danger ms-2" Text="Delete" runat="server" CommandName="Delete" CommandArgument='<%#Eval ("CustomerID") %>' UseSubmitBehavior="false" OnClientClick="if (!confirm('Are you sure you want delete?')) return false;" />
+                        <asp:Button ID="btnDelete" CssClass="btn btn-sm btn-danger ms-2" Text="Delete" runat="server" CommandName="Delete" CommandArgument='<%#Eval ("CustomerID") %>' UseSubmitBehavior="false" OnClientClick="if (!confirm('Are you sure you want delete?')) return false;" CausesValidation="false"/>
                     </td>
                 </tr>
             </ItemTemplate>
@@ -148,12 +148,6 @@
                             &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtContactEdit" ErrorMessage="Invalid phone number format. eg: 01267938478" ForeColor="Red" ValidationExpression="^(01)[0-46-9]*[0-9]{7,8}$"></asp:RegularExpressionValidator>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Username</label>
-                            <asp:TextBox ID="txtUsernameEdit" runat="server" CssClass="form-control" />
-                            <asp:Label ID="Label1" runat="server" ForeColor="Red"></asp:Label>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtUsernameEdit" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                        </div>
-                        <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Password</label>
                             <asp:TextBox ID="txtPasswordEdit" runat="server" CssClass="form-control" TextMode="Password" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtPasswordEdit" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -165,11 +159,15 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <asp:Button ID="btnSubmitEdit" CssClass="btn btn-primary" Text="Save changes" runat="server" OnClick="btnSubmitEdit_Click" />
+                        <asp:Button ID="btnSubmitEdit" CssClass="btn btn-primary" Text="Save changes" runat="server" OnClick="btnSubmitEdit_Click" CausesValidation="false"/>
                     </div>
                 </div>
             </div>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Customers]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Customers] WHERE Status &lt;&gt; @Status">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="Inactive Account (Removed)" Name="Status" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </div>
 </asp:Content>

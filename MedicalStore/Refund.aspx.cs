@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -38,7 +40,7 @@ namespace MedicalStore
             con = new SqlConnection(strCon);
 
 
-            string orderID = orderNo.Text;
+            //string orderID = orderNo.Text;
             string refundReason = ddlRefund.SelectedValue;
             string refundID = "";
             string status = "In-progress";
@@ -60,7 +62,7 @@ namespace MedicalStore
                 command.Parameters.AddWithValue("@RefundID", refundID);
                 command.Parameters.AddWithValue("@Status", status);
                 command.Parameters.AddWithValue("@Reason", refundReason);
-                command.Parameters.AddWithValue("@OrderID", orderID);
+                //command.Parameters.AddWithValue("@OrderID", orderID);
                 result = command.ExecuteNonQuery();
 
                 Response.Redirect("~/Orders.aspx");
