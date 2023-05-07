@@ -29,7 +29,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="Name" class="form-label">Staff Name</label>
+                        <label for="Name" class="form-label">Manager Name</label>
                         <asp:TextBox ID="txtNameNew" runat="server" CssClass="form-control" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNameNew" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                         &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtNameNew" ErrorMessage="No numeric &amp; special characters e.g. @!#%.&quot;" ForeColor="Red" ValidationExpression="^[a-zA-Z\s]+$"></asp:RegularExpressionValidator>
@@ -107,7 +107,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="EditModalLabel">Edit Staffs</h1>
+                        <h1 class="modal-title fs-5" id="EditModalLabel">Edit Manager</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
