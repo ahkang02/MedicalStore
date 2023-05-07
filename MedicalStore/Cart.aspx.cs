@@ -19,5 +19,15 @@ namespace MedicalStore
         {
             Response.Redirect("Payment.aspx");
         }
+        
+        protected void RemoveRecord_Click(object sender, EventArgs e)
+        {
+            // Get the ID of the record to remove from the button's CommandArgument property
+            int recordId = int.Parse((sender as LinkButton).CommandArgument);
+
+
+            // Refresh the page to show the updated data
+            Response.Redirect(Request.RawUrl);
+        }
     }
 }
