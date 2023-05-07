@@ -20,7 +20,6 @@ namespace MedicalStore
             Session.Abandon();
 
             // Remove a specific session variable
-            Session.Remove("user");
         }
     }
 }

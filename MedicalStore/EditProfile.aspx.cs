@@ -21,6 +21,11 @@ namespace MedicalStore
                 customerid = user[0];
                 username = user[6];
             }
+            else
+            {
+                Response.Redirect("Login.aspx");
+                // The array is not initialized or does not contain data
+            }
 
             if (!IsPostBack)
             {
