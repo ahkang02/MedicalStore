@@ -67,7 +67,7 @@ namespace MedicalStore
                     SqlCommand command2 = new SqlCommand(strGetID, con2);
                     string getNextMaxID = (string)command2.ExecuteScalar();
                     int ID = Convert.ToInt32(getNextMaxID) + 1;
-                    string nextID = ID.ToString("000");
+                    string nextID = ID.ToString("0000");
                     con2.Close();
 
                     // Getting the CustomerID
@@ -79,7 +79,7 @@ namespace MedicalStore
                         con3 = new SqlConnection(strCon3);
                         con3.Open();
 
-                        string strInsert = "INSERT INTO [Products] (ProductID, Name, Description, Type, Price, AddedDate, ImageName, ManufacturerID, Quantity) values(@ProductID, @Name, @Description, @Type, @Price, @Address, @AddedDate, @ImageName, @ManufacturerID, @Quantity)";
+                        string strInsert = "INSERT INTO [Products] (ProductID, Name, Description, Type, Price, AddedDate, ImageName, ManufacturerID, Quantity) values(@ProductID, @Name, @Description, @Type, @Price, @AddedDate, @ImageName, @ManufacturerID, @Quantity)";
                         SqlCommand command3 = new SqlCommand(strInsert, con3);
                         command3.Parameters.AddWithValue("@ProductID", insertID);
                         command3.Parameters.AddWithValue("@Name", insertName);
@@ -95,30 +95,9 @@ namespace MedicalStore
 
                         if (n > 0)
                         {
-                            //Handle File Upload
-                            string strFileName;
-                            string strFilePath;
-                            string strFolder;
+                            // Download File
 
-                            strFolder = Server.MapPath("./");
-                            strFileName = fuProductNew.PostedFile.FileName;
-                            strFileName = Path.GetFileName(strFileName);
-
-                            if(!Directory.Exists(strFolder))
-                            {
-                                Directory.CreateDirectory(strFolder);
-                            }else
-                            {
-
-                            }
-
-                            strFilePath = strFolder + "/" + strFileName;
-                            if(File.Exists(strFilePath))
-                            {
-                                fuProductNew.PostedFile.SaveAs(strFilePath);
-                            }
-
-
+                            fuProductNew.SaveAs(HttpContext.Current.Request.PhysicalApplicationPath + "Images/ProductImg" + fuProductNew.FileName);
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Product added successfully.');", true);
                         }
                         else
