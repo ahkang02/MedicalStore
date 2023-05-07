@@ -47,11 +47,11 @@
                                     <p class="mb-0">Refund Reason</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <asp:DropDownList ID="ddlRefund" runat="server" CssClass="form-control" >
-                                        <asp:ListItem Value="Reason1">Product do not meet requirement</asp:ListItem>
-                                        <asp:ListItem Value="Reason2">Product are damaged</asp:ListItem>
-                                        <asp:ListItem Value="Reason3">Delivered wrong product</asp:ListItem>
-                                        <asp:ListItem Value="Reason0">Other Reason</asp:ListItem>
+                                     <asp:DropDownList ID="ddlRefund" runat="server" CssClass="form-control" >
+                                        <asp:ListItem Value="Product do not meet requirement">Product do not meet requirement</asp:ListItem>
+                                        <asp:ListItem Value="Product are damaged">Product are damaged</asp:ListItem>
+                                        <asp:ListItem Value="Delivered wrong product">Delivered wrong product</asp:ListItem>
+                                        <asp:ListItem Value="Other Reason">Other Reason</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>

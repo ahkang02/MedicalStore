@@ -28,5 +28,20 @@ namespace MedicalStore
         {
             Response.Redirect("Delivery.aspx");
         }
+        
+         protected void repeaterOrder_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
+        }
+        protected void btnRefund_Click(object sender, EventArgs e)
+        {
+            
+            Button btnRefund = (Button)sender;
+            string orderID = btnRefund.CommandArgument;
+
+            Response.Redirect(string.Format("~/Refund.aspx?OrderID={0}", orderID));
+
+
+        }
     }
 }

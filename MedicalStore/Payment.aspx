@@ -30,10 +30,7 @@
                                 </ItemTemplate>
                             </asp:Repeater>
                         </ul>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Promo code">
-                            <button type="submit" class="btn btn-secondary">Redeem</button>
-                        </div>
+                        <h5 class="text-primary">Total Payment Amount: RM<asp:Label ID="lblTotalPaymentAmount" runat="server"></asp:Label></h5>
                     </div>
                     <div class="col-md-7 col-lg-8">
                         <h4 class="mb-3">Delivery address</h4>

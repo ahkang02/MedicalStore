@@ -42,6 +42,7 @@
                                     <th>Order Mode</th>
                                     <th>Order Date</th>
                                     <th>Total Amount</th>
+                                    <th>Refund</th>
                                 </tr>
                         </HeaderTemplate>
                         <ItemTemplate>
@@ -51,6 +52,11 @@
                                 <td><%#DataBinder.Eval(Container.DataItem, "Status") %></td>
                                 <td><%#DataBinder.Eval(Container.DataItem, "OrderDate") %></td>
                                 <td><%#DataBinder.Eval(Container.DataItem, "TotalAmount") %></td>
+                                 <td>
+                                     <asp:Button ID="btnRefund" CssClass="btn btn-primary btn-lg" runat="server" OnClick="btnRefund_Click" Text="Request Refund" Visible='<%# Eval("Status").ToString() != "Delivered" %>' CommandArgument='<%#DataBinder.Eval(Container.DataItem, "OrderID") %>'
+                PostBackUrl='<%# "~/Refund.aspx?OrderID=" + DataBinder.Eval(Container.DataItem, "OrderID") %>'/>
+                                     <asp:Button ID="btnNone" CssClass="btn btn-primary btn-lg" style="background-color: darkgrey;" runat="server"  Text="None" Visible='<%# Eval("Status").ToString() == "Delivered" %>' />        
+                                 </td>
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>
