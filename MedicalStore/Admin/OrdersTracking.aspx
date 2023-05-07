@@ -3,6 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+        <div class="ms-3">
+        <h2>Order Tracking</h2>
+    </div>
     <!-- Repeater -->
     <div class="container-fluid">
         <asp:Repeater ID="repeatUser" runat="server" DataSourceID="SqlDataSource1">
