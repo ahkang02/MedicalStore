@@ -161,7 +161,6 @@
                 </div>
             </div>
         </div>
-
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT S.StaffID, S.Name, R.RoleName FROM Staffs S, Role R WHERE S.RoleID = R.RoleID AND R.RoleID = @RoleID AND S.Status &lt;&gt; @Status">
             <SelectParameters>
                 <asp:Parameter DefaultValue="R002" Name="RoleID" Type="String" />
