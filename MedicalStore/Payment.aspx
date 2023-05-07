@@ -70,7 +70,7 @@
                                     <asp:ListItem Value="Credit Card" Text="&nbsp;Credit Card" Selected="True"></asp:ListItem>
                                     <asp:ListItem Value="FPX" Text="&nbsp;FPX"></asp:ListItem>
                                     <asp:ListItem Value="E-Wallet" Text="&nbsp;E-Wallet"></asp:ListItem>
-                                    <asp:ListItem Value="COD" Text="&nbsp;Cash On Delivery"></asp:ListItem>
+                                    <asp:ListItem Value="Cash On Delivery" Text="&nbsp;Cash On Delivery"></asp:ListItem>
                                 </asp:RadioButtonList>
 
 

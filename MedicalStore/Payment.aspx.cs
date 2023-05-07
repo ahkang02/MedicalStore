@@ -48,7 +48,7 @@ namespace MedicalStore
                 case "E-Wallet":
                     eWalletPanel.Visible = true;
                     break;
-                case "COD":
+                case "Cash On Delivery":
                     cashOnDeliveryPanel.Visible = true;
                     break;
 
@@ -91,7 +91,7 @@ namespace MedicalStore
                 case "E-Wallet":
                     redirectUrl = $"PaymentSimulator.aspx?paymentMethod=ewallet";
                     break;
-                case "COD":
+                case "Cash On Delivery":
                     redirectUrl = $"PaymentSimulator.aspx?paymentMethod=cod";
                     break;
             }
