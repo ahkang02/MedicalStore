@@ -67,7 +67,7 @@
                             <div class="row">
                                 <h4>Payment Method</h4>
                                 <asp:RadioButtonList ID="paymentMethod" CssClass="form-control" runat="server" OnSelectedIndexChanged="paymentMethod_SelectedIndexChanged" AutoPostBack="true">
-                                    <asp:ListItem Value="Credit" Text="&nbsp;Credit Card" Selected="True"></asp:ListItem>
+                                    <asp:ListItem Value="Credit Card" Text="&nbsp;Credit Card" Selected="True"></asp:ListItem>
                                     <asp:ListItem Value="FPX" Text="&nbsp;FPX"></asp:ListItem>
                                     <asp:ListItem Value="E-Wallet" Text="&nbsp;E-Wallet"></asp:ListItem>
                                     <asp:ListItem Value="COD" Text="&nbsp;Cash On Delivery"></asp:ListItem>
