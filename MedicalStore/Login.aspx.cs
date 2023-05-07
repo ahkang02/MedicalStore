@@ -16,8 +16,8 @@ namespace MedicalStore
     {
         string username;
         string password;
+        String password1;
         string errorString = "";
-        string pattern = @"C\d{0:d3}";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -27,22 +27,22 @@ namespace MedicalStore
         {
             username = txtUsername.Text;
             password = EncryptPassword(txtPassword.Text);
-
+            password1 = txtPassword.Text;
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
             con.Open();
 
-            if (Regex.IsMatch(username, pattern))
+            if (Regex.IsMatch(username, "^S\\d{3}$"))
             {
                 string cmdSelectStaff = "select * from staffs where staffid = @staffid";
                 SqlCommand command = new SqlCommand(cmdSelectStaff, con);
-                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@staffid", username);
                 SqlDataReader dr = command.ExecuteReader();
 
                 if (dr.Read())
                 {
-                    if (string.Equals(password, dr["password"]))
+                    if (string.Equals(password1, dr["password"].ToString()))
                     {
                         string[] staff = { dr["staffid"].ToString(), dr["name"].ToString(), dr["email"].ToString(), dr["gender"].ToString(), dr["contactnumber"].ToString(), dr["address"].ToString(), dr["roleid"].ToString() };
                         Session["staff"] = staff;

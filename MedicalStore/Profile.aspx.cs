@@ -27,6 +27,7 @@ namespace MedicalStore
                 username = user[6];
 
                 lblName.Text = name;
+                lblUsername.Text = username;
                 lblEmail.Text = email;
                 lblGender.Text = gender;
                 lblAddress.Text = address;

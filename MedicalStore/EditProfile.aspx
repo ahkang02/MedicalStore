@@ -82,14 +82,6 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Password</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="text-end">
