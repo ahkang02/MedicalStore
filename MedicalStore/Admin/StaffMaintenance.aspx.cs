@@ -29,7 +29,6 @@ namespace MedicalStore.Admin
         string insertEmail = string.Empty;
         string insertAddress = string.Empty;
         string insertContact = string.Empty;
-        string insertUsername = string.Empty;
         string insertPassword = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -41,66 +40,58 @@ namespace MedicalStore.Admin
 
         protected void btnSubmitNew_Click(object sender, EventArgs e)
         {
+            insertID = string.Empty;
+            insertName = txtNameNew.Text.ToString();
+            insertGender = ddlGenderNew.SelectedValue.ToString();
+            insertEmail = txtEmailNew.Text.ToString();
+            insertAddress = txtAddressNew.Text.ToString();
+            insertContact = txtContactNew.Text.ToString();
+            insertPassword = txtPasswordNew.Text.ToString();
+
             try
             {
-                insertID = string.Empty;
-                insertName = txtNameNew.Text.ToString();
-                insertGender = ddlGenderNew.SelectedValue.ToString();
-                insertEmail = txtEmailNew.Text.ToString();
-                insertAddress = txtAddressNew.Text.ToString();
-                insertContact = txtContactNew.Text.ToString();
-                insertPassword = txtPasswordNew.Text.ToString();
+
+                con2 = new SqlConnection(strCon2);
+                con2.Open();
+                string strGetID = "SELECT MAX(SUBSTRING(staffID, 2, 4)) AS staffID FROM Staffs";
+                SqlCommand command2 = new SqlCommand(strGetID, con2);
+                string getNextMaxID = (string)command2.ExecuteScalar();
+                int ID = Convert.ToInt32(getNextMaxID) + 1;
+                string nextID = ID.ToString("000");
+                con2.Close();
+
+                // Getting the staffID
+                insertID = 'S' + nextID;
 
                 try
                 {
+                    // Insert Statement Into DB
+                    con3 = new SqlConnection(strCon3);
+                    con3.Open();
 
-                    con2 = new SqlConnection(strCon2);
-                    con2.Open();
-                    string strGetID = "SELECT MAX(SUBSTRING(staffID, 2, 4)) AS staffID FROM Staffs";
-                    SqlCommand command2 = new SqlCommand(strGetID, con2);
-                    string getNextMaxID = (string)command2.ExecuteScalar();
-                    int ID = Convert.ToInt32(getNextMaxID) + 1;
-                    string nextID = ID.ToString("000");
-                    con2.Close();
+                    string strInsert = "INSERT INTO [Staffs] (StaffID, Name, Email, Gender, ContactNumber, Address, Password, RoleID, Status) values(@StaffID, @Name, @Email, @Gender, @ContactNumber, @Address, @Password, @RoleID, @Status)";
+                    SqlCommand command3 = new SqlCommand(strInsert, con3);
+                    command3.Parameters.AddWithValue("@StaffID", insertID);
+                    command3.Parameters.AddWithValue("@Name", insertName);
+                    command3.Parameters.AddWithValue("@Email", insertEmail);
+                    command3.Parameters.AddWithValue("@Gender", insertGender);
+                    command3.Parameters.AddWithValue("@ContactNumber", insertContact);
+                    command3.Parameters.AddWithValue("@Address", insertAddress);
+                    command3.Parameters.AddWithValue("@Password", insertPassword);
+                    command3.Parameters.AddWithValue("@RoleID", hdfRole.Value.ToString());
+                    command3.Parameters.AddWithValue("@Status", "Pending");
+                    int n = command3.ExecuteNonQuery();
 
-                    // Getting the staffID
-                    insertID = 'S' + nextID;
 
-                    try
+                    if (n > 0)
                     {
-                        // Insert Statement Into DB
-                        con3 = new SqlConnection(strCon3);
-                        con3.Open();
-
-                        string strInsert = "INSERT INTO [Staffs] (StaffID, Name, Email, Gender, ContactNumber, Address, Password, RoleID, Status) values(@StaffID, @Name, @Email, @Gender, @ContactNumber, @Address, @Password, @RoleID, @Status)";
-                        SqlCommand command3 = new SqlCommand(strInsert, con3);
-                        command3.Parameters.AddWithValue("@StaffID", insertID);
-                        command3.Parameters.AddWithValue("@Name", insertName);
-                        command3.Parameters.AddWithValue("@Email", insertEmail);
-                        command3.Parameters.AddWithValue("@Gender", insertGender);
-                        command3.Parameters.AddWithValue("@ContactNumber", insertContact);
-                        command3.Parameters.AddWithValue("@Address", insertAddress);
-                        command3.Parameters.AddWithValue("@Password", insertPassword);
-                        command3.Parameters.AddWithValue("@RoleID", hdfRole.Value.ToString());
-                        command3.Parameters.AddWithValue("@Status", "Pending");
-                        int n = command3.ExecuteNonQuery();
-
-
-                        if (n > 0)
-                        {
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Your account has been successfully registered!'); location.reload(true)", true);
-                        }
-                        else
-                        {
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Registration with issue'); location.reload(true)", true);
-                        }
-                        con3.Close();
-
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Staff Registered has been successfully registered!'); location.reload(true)", true);
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Response.Write(ex.ToString());
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Registration with issue'); location.reload(true)", true);
                     }
+                    con3.Close();
 
                 }
                 catch (Exception ex)
@@ -143,7 +134,7 @@ namespace MedicalStore.Admin
                         staffGender = dr.GetString(3);
                         staffPhone = dr.GetString(4);
                         staffAddress = dr.GetString(5);
-                        staffPassword = dr.GetString(7);
+                        staffPassword = dr.GetString(6);
                         hdfID.Value = dr.GetString(0);
                     }
 

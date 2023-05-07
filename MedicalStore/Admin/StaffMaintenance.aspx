@@ -73,7 +73,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <asp:Button ID="btnSubmitNew" CssClass="btn btn-primary" Text="Save changes" runat="server" OnClick="btnSubmitNew_Click" />
+                    <asp:Button ID="btnSubmitNew" CssClass="btn btn-primary" Text="Save changes" runat="server" OnClick="btnSubmitNew_Click" CausesValidation="false"/>
                 </div>
             </div>
         </div>
@@ -161,10 +161,10 @@
                 </div>
             </div>
         </div>
-
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT S.StaffID, S.Name, R.RoleName FROM Staffs S, Role R WHERE S.RoleID = R.RoleID AND R.RoleID = @RoleID">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT S.StaffID, S.Name, R.RoleName FROM Staffs S, Role R WHERE S.RoleID = R.RoleID AND R.RoleID = @RoleID AND S.Status &lt;&gt; @Status">
             <SelectParameters>
                 <asp:Parameter DefaultValue="R002" Name="RoleID" Type="String" />
+                <asp:Parameter DefaultValue="Inactive Account (Removed)" Name="Status" />
             </SelectParameters>
         </asp:SqlDataSource>
     </div>
