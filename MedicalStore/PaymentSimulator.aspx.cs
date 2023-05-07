@@ -22,18 +22,19 @@ namespace MedicalStore
                 lblPaymentAmount.Text = paymentAmount.ToString("0.00");
                 lblPaymentDateTime.Text = paymentDateTime.ToString();
 
-                // Store the payment details in the database if the command argument is set
-                if (btnSuccess.CommandArgument == "SaveToDatabase")
-                {
-                    SavePaymentToDatabase(paymentID, paymentMethod, paymentAmount, paymentDateTime);
-                }
             }
         }
 
         protected void btnSuccess_Click(object sender, EventArgs e)
         {
-            // Set the command argument to indicate that the payment should be saved to the database
-            btnSuccess.CommandArgument = "SaveToDatabase";
+            // Retrieve the payment details from the session
+            string paymentID = Session["PaymentID"] as string;
+            string paymentMethod = Session["PaymentMethod"] as string;
+            decimal paymentAmount = Convert.ToDecimal(Session["PaymentAmount"]);
+            DateTime paymentDateTime = Convert.ToDateTime(Session["PaymentDateTime"]);
+
+            // Save the payment details to the database
+            SavePaymentToDatabase(paymentID, paymentMethod, paymentAmount, paymentDateTime);
 
             // Redirect to the receipt page
             Response.Redirect("Receipt.aspx");
@@ -79,5 +80,11 @@ namespace MedicalStore
                 throw ex;
             }
         }
+
+
+
+
+       
+        
     }
 }
