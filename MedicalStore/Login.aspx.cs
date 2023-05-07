@@ -16,8 +16,8 @@ namespace MedicalStore
     {
         string username;
         string password;
+        String password1;
         string errorString = "";
-        string pattern = @"C\d{0:d3}";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -27,26 +27,48 @@ namespace MedicalStore
         {
             username = txtUsername.Text;
             password = EncryptPassword(txtPassword.Text);
-
+            password1 = txtPassword.Text;
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
             con.Open();
 
-            if (Regex.IsMatch(username, pattern))
+            if (Regex.IsMatch(username, "^S\\d{3}$"))
             {
                 string cmdSelectStaff = "select * from staffs where staffid = @staffid";
                 SqlCommand command = new SqlCommand(cmdSelectStaff, con);
-                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@staffid", username);
                 SqlDataReader dr = command.ExecuteReader();
 
                 if (dr.Read())
                 {
-                    if (string.Equals(password, dr["password"]))
+                    if (string.Equals(password1, dr["password"].ToString()))
                     {
+                        SqlConnection con1;
+                        string strCon1 = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                        con1 = new SqlConnection(strCon1);
+                        con1.Open();
                         string[] staff = { dr["staffid"].ToString(), dr["name"].ToString(), dr["email"].ToString(), dr["gender"].ToString(), dr["contactnumber"].ToString(), dr["address"].ToString(), dr["roleid"].ToString() };
-                        Session["staff"] = staff;
+                        string cmdSelectRole = "select r.rolename from role r, staffs s where s.roleid = r.roleid and s.StaffID=@staffid";
+                        SqlCommand command2 = new SqlCommand(cmdSelectRole, con1);
+                        command2.Parameters.AddWithValue("@staffid", username);
+                        string role = (string)command2.ExecuteScalar();
+                        
+                        if (string.Equals(role, "Staffs"))
+                        {
+                            Session["Staffs"] = staff;
+                        }
+                        else if (string.Equals(role, "Manager"))
+                        {
+                            Session["Manager"] = staff;
+                        }
+                        else if (string.Equals(role, "Admin"))
+                        {
+                            Session["Manager"] = staff;
+                        }
+
                         Response.Redirect("Admin/ProductMaintenance.aspx");
+                        con1.Close();
                     }
                     else
                     {
@@ -83,6 +105,7 @@ namespace MedicalStore
             {
                 errorString += "Error: Invalid username or username does not exist, please try again.";
             }
+
             }
 
 
@@ -108,5 +131,7 @@ namespace MedicalStore
                 return hashString;
             }
         }
+
+
     }
 }

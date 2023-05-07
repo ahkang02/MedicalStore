@@ -60,6 +60,7 @@
                     <p>
                         Payment Date and Time: <asp:Label ID="lblPaymentDateTime" runat="server"></asp:Label>
                     </p>
+
                 </div>
             </div>
         </div>

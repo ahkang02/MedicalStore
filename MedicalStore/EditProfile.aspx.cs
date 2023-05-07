@@ -11,7 +11,7 @@ namespace MedicalStore
 {
     public partial class EditProfile : System.Web.UI.Page
     {
-        string customerid, name, email, address, contact, gender, errorString;
+        string customerid, name, email, address, contact, gender, username, errorString;
         string[] user;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,7 +19,12 @@ namespace MedicalStore
             {
                 user = (string[])Session["user"];
                 customerid = user[0];
-
+                username = user[6];
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+                // The array is not initialized or does not contain data
             }
 
             if (!IsPostBack)
@@ -60,13 +65,16 @@ namespace MedicalStore
             int n = cmdUpdate.ExecuteNonQuery();
             if (n > 0)
             {
-                errorString += "Profile updated successfully!";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Personal Info Updated Successfully.');", true);
+                string[] newUser = {customerid, name, email, gender, contact, address, username };
+                Session["user"] = newUser;
+                
             }
             else
             {
-                errorString += "Profile update failed.";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Failed to update Personal Info.');", true);
             }
-
+            Response.Redirect("Profile.aspx");
             con.Close();
         }
 

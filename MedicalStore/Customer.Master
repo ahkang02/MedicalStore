@@ -40,10 +40,6 @@
                     <% if (Session["user"] != null)
                         { %>
                     <!-- User is logged in, show welcome message and logout button -->
-
-                    
-                        
-
                     
                         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Log out" CssClass="btn btn-primary" />
                     <% }

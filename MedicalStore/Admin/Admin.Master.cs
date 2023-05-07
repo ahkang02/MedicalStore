@@ -13,5 +13,12 @@ namespace MedicalStore.Admin
         {
 
         }
+
+        protected void btnLogout_click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("../Login.aspx");
+            // Remove a specific session variable
+        }
     }
 }
