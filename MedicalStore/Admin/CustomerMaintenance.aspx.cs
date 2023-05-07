@@ -93,7 +93,7 @@ namespace MedicalStore.Admin
                             con3 = new SqlConnection(strCon3);
                             con3.Open();
 
-                            string strInsert = "INSERT INTO [Customers] (CustomerID, Name, Email, Gender, ContactNumber, Address, Username, Password) values(@CustomerID, @Name, @Email, @Gender, @ContactNumber, @Address, @Username, @Password)";
+                            string strInsert = "INSERT INTO [Customers] (CustomerID, Name, Email, Gender, ContactNumber, Address, Username, Password, Status) values(@CustomerID, @Name, @Email, @Gender, @ContactNumber, @Address, @Username, @Password, @Status)";
                             SqlCommand command3 = new SqlCommand(strInsert, con3);
                             command3.Parameters.AddWithValue("@CustomerID", insertID);
                             command3.Parameters.AddWithValue("@Name", insertName);
@@ -103,6 +103,7 @@ namespace MedicalStore.Admin
                             command3.Parameters.AddWithValue("@Address", insertAddress);
                             command3.Parameters.AddWithValue("@Username", insertUsername);
                             command3.Parameters.AddWithValue("@Password", insertPassword);
+                            command3.Parameters.AddWithValue("@Status", "Pending");
                             int n = command3.ExecuteNonQuery();
 
 
@@ -183,8 +184,10 @@ namespace MedicalStore.Admin
                         con = new SqlConnection(strCon);
                         con.Open();
 
-                        string strDelete = "DELETE FROM Customers Where CustomerID = '" + customerID + "'";
-                        SqlCommand com = new SqlCommand(strDelete, con);
+                        string strUpdate = "UPDATE Customers Set Status = @Status Where CustomerID = @CustomerID";
+                        SqlCommand com = new SqlCommand(strUpdate, con);
+                        com.Parameters.AddWithValue("@Status", "Inactive Account (Removed)");
+                        com.Parameters.AddWithValue("@CustomerID", customerID);
                         int n = com.ExecuteNonQuery();
 
                         if (n > 0)
