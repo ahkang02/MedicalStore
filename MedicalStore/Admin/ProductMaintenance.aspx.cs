@@ -28,7 +28,7 @@ namespace MedicalStore
         string insertID = string.Empty;
         string insertName = string.Empty;
         string insertDescription = string.Empty;
-        string insertType = string.Empty; 
+        string insertType = string.Empty;
         double insertPrice = 0;
         string insertAddedDate;
         string insertImageName = string.Empty;
@@ -96,8 +96,9 @@ namespace MedicalStore
                         if (n > 0)
                         {
                             // Download File
-
-                            fuProductNew.SaveAs(HttpContext.Current.Request.PhysicalApplicationPath + "Images/ProductImg" + fuProductNew.FileName);
+                            string fileName = Path.GetFileName(fuProductNew.FileName);
+                            string path = Server.MapPath("~/Images/ProductImg/" + fileName);
+                            fuProductNew.SaveAs(path);
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Product added successfully.');", true);
                         }
                         else
@@ -127,117 +128,120 @@ namespace MedicalStore
 
         protected void repeatUser_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+
             string productID = e.CommandArgument.ToString();
             string productName = string.Empty;
             string productDescription = string.Empty;
-            string productPrice = string.Empty;
-            DateTime productAddedDate;
+            string productType = string.Empty;
+            double productPrice = 0;
             string productImageName = string.Empty;
             string productManuID = string.Empty;
             int productQuantity = 0;
 
             switch (e.CommandName)
             {
-                //    case "Edit":
-                //        ScriptManager.RegisterStartupScript(this, GetType(), "ShowEditModal", "showEditModal();", true);
-                //        con2 = new SqlConnection(strCon2);
-                //        con2.Open();
+                case "Edit":
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ShowEditModal", "showEditModal();", true);
+                    con2 = new SqlConnection(strCon2);
+                    con2.Open();
 
-                //        string strSelect = "SELECT * FROM Customers Where CustomerID = '" + customerID + "'";
-                //        SqlCommand cmd = new SqlCommand(strSelect, con2);
-                //        SqlDataReader dr = cmd.ExecuteReader();
+                    string strSelect = "SELECT * FROM PRODUCTS WHERE ProductID = @ProductID";
+                    SqlCommand cmd = new SqlCommand(strSelect, con2);
+                    cmd.Parameters.AddWithValue("@ProductID", productID);
+                    SqlDataReader dr = cmd.ExecuteReader();
 
-                //        while (dr.Read())
-                //        {
-                //            customerName = dr.GetString(1);
-                //            customerEmail = dr.GetString(2);
-                //            customerGender = dr.GetString(3);
-                //            customerPhone = dr.GetString(4);
-                //            customerAddress = dr.GetString(5);
-                //            customerPassword = dr.GetString(7);
-                //            hdfID.Value = dr.GetString(0);
-                //        }
+                    while (dr.Read())
+                    {
+                        productName = dr.GetString(1);
+                        productDescription = dr.GetString(2);
+                        productType = dr.GetString(3);
+                        productPrice = dr.GetDouble(4);
+                        productImageName = dr.GetString(6);
+                        productManuID = dr.GetString(7);
+                        productQuantity = dr.GetInt32(8);
+                        hdfID.Value = dr.GetString(0);
+                    }
 
-                //        txtNameEdit.Text = customerName;
-                //        txtEmailEdit.Text = customerEmail;
-                //        ddlGenderEdit.SelectedValue = customerGender.Trim();
-                //        txtContactEdit.Text = customerPhone;
-                //        txtAddressEdit.Text = customerAddress;
-                //        txtPasswordEdit.Attributes.Add("value", customerPassword);
+                    txtNameEdit.Text = productName;
+                    txtDescriptionEdit.Text = productDescription;
+                    ddlProductTypeEdit.SelectedValue = productType.Trim();
+                    txtPriceEdit.Text = productPrice.ToString();
+                    ddlManufacturerEdit.SelectedValue = productManuID.Trim();
+                    txtQtyEdit.Text = productQuantity.ToString();
 
-                //        con2.Close();
+                    break;
+                case "Delete":
+                    try
+                    {
+                        con = new SqlConnection(strCon);
+                        con.Open();
 
-                //        break;
-                //    case "Delete":
-                //        try
-                //        {
-                //            con = new SqlConnection(strCon);
-                //            con.Open();
+                        string strUpdate = "DELETE FROM Products WHERE ProductID = @ProductID";
+                        SqlCommand com = new SqlCommand(strUpdate, con);
+                        com.Parameters.AddWithValue("@ProductID", productID);
+                        int n = com.ExecuteNonQuery();
 
-                //            string strUpdate = "UPDATE Customers Set Status = @Status Where CustomerID = @CustomerID";
-                //            SqlCommand com = new SqlCommand(strUpdate, con);
-                //            com.Parameters.AddWithValue("@Status", "Inactive Account (Removed)");
-                //            com.Parameters.AddWithValue("@CustomerID", customerID);
-                //            int n = com.ExecuteNonQuery();
+                        if (n > 0)
+                        {
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Products deleted successfully.')", true);
+                        }
+                        else
+                        {
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Deletion with errors')", true);
+                        }
 
-                //            if (n > 0)
-                //            {
-                //                ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Customer account deleted successfully.')", true);
-                //            }
-                //            else
-                //            {
-                //                ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Deletion with errors')", true);
-                //            }
+                        con.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write(ex.ToString());
+                    }
+                    break;
 
-                //            con.Close();
-                //        }
-                //        catch (Exception ex)
-                //        {
-                //            Response.Write(ex.ToString());
-                //        }
-                //        break;
-
-                //    default:
-                //        break;
-                //}
+                default:
+                    break;
             }
-
         }
 
         protected void btnSubmitEdit_Click(object sender, EventArgs e)
         {
-            //string productID = hdfID.Value.ToString();
-            //string productName = txtNameEdit.Text;
-            //string productDescription = txtDescriptionEdit.Text;
-            //double productPrice = Convert.ToDouble(txtPriceEdit.Text);
-            //string productImageName = fuProductEdit.PostedFile.FileName.ToString();
-            //string productManuID = ddlManufacturerEdit.SelectedValue.ToString().Trim();
-            //int productQuantity = Convert.ToInt32(txtQtyEdit.Text);
+            string productID = hdfID.Value.ToString();
+            string productName = txtNameEdit.Text;
+            string productDescription = txtDescriptionEdit.Text;
+            string productType = ddlProductTypeEdit.SelectedValue;
+            double productPrice = Convert.ToDouble(txtPriceEdit.Text);
+            string productImageName = fuProductEdit.PostedFile.FileName.ToString();
+            string productManuID = ddlManufacturerEdit.SelectedValue;
+            int productQuantity = Convert.ToInt32(txtQtyEdit.Text);
 
-            //con2 = new SqlConnection(strCon2);
-            //con2.Open();
+            con2 = new SqlConnection(strCon2);
+            con2.Open();
 
-            //string strUpdate = "UPDATE CUSTOMERS SET Name = @Name, Email = @Email, Gender = @Gender, ContactNumber = @ContactNumber, Address = @Address, Password = @Password Where CustomerID = @CustomerID";
-            //SqlCommand command = new SqlCommand(strUpdate, con2);
-            //command.Parameters.AddWithValue("@Name", newCustomerName);
-            //command.Parameters.AddWithValue("@Email", newCustomerEmail);
-            //command.Parameters.AddWithValue("@Gender", newGender);
-            //command.Parameters.AddWithValue("@ContactNumber", newContact);
-            //command.Parameters.AddWithValue("@Address", newAddress);
-            //command.Parameters.AddWithValue("@Password", newPassword);
-            //command.Parameters.AddWithValue("@CustomerID", customerID);
-            //int n = command.ExecuteNonQuery();
+            string strUpdate = "UPDATE PRODUCTS SET Name = @Name, Description = @Description, Type = @Type, Price = @Price, ImageName = @ImageName, ManufacturerID = @ManufacturerID, Quantity = @Quantity WHERE ProductID = @ProductID";
+            SqlCommand command = new SqlCommand(strUpdate, con2);
+            command.Parameters.AddWithValue("@Name", productName);
+            command.Parameters.AddWithValue("@Description", productDescription);
+            command.Parameters.AddWithValue("@Type", productType);
+            command.Parameters.AddWithValue("@Price", productPrice);
+            command.Parameters.AddWithValue("@ImageName", productImageName);
+            command.Parameters.AddWithValue("@ManufacturerID", productManuID);
+            command.Parameters.AddWithValue("@Quantity", productQuantity);
+            command.Parameters.AddWithValue("@ProductID", productID);
+            int n = command.ExecuteNonQuery();
 
-            //if (n > 0)
-            //{
-            //    ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Customer Info Updated Successfully.');", true);
-            //}
-            //else
-            //{
-            //    ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Update with errors'); location.reload(true)", true);
-            //}
+            if (n > 0)
+            {
+                string fileName = Path.GetFileName(fuProductEdit.FileName);
+                string path = Server.MapPath("~/Images/ProductImg/" + fileName);
+                fuProductEdit.SaveAs(path);
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Customer Info Updated Successfully.');", true);
+            }
+            else
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Update with errors'); location.reload(true)", true);
+            }
 
-            //con2.Close();
+            con2.Close();
         }
     }
 }
