@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MedicalStore
 {
@@ -16,6 +17,7 @@ namespace MedicalStore
         string username;
         string password;
         string errorString = "";
+        string pattern = @"C\d{0:d3}";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -31,28 +33,59 @@ namespace MedicalStore
             con = new SqlConnection(strCon);
             con.Open();
 
-            string cmdSelect = "select * from customers where username = @username";
-            SqlCommand command = new SqlCommand(cmdSelect, con);
-            command.Parameters.AddWithValue("@username", username);
-            SqlDataReader dr = command.ExecuteReader();
-
-            if (dr.Read())
+            if (Regex.IsMatch(username, pattern))
             {
-                if(string.Equals(password, dr["password"]))
+                string cmdSelectStaff = "select * from staffs where staffid = @staffid";
+                SqlCommand command = new SqlCommand(cmdSelectStaff, con);
+                command.Parameters.AddWithValue("@username", username);
+                SqlDataReader dr = command.ExecuteReader();
+
+                if (dr.Read())
                 {
-                    string[] user = {dr["customerid"].ToString(), dr["name"].ToString(), dr["email"].ToString(), dr["gender"].ToString(), dr["contactnumber"].ToString(), dr["address"].ToString(), dr["username"].ToString(), };
-                    Session["user"] = user;
-                    Response.Redirect("Homepage.aspx");
+                    if (string.Equals(password, dr["password"]))
+                    {
+                        string[] staff = { dr["staffid"].ToString(), dr["name"].ToString(), dr["email"].ToString(), dr["gender"].ToString(), dr["contactnumber"].ToString(), dr["address"].ToString(), dr["roleid"].ToString() };
+                        Session["staff"] = staff;
+                        Response.Redirect("Admin/ProductMaintenance.aspx");
+                    }
+                    else
+                    {
+                        errorString += "Error: Invalid password, please try again.";
+                    }
                 }
                 else
                 {
-                    errorString += "Error: Invalid password, please try again.";
+                    errorString += "Error: Invalid username or username does not exist, please try again.";
                 }
             }
             else
             {
-                errorString += "Error: Invalid username or username does not exist, please try again.";
+                string cmdSelectCust = "select * from customers where username = @username";
+                SqlCommand command1 = new SqlCommand(cmdSelectCust, con);
+                command1.Parameters.AddWithValue("@username", username);
+                SqlDataReader dr1 = command1.ExecuteReader();
+
+                if (dr1.Read())
+                {
+                    if (string.Equals(password, dr1["password"]))
+                    {
+                        string[] user = { dr1["customerid"].ToString(), dr1["name"].ToString(), dr1["email"].ToString(), dr1["gender"].ToString(), dr1["contactnumber"].ToString(), dr1["address"].ToString(), dr1["username"].ToString() };
+                        Session["user"] = user;
+                        Response.Redirect("Homepage.aspx");
+                    }
+                    else
+                    {
+                        errorString += "Error: Invalid password, please try again.";
+                    }
+                }
+                else
+                {
+                    errorString += "Error: Invalid username or username does not exist, please try again.";
+                }
             }
+
+
+            
             lblError.Text = errorString;
             con.Close();
         }
