@@ -271,7 +271,9 @@
 
                                                     <div class="d-grid gap-2 my-4">
 
-                                                        <a href="#" class="btn btn-warning bold-btn">add to cart</a>
+                                                <%-- <a href="#" class="btn btn-warning bold-btn">add to cart</a>--%>
+                                                       <asp:Button ID="addToCartButton" runat="server" Text="Add to Cart" OnClick="addToCartButton_Click" CommandArgument='<%# Eval("ProductID") %>' CommandName='<%# Eval("Price") %>' />
+
 
                                                     </div>
                                                     <div class="clearfix mb-1">
