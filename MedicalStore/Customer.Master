@@ -25,26 +25,36 @@
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="Homepage.aspx" class="nav-link px-2 link-secondary">Home</a></li>
                     <li><a href="Product.aspx" class="nav-link px-2 link-dark">Products</a></li>
+                    <%if (Session["user"] != null)
+                        { %>
                     <li><a href="Profile.aspx" class="nav-link px-2 link-dark">Profile</a></li>
                     <li><a href="Orders.aspx" class="nav-link px-2 link-dark">My Orders</a></li>
+                    <%}%>
+           
                 </ul>
 
                 <div class="col-md-3 text-end">
                     <a href="Cart.aspx">
                         <img src="Images/cart-icon.png" class="bi me-2 img-fluid" width="30" height="30" /></a>
 
-                    <% if (Session["user"] != null) { %>
-                        <!-- User is logged in, show welcome message and logout button -->
-                       
-                        <a href="Logout.aspx"><button type="button" class="btn btn-primary">Log out</button></a></a>
-                    <% } else { %>
-                                        <a href="Login.aspx">
+                    <% if (Session["user"] != null)
+                        { %>
+                    <!-- User is logged in, show welcome message and logout button -->
+
+                    
+                        
+
+                    
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Log out" CssClass="btn btn-primary" />
+                    <% }
+                    else
+                    { %>
+                    <a href="Login.aspx">
                         <button type="button" class="btn btn-outline-primary me-2">Login</button></a>
                     <a href="Register.aspx">
                         <button type="button" class="btn btn-primary">Sign-up</button></a>
 
                     <% } %>
-
                 </div>
             </header>
         </div>

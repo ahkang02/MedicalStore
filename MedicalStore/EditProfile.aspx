@@ -48,7 +48,7 @@
                                     <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmail" Text="" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
                                 </div>
                             </div>
                             <hr>

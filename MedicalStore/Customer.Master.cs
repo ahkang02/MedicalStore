@@ -13,5 +13,14 @@ namespace MedicalStore
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            // Abandon the session
+            Session.Abandon();
+
+            // Remove a specific session variable
+            Session.Remove("user");
+        }
     }
 }

@@ -61,27 +61,28 @@ namespace MedicalStore
             else
             {
                 string cmdSelectCust = "select * from customers where username = @username";
-                SqlCommand command1 = new SqlCommand(cmdSelectCust, con);
-                command1.Parameters.AddWithValue("@username", username);
-                SqlDataReader dr1 = command1.ExecuteReader();
+            SqlCommand command1 = new SqlCommand(cmdSelectCust, con);
+            command1.Parameters.AddWithValue("@username", username);
+            SqlDataReader dr1 = command1.ExecuteReader();
 
-                if (dr1.Read())
+            if (dr1.Read())
+            {
+                if(string.Equals(password, dr1["password"].ToString()))
                 {
-                    if (string.Equals(password, dr1["password"]))
-                    {
-                        string[] user = { dr1["customerid"].ToString(), dr1["name"].ToString(), dr1["email"].ToString(), dr1["gender"].ToString(), dr1["contactnumber"].ToString(), dr1["address"].ToString(), dr1["username"].ToString() };
+                    string[] user = {dr1["customerid"].ToString(), dr1["name"].ToString(), dr1["email"].ToString(), dr1["gender"].ToString(), dr1["contactnumber"].ToString(), dr1["address"].ToString(), dr1["username"].ToString() };
                         Session["user"] = user;
-                        Response.Redirect("Homepage.aspx");
-                    }
-                    else
-                    {
-                        errorString += "Error: Invalid password, please try again.";
-                    }
+                        
+                    Response.Redirect("Homepage.aspx");
                 }
                 else
                 {
-                    errorString += "Error: Invalid username or username does not exist, please try again.";
+                    errorString += "Error: Invalid password, please try again.";
                 }
+            }
+            else
+            {
+                errorString += "Error: Invalid username or username does not exist, please try again.";
+            }
             }
 
 

@@ -39,7 +39,8 @@
                                     <p class="mb-0">Full Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Johnatan Smith</p>
+                                    <asp:Label ID="lblName" runat="server" CssClass="text-muted mb-0"></asp:Label>
+                                    
                                 </div>
                             </div>
                             <hr>
@@ -48,7 +49,8 @@
                                     <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">example@example.com</p>
+                                    <asp:Label ID="lblEmail" runat="server" CssClass="text-muted mb-0"></asp:Label>
+                                    
                                 </div>
                             </div>
                             <hr>
@@ -57,7 +59,8 @@
                                     <p class="mb-0">Gender</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Male/Female</p>
+                                    <asp:Label ID="lblGender" runat="server" CssClass="text-muted mb-0"></asp:Label>
+                                    
                                 </div>
                             </div>
                             <hr>
@@ -66,7 +69,8 @@
                                     <p class="mb-0">Contact Number</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(60) 12-3456789</p>
+                                    <asp:Label ID="lblContactNo" runat="server" CssClass="text-muted mb-0"></asp:Label>
+                                    
                                 </div>
                             </div>
                             <hr>
@@ -75,7 +79,8 @@
                                     <p class="mb-0">Address</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                    <asp:Label ID="lblAddress" runat="server" CssClass="text-muted mb-0"></asp:Label>
+                                    
                                 </div>
                             </div>
                             <hr>
