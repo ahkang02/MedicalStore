@@ -61,15 +61,6 @@
                         Payment Date and Time: <asp:Label ID="lblPaymentDateTime" runat="server"></asp:Label>
                     </p>
 
-                    <p>
-                        Delivery Name: <asp:Label ID="lblDeliveryName" runat="server"></asp:Label>
-                    </p>
-                     <p>
-                        Delivery phonenumber: <asp:Label ID="lblDeliveryPhoneNo" runat="server"></asp:Label>
-                    </p>
-                     <p>
-                        Delivery address: <asp:Label ID="lblDeliveryAddress" runat="server"></asp:Label>
-                    </p>
                 </div>
             </div>
         </div>

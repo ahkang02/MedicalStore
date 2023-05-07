@@ -18,10 +18,6 @@ namespace MedicalStore
                 string paymentMethod = Session["PaymentMethod"] as string;
                 decimal paymentAmount = Convert.ToDecimal(Session["PaymentAmount"]);
                 DateTime paymentDateTime = Convert.ToDateTime(Session["PaymentDateTime"]);
-                // Retrieve the delivery information from the session
-                string deliveryName = Session["DeliveryName"] as string;
-                string deliveryPhoneNo = Session["DeliveryPhoneNo"] as string;
-                string deliveryAddress = Session["DeliveryAddress"] as string;
 
                 // Display the values
                 lblPaymentID.Text = paymentID;
@@ -29,9 +25,6 @@ namespace MedicalStore
                 lblPaymentAmount.Text = paymentAmount.ToString("0.00");
                 lblPaymentDateTime.Text = paymentDateTime.ToString();
 
-                lblDeliveryName.Text = deliveryName;
-                lblDeliveryPhoneNo.Text = deliveryPhoneNo;
-                lblDeliveryAddress.Text = deliveryAddress;
             }
         }
 
@@ -44,7 +37,7 @@ namespace MedicalStore
             DateTime paymentDateTime = Convert.ToDateTime(Session["PaymentDateTime"]);
 
             string deliveryID = GenerateNewDeliveryID();
-            string status = "Processing";
+            string status = "Preparing";
             DateTime date = DateTime.Now;
             DateTime dateOnly = date.Date;
             float fee = 5;
