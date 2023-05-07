@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace MedicalStore
 {
@@ -18,9 +19,6 @@ namespace MedicalStore
             if (!IsPostBack)
             {
                 // Initialize the session variables
-                Session["CustomerName"] = "Joe Dellon";
-                Session["PhoneNumber"] = "012-69853624";
-                Session["Address"] = "1301, jalan tong song";
                 Session["TotalPaymentAmount"] = "1563.60";
                 if (Session["TotalPaymentAmount"] != null)
                 {
@@ -71,6 +69,11 @@ namespace MedicalStore
             Session["PaymentMethod"] = selectedPaymentMethod;
             Session["PaymentAmount"] = paymentAmount;
             Session["PaymentDateTime"] = DateTime.Now;
+
+            Session["DeliveryName"] = txtDeliveryName.Text;
+            Session["DeliveryPhoneNo"] = txtDeliveryPhone.Text;
+            Session["DeliveryAddress"] = $"{txtDeliveryAddress.Text} {txtDeliveryCity.Text} {txtDeliveryPostCode.Text}";
+
 
 
 
@@ -160,20 +163,31 @@ namespace MedicalStore
         protected void Page_PreRender(object sender, EventArgs e)
         {
             // Retrieve the customer information from the session
-            string customerName = Session["CustomerName"] as string;
-            string phoneNumber = Session["PhoneNumber"] as string;
-            string address = Session["Address"] as string;
+            
 
+            string[] user = Session["user"] as string[];
+
+            if (user != null)
+            {
+                string customerId = user[0];
+                string customerName = user[1];
+                string email = user[2];
+                string gender = user[3];
+                string contactNumber = user[4];
+                string address = user[5];
+                string username = user[6];
+
+            }
 
             // Populate the delivery information fields
-            txtDeliveryName.Text = customerName;
-            txtDeliveryPhone.Text = phoneNumber;
-            txtDeliveryAddress.Text = address;
+            txtDeliveryName.Text = user[1];
+            txtDeliveryPhone.Text = user[4];
+            txtDeliveryAddress.Text = user[5];
 
             // Populate the billing information fields
-            txtBillingName.Text = customerName;
-            txtBillingPhoneNo.Text = phoneNumber;
-            txtBillingAddress.Text = address;
+            txtBillingName.Text = user[1];
+            txtBillingPhoneNo.Text = user[4];
+            txtBillingAddress.Text = user[5];
 
         }
 
