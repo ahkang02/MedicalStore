@@ -15,15 +15,6 @@ namespace MedicalStore.Admin
     {
 
         /// <summary>
-        /// lblTest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTest;
-
-        /// <summary>
         /// btnNew control.
         /// </summary>
         /// <remarks>
@@ -339,6 +330,33 @@ namespace MedicalStore.Admin
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator7;
 
         /// <summary>
+        /// txtUsernameEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUsernameEdit;
+
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// RequiredFieldValidator13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
+
+        /// <summary>
         /// txtPasswordEdit control.
         /// </summary>
         /// <remarks>
@@ -366,12 +384,30 @@ namespace MedicalStore.Admin
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator8;
 
         /// <summary>
-        /// btnEdit control.
+        /// hdfID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEdit;
+        protected global::System.Web.UI.WebControls.HiddenField hdfID;
+
+        /// <summary>
+        /// btnSubmitEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmitEdit;
+
+        /// <summary>
+        /// SqlDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
     }
 }

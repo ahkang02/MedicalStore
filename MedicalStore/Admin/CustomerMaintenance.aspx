@@ -1,10 +1,18 @@
 ﻿<%@ Page Title="Customer Maintenance" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="CustomerMaintenance.aspx.cs" Inherits="MedicalStore.Admin.CustomerMaintenance" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function showEditModal() {
+            var editModal = new bootstrap.Modal(document.getElementById('editModal'));
+            editModal.show();
+        }
+    </script>
+</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="ms-3">
         <h2>Customer Maintenance</h2>
-        <asp:Label ID="lblTest" runat="server"></asp:Label>
     </div>
 
     <div class="d-flex container-fluid justify-content-end align-items-end">
@@ -39,7 +47,7 @@
                         <label for="Address" class="form-label">Email</label>
                         <asp:TextBox ID="txtEmailNew" runat="server" CssClass="form-control" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtEmailNew" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                        &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmailNew" ErrorMessage="Invalid email format. !#%.&quot;" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"></asp:RegularExpressionValidator>
+                        &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmailNew" ErrorMessage="Invalid email format. !#%.&quot;" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$"></asp:RegularExpressionValidator>
                     </div>
                     <div class="mb-3">
                         <label for="Address" class="form-label">Address</label>
@@ -92,18 +100,17 @@
                     <td><%#DataBinder.Eval(Container.DataItem,"CustomerID")%></td>
                     <td><%#DataBinder.Eval(Container.DataItem, "Name") %></td>
                     <td>
-                        <asp:Button ID="btnEdit" CssClass="btn btn-sm btn-primary ms-2" Text="Edit" runat="server" data-bs-toggle="modal" data-bs-target="#editModal"  CommandName="Edit" CommandArgument='<%#Eval ("CustomerID") %>'/>
-                        <asp:Button ID="btnDelete" CssClass="btn btn-sm btn-danger ms-2" Text="Delete" runat="server" data-bs-toggle="modal" data-bs-target="#deleteModal"  CommandName="Delete" CommandArgument='<%#Eval ("CustomerID") %>'/>
+                        <asp:Button ID="btnEdit" CssClass="btn btn-sm btn-primary ms-2" Text="Edit" runat="server" CommandName="Edit" CommandArgument='<%#Eval ("CustomerID") %>' UseSubmitBehavior="false" CausesValidation="false" />
+                        <asp:Button ID="btnDelete" CssClass="btn btn-sm btn-danger ms-2" Text="Delete" runat="server" CommandName="Delete" CommandArgument='<%#Eval ("CustomerID") %>' UseSubmitBehavior="false" OnClientClick="if (!confirm('Are you sure you want delete?')) return false;" />
                     </td>
                 </tr>
             </ItemTemplate>
         </asp:Repeater>
-
-        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="editModalLabel">Edit Customer</h1>
+                        <h1 class="modal-title fs-5" id="EditModalLabel">Add Edit Customer</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -126,7 +133,7 @@
                             <label for="Address" class="form-label">Email</label>
                             <asp:TextBox ID="txtEmailEdit" runat="server" CssClass="form-control" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtEmailEdit" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                            &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="txtEmailEdit" ErrorMessage="Invalid email format. !#%.&quot;" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"></asp:RegularExpressionValidator>
+                            &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="txtEmailEdit" ErrorMessage="Invalid email format. !#%.&quot;" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$"></asp:RegularExpressionValidator>
                         </div>
                         <div class="mb-3">
                             <label for="Address" class="form-label">Address</label>
@@ -139,8 +146,12 @@
                             <asp:TextBox ID="txtContactEdit" runat="server" CssClass="form-control" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtContactEdit" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                             &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtContactEdit" ErrorMessage="Invalid phone number format. eg: 01267938478" ForeColor="Red" ValidationExpression="^(01)[0-46-9]*[0-9]{7,8}$"></asp:RegularExpressionValidator>
-
-
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Username</label>
+                            <asp:TextBox ID="txtUsernameEdit" runat="server" CssClass="form-control" />
+                            <asp:Label ID="Label1" runat="server" ForeColor="Red"></asp:Label>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtUsernameEdit" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Password</label>
@@ -149,30 +160,16 @@
                             &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtPasswordEdit" ErrorMessage="Password shall be atleast eight characters,one letter, one number and one special character" ForeColor="Red" ValidationExpression="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"></asp:RegularExpressionValidator>
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <asp:HiddenField ID="hdfID" runat="server" />
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <asp:Button ID="btnEdit" CssClass="btn btn-primary" Text="Edit Changes" runat="server" OnClick="btnEdit_Click" />
+                        <asp:Button ID="btnSubmitEdit" CssClass="btn btn-primary" Text="Save changes" runat="server" OnClick="btnSubmitEdit_Click" />
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="deleteModalLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Customers]"></asp:SqlDataSource>
     </div>
 </asp:Content>

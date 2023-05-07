@@ -5,10 +5,15 @@
 <html>
 <head runat="server">
     <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/3bc98c6174.js" crossorigin="anonymous"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
-    <link href="../Content/bootstrap.css" rel="stylesheet" />
     <style>
         body {
             background-color: #fbfbfb;
@@ -156,8 +161,6 @@
 
     </form>
 </body>
-<script src="../Scripts/bootstrap.min.js"></script>
-<script src="../Scripts/bootstrap.bundle.min.js"></script>
-<script src="https://kit.fontawesome.com/3bc98c6174.js" crossorigin="anonymous"></script>
+
 
 </html>
