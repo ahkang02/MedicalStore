@@ -57,6 +57,37 @@ namespace MedicalStore
 
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
+            // Check if the required fields are empty
+            if (string.IsNullOrEmpty(txtDeliveryName.Text) ||
+                string.IsNullOrEmpty(txtDeliveryPhone.Text) ||
+                string.IsNullOrEmpty(txtDeliveryAddress.Text) ||
+                string.IsNullOrEmpty(txtDeliveryCity.Text) ||
+                string.IsNullOrEmpty(txtDeliveryPostCode.Text) ||
+                string.IsNullOrEmpty(txtBillingName.Text) ||
+                string.IsNullOrEmpty(txtBillingPhoneNo.Text) ||
+                string.IsNullOrEmpty(txtBillingAddress.Text) ||
+                string.IsNullOrEmpty(txtBillingCity.Text) ||
+                string.IsNullOrEmpty(txtBillingPostCode.Text))
+            {
+                // Display an error message
+                lblErrorMessage.Text = "Please fill in all the required fields.";
+                lblErrorMessage.Visible = true;
+                return;
+            }
+
+            if (paymentMethod.SelectedValue == "Credit Card")
+            {
+                if (string.IsNullOrEmpty(txtBillingCardNum.Text) ||
+                    string.IsNullOrEmpty(txtBillingExpiry.Text) ||
+                    string.IsNullOrEmpty(txtBillingCvv.Text))
+                {
+                    // Display an error message
+                    lblErrorMessage.Text = "Please fill in all the required credit card details.";
+                    lblErrorMessage.Visible = true;
+                    return;
+                }
+            }
+
             // Retrieve the payment information from the session
             decimal paymentAmount = Convert.ToDecimal(Session["TotalPaymentAmount"]);
             string selectedPaymentMethod = paymentMethod.SelectedValue;
