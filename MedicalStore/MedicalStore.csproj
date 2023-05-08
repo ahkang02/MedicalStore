@@ -64,6 +64,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AdminProfile.aspx" />
+    <Content Include="Admin\UserReport.aspx" />
     <Content Include="Admin\OrdersTracking.aspx" />
     <Content Include="Admin\ProcessRefund.aspx" />
     <Content Include="Admin\ProductMaintenance.aspx" />
@@ -135,6 +137,20 @@
     </Compile>
     <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminProfile.aspx.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminProfile.aspx.designer.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserReport.aspx.cs">
+      <DependentUpon>UserReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserReport.aspx.designer.cs">
+      <DependentUpon>UserReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\OrdersTracking.aspx.cs">
       <DependentUpon>OrdersTracking.aspx</DependentUpon>

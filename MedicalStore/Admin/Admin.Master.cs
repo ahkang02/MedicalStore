@@ -20,10 +20,5 @@ namespace MedicalStore.Admin
             Response.Redirect("../Login.aspx");
             // Remove a specific session variable
         }
-
-        protected void btnProfile_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminProfile.aspx");
-        }
     }
 }

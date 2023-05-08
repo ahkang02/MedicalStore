@@ -67,6 +67,8 @@ namespace MedicalStore
                 SaveOrderToDatabase(orderID, orderDate, paymentAmount, orderStatus, paymentID, customerId, deliveryID);
             }
 
+            Session["OrderID"] = orderID;
+
             // Redirect to the receipt page
             Response.Redirect("Receipt.aspx");
         }
@@ -249,6 +251,7 @@ namespace MedicalStore
 
         private void SaveOrderToDatabase(string orderID, DateTime orderDate, decimal totalamount, string status, string paymentID, string customerID, string deliveryID)
         {
+
             try
             {
                 // Retrieve the connection string from the web.config file
@@ -304,7 +307,6 @@ namespace MedicalStore
             }
 
             string newOrderID = "O" + newOrderIndex.ToString("D3"); // Format the index as a 3-digit number with leading zeros
-
 
             return newOrderID;
         }

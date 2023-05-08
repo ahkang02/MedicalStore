@@ -32,29 +32,21 @@
                 <div class="card">
                     <div class="card-header p-4">
                         <div class="float-right">
-                            <h3 class="mb-0">Invoice #BBB10234</h3>
-                            Date: 12 Jun,2019
+                            <h3 class="mb-0">Order ID: <asp:Label ID="lblOrderID" runat="server"></asp:Label></h3>
+                            Date: <asp:Label ID="lblOrderDate" runat="server"></asp:Label>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row mb-4">
                             <div class="col-sm-6">
-                                <h5 class="mb-3">Billed To:</h5>
-                                <h3 class="text-dark mb-1">Tejinder Singh</h3>
-                                <div>29, Singla Street</div>
-                                <div>Sikeston,New Delhi 110034</div>
-                                <div>Email: contact@bbbootstrap.com</div>
-                                <div>Phone: +91 9897 989 989</div>
-                                <br>
-                                <div>Payment Method : </div>
+                                <h5 class="mb-3">Payment Method : </h5>
+                                <div><asp:Label ID="lblPaymentMethod" runat="server"></asp:Label></div>
                             </div>
                             <div class="col-sm-6 ">
                                 <h5 class="mb-3">Shipped To:</h5>
-                                <h3 class="text-dark mb-1">Akshay Singh</h3>
-                                <div>478, Nai Sadak</div>
-                                <div>Chandni chowk, New delhi, 110006</div>
-                                <div>Email: info@tikon.com</div>
-                                <div>Phone: +91 9895 398 009</div>
+                                <h3 class="text-dark mb-1"><asp:Label ID="lblDeliveryName" runat="server"></asp:Label></h3>
+                                <div><asp:Label ID="lblDeliveryAddress" runat="server"></asp:Label></div>
+                                <div>Phone: <asp:Label ID="lblDeliveryPhoneNo" runat="server"></asp:Label></div>
 
                             </div>
                         </div>
@@ -116,20 +108,20 @@
                                             <td class="left">
                                                 <strong class="text-dark">Subtotal</strong>
                                             </td>
-                                            <td class="right">$28,809,00</td>
+                                            <td class="right">RM<asp:Label ID="lblSubtotal" runat="server"></asp:Label></td>
                                         </tr>
                                         <tr>
                                             <td class="left">
                                                 <strong class="text-dark">Shipment Fee</strong>
                                             </td>
-                                            <td class="right">$2,304,00</td>
+                                            <td class="right">RM<asp:Label ID="lblDeliveryFee" runat="server"></asp:Label></td>
                                         </tr>
                                         <tr>
                                             <td class="left">
                                                 <strong class="text-dark">Total</strong>
                                             </td>
                                             <td class="right">
-                                                <strong class="text-dark">$20,744,00</strong>
+                                                <strong class="text-dark">RM<asp:Label ID="lblPaymentAmount" runat="server"></asp:Label></strong>
                                             </td>
                                         </tr>
                                     </tbody>

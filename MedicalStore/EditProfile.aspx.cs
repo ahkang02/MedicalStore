@@ -35,8 +35,9 @@ namespace MedicalStore
                     
                     txtName.Text = user[1];
                     txtEmail.Text = user[2];
-                    txtAddress.Text = user[5];
                     txtContact.Text = user[4];
+                    txtAddress.Text = user[5];
+                    
                 }
             }
         }
@@ -65,14 +66,13 @@ namespace MedicalStore
             int n = cmdUpdate.ExecuteNonQuery();
             if (n > 0)
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Personal Info Updated Successfully.');", true);
                 string[] newUser = {customerid, name, email, gender, contact, address, username };
                 Session["user"] = newUser;
                 
             }
             else
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Failed to update Personal Info.');", true);
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Update with errors');", true);
             }
             Response.Redirect("Profile.aspx");
             con.Close();
