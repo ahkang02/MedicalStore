@@ -108,7 +108,7 @@
                                 <a href="ProductReport.aspx" class="text-decoration-none text-reset"><i class="fa-solid fa-bag-shopping fa-fw me-3"></i><span>Product Reports</span></a>
                             </li>
                             <li class="list-group-item py-1">
-                                <a href"SalesReport.aspx" class="text-decoration-none text-reset"><i class="fas fa-regular fa-money-bill-trend-up me-3 fa-fw"></i><span>Sales Reports</span></a>
+                                <a href"SalesReport.aspx" class="text-decoration-none text-reset"><i class="fas fa-regular fa-money-bill-trend-up me-3 fa-fw"></i><span>Deliveries Reports</span></a>
                             </li>
                             <li class="list-group-item py-1">
                                 <a href"RefundReport.aspx" class="text-decoration-none text-reset"><i class="fas fa-sharp fa-regular fa-sack-xmark fa-fw me-3"></i><span>Refund Reports</span></a>
