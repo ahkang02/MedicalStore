@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace MedicalStore.Admin
 {
@@ -61,7 +63,7 @@ namespace MedicalStore.Admin
                 insertAddress = txtAddressNew.Text.ToString();
                 insertContact = txtContactNew.Text.ToString();
                 insertUsername = txtUsernameNew.Text.ToString();
-                insertPassword = txtPasswordNew.Text.ToString();
+                insertPassword = EncryptPassword(txtPasswordNew.Text.ToString());
 
                 bool usernameExists = false;
 
@@ -228,7 +230,7 @@ namespace MedicalStore.Admin
             string newGender = ddlGenderEdit.SelectedValue;
             string newContact = txtContactEdit.Text;
             string newAddress = txtAddressEdit.Text;
-            string newPassword = txtPasswordEdit.Text;
+            string newPassword = EncryptPassword(txtPasswordEdit.Text);
 
             con2 = new SqlConnection(strCon2);
             con2.Open();
@@ -254,6 +256,23 @@ namespace MedicalStore.Admin
             }
 
             con2.Close();
+        }
+        public static string EncryptPassword(string password)
+        {
+            // Create a new instance of the SHA256 hashing algorithm
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                // Convert the password string to a byte array
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+
+                // Compute the hash of the password bytes
+                byte[] hashBytes = sha256.ComputeHash(passwordBytes);
+
+                // Convert the hash bytes to a base64-encoded string
+                string hashString = Convert.ToBase64String(hashBytes);
+
+                return hashString;
+            }
         }
     }
 }

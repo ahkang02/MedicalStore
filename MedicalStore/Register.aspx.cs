@@ -31,14 +31,13 @@ namespace MedicalStore
             password = txtPassword.Text;
             repeatPassword = txtRepeatPw.Text;
             email = txtEmail.Text;
+
             string id;
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
             con.Open();
 
-
-            idGenerator();
             if (string.IsNullOrEmpty(username))
             {
                 errorString += "Error: Username cannot be empty.";
@@ -65,12 +64,14 @@ namespace MedicalStore
             }
             else
             {
+                id = idGenerator();
+                password = EncryptPassword(password);
+
                 string sqlInsert = "insert into customers(customerid, username, email, password)" +
                 "values(@customerid, @username, @email, @password)";
 
                 SqlCommand cmdAdd = new SqlCommand(sqlInsert, con);
-                id = idGenerator();
-                password = EncryptPassword(password);
+                
                 cmdAdd.Parameters.AddWithValue("@customerid", id);
                 cmdAdd.Parameters.AddWithValue("@username", username);
                 cmdAdd.Parameters.AddWithValue("@email", email);
