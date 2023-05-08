@@ -71,6 +71,9 @@
 
                         <%if (Session["Staffs"] != null || Session["Manager"] != null || Session["Admin"] != null)
                             { %>
+                        <a href="Dashboard.aspx" class="list-group-item list-group-item-action py-2 ripple"aria-current="true">
+                          <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
+                        </a>
                         <a href="ProductMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
                             <i class="fas fa-solid fa-tag fa-fw me-3"></i><span>Product</span>
                         </a>
