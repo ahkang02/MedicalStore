@@ -141,13 +141,14 @@
                                 class="dropdown-menu dropdown-menu-end"
                                 aria-labelledby="navbarDropdownMenuLink">
                                 <li>
-                                    <asp:LinkButton ID="btnProfile" Text="My Profile" CssClass="dropdown-item" runat="server"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnProfile" Text="My Profile" CssClass="dropdown-item" runat="server" OnClick ="btnProfile_click"></asp:LinkButton>
                                 </li>
                                 <li>
                                     <asp:LinkButton ID="btnLogout" Text="Logout" CssClass="dropdown-item" runat="server" OnClick ="btnLogout_click"></asp:LinkButton>
                                 </li>
                             </ul>
                         </li>
+                        <li></li>
                     </ul>
                 </div>
                 <!-- Container wrapper -->

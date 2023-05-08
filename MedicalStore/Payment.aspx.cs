@@ -37,9 +37,9 @@ namespace MedicalStore
             cashOnDeliveryPanel.Visible = false;
 
             // Set the visible panel control based on the selected payment method
-            switch (paymentMethod.SelectedValue)
+            switch (paymentMethod.SelectedValue.ToString())
             {
-                case "Credit":
+                case "Credit Card":
                     creditCardPanel.Visible = true;
                     break;
                 case "FPX":
@@ -48,7 +48,7 @@ namespace MedicalStore
                 case "E-Wallet":
                     eWalletPanel.Visible = true;
                     break;
-                case "Cash":
+                case "Cash On Delivery":
                     cashOnDeliveryPanel.Visible = true;
                     break;
 
@@ -75,15 +75,15 @@ namespace MedicalStore
             Session["DeliveryAddress"] = $"{txtDeliveryAddress.Text} {txtDeliveryCity.Text} {txtDeliveryPostCode.Text}";
 
 
-
+           
 
             // Redirect to the appropriate payment simulator page based on the selected payment method
             string redirectUrl = "";
 
-            switch (selectedPaymentMethod)
+            switch (selectedPaymentMethod.ToString())
             {
-                case "Credit":
-                    redirectUrl = $"PaymentSimulator.aspx?paymentMethod=credit";
+                case "Credit Card":
+                    redirectUrl = $"PaymentSimulator.aspx?paymentMethod=creditcard";
                     break;
                 case "FPX":
                     redirectUrl = $"PaymentSimulator.aspx?paymentMethod=fpx";
@@ -91,7 +91,7 @@ namespace MedicalStore
                 case "E-Wallet":
                     redirectUrl = $"PaymentSimulator.aspx?paymentMethod=ewallet";
                     break;
-                case "Cash":
+                case "Cash On Delivery":
                     redirectUrl = $"PaymentSimulator.aspx?paymentMethod=cod";
                     break;
             }
