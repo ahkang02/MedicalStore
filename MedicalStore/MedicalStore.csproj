@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\AdminProfile.aspx" />
+    <Content Include="Admin\UserReport.aspx" />
     <Content Include="Admin\OrdersTracking.aspx" />
     <Content Include="Admin\ProductMaintenance.aspx" />
     <Content Include="Admin\CustomerMaintenance.aspx" />
@@ -142,6 +143,13 @@
     </Compile>
     <Compile Include="Admin\AdminProfile.aspx.designer.cs">
       <DependentUpon>AdminProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserReport.aspx.cs">
+      <DependentUpon>UserReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserReport.aspx.designer.cs">
+      <DependentUpon>UserReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\OrdersTracking.aspx.cs">
       <DependentUpon>OrdersTracking.aspx</DependentUpon>
