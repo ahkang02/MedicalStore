@@ -64,7 +64,7 @@ namespace MedicalStore
                         }
                         else if (string.Equals(role, "Admin"))
                         {
-                            Session["Manager"] = staff;
+                            Session["Admin"] = staff;
                         }
 
                         Response.Redirect("Admin/ProductMaintenance.aspx");

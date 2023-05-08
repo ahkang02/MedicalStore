@@ -65,7 +65,7 @@
         <!-- Header -->
         <header>
             <!-- Sidebar -->
-            <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white text-decoration-none">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush mx-3 mt-4">
 
@@ -75,7 +75,10 @@
                             <i class="fas fa-solid fa-tag fa-fw me-3"></i><span>Product</span>
                         </a>
                         <a href="OrdersTracking.aspx" class="list-group-item list-group-item-action py-2 ripple">
-                            <i class="fa-solid fa-fw fa-bag-shopping me-3"></i><span>Order</span>
+                            <i class="fa-solid fa-fw fa-bag-shopping me-3"></i><span>Delivery Tracking</span>
+                        </a>
+                        <a href="ProcessRefund.aspx" class="list-group-item list-group-item-action py-2 ripple">
+                            <i class="fa-sharp fa-regular fa-sack-xmark"></i><span>Process Refund</span>
                         </a>
                         <%} %>
                         <%if (Session["Manager"] != null || Session["Admin"] != null)
@@ -92,9 +95,23 @@
                         <a href="ManagerMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
                             <i class="fas fa-users fa-fw me-3"></i><span>Managers</span>
                         </a>
-                        <a href="UserReport.aspx" class="list-group-item list-group-item-action py-2 ripple">
-                            <i class="fas fa-users fa-fw me-3"></i><span>Managers</span>
-                        </a>
+                        <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-regular fa-newspaper"></i> Reports</a>
+
+                        <ul id="collapseExample" class="collapse show list-group list-group-flush ">
+                            <li class="list-group-item py-1">
+                                <a href="UserReport.aspx" class="text-decoration-none text-reset"><i class="fas fa-users fa-fw me-3"></i><span>User Reports</span></a>
+                            </li>
+                            <li class="list-group-item py-1">
+                                <a href="" class="text-decoration-none text-reset"><i class="fa-solid fa-bag-shopping"></i><span>Product Reports</span></a>
+                            </li>
+                            <li class="list-group-item py-1">
+                                <a href"" class="text-decoration-none text-reset"><i class="fa-solid fa-money-bills-simple"></i><span>Sales Reports</span></a>
+                            </li>
+                            <li class="list-group-item py-1">
+                                <a href"" class="text-decoration-none text-reset"><i class="fa-thin fa-arrow-turn-down-left"></i><span>Refund Reports</span></a>
+                            </li>
+                        </ul>
+
                         <%} %>
                     </div>
                 </div>
@@ -174,6 +191,4 @@
 
     </form>
 </body>
-
-
 </html>
