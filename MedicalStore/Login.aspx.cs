@@ -59,7 +59,7 @@ namespace MedicalStore
 
                     if (dr.Read())
                     {
-                        if (string.Equals(password1, dr["password"].ToString()))
+                        if (string.Equals(password, dr["password"].ToString()))
                         {
                             string[] staff = { dr["staffid"].ToString(), dr["name"].ToString(), dr["email"].ToString(), dr["gender"].ToString(), dr["contactnumber"].ToString(), dr["address"].ToString(), dr["roleid"].ToString() };
 
@@ -164,7 +164,7 @@ namespace MedicalStore
 
         protected void btnOtp_Click(object sender, EventArgs e)
         {
-            string email="";
+            string email = "";
             username = txtUsername.Text;
 
 
@@ -238,18 +238,18 @@ namespace MedicalStore
             }
         }
 
-            private static string GenerateOTP()
+        private static string GenerateOTP()
+        {
+            // Generate a random 6-digit OTP
+            using (RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider())
             {
-                // Generate a random 6-digit OTP
-                using (RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider())
-                {
-                    byte[] data = new byte[4];
-                    provider.GetBytes(data);
-                    int value = BitConverter.ToInt32(data, 0) % 1000000;
-                    return value.ToString("D6");
-                }
-
+                byte[] data = new byte[4];
+                provider.GetBytes(data);
+                int value = BitConverter.ToInt32(data, 0) % 1000000;
+                return value.ToString("D6");
             }
+
+        }
 
         public static string GeneratePassword(int length = 8)
         {
@@ -291,7 +291,7 @@ namespace MedicalStore
 
             password = GeneratePassword();
 
-            
+
 
 
             string subject = "Login Authentication - Your OTP";
@@ -354,4 +354,4 @@ namespace MedicalStore
             }
         }
     }
-    }
+}
