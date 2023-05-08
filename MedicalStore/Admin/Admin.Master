@@ -69,7 +69,8 @@
                 <div class="position-sticky">
                     <div class="list-group list-group-flush mx-3 mt-4">
 
-                        <%if (Session["Staffs"]!=null || Session["Manager"]!=null || Session["Admin"]!=null){ %>
+                        <%if (Session["Staffs"] != null || Session["Manager"] != null || Session["Admin"] != null)
+                            { %>
                         <a href="ProductMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
                             <i class="fas fa-solid fa-tag fa-fw me-3"></i><span>Product</span>
                         </a>
@@ -77,7 +78,8 @@
                             <i class="fa-solid fa-fw fa-bag-shopping me-3"></i><span>Order</span>
                         </a>
                         <%} %>
-                        <%if (Session["Manager"]!=null|| Session["Admin"]!=null){ %>
+                        <%if (Session["Manager"] != null || Session["Admin"] != null)
+                            { %>
                         <a href="CustomerMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
                             <i class="fas fa-users fa-fw me-3"></i><span>Customers</span>
                         </a>
@@ -85,12 +87,12 @@
                             <i class="fas fa-users fa-fw me-3"></i><span>Staffs</span>
                         </a>
                         <%} %>
-                        <%if (Session["Admin"]!=null){ %>
+                        <%if (Session["Admin"] != null)
+                            { %>
                         <a href="ManagerMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
                             <i class="fas fa-users fa-fw me-3"></i><span>Managers</span>
                         </a>
                         <%} %>
-                        
                     </div>
                 </div>
             </nav>
@@ -141,10 +143,9 @@
                                 class="dropdown-menu dropdown-menu-end"
                                 aria-labelledby="navbarDropdownMenuLink">
                                 <li>
-                                    <asp:LinkButton ID="btnProfile" Text="My Profile" CssClass="dropdown-item" runat="server"></asp:LinkButton>
-                                </li>
+                                    <a href="AdminProfile.aspx" class="dropdown-item">My Profile</a></li>
                                 <li>
-                                    <asp:LinkButton ID="btnLogout" Text="Logout" CssClass="dropdown-item" runat="server" OnClick ="btnLogout_click"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnLogout" Text="Logout" CssClass="dropdown-item" runat="server" OnClick="btnLogout_click" CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>
                         </li>
