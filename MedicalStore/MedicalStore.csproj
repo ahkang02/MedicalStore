@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\OrdersTracking.aspx" />
+    <Content Include="Admin\ProcessRefund.aspx" />
     <Content Include="Admin\ProductMaintenance.aspx" />
     <Content Include="Admin\CustomerMaintenance.aspx" />
     <Content Include="Admin\ManagerMaintenance.aspx" />
@@ -141,6 +142,13 @@
     </Compile>
     <Compile Include="Admin\OrdersTracking.aspx.designer.cs">
       <DependentUpon>OrdersTracking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ProcessRefund.aspx.cs">
+      <DependentUpon>ProcessRefund.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ProcessRefund.aspx.designer.cs">
+      <DependentUpon>ProcessRefund.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ProductMaintenance.aspx.cs">
       <DependentUpon>ProductMaintenance.aspx</DependentUpon>
