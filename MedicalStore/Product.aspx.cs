@@ -25,7 +25,7 @@ namespace MedicalStore
 
             con2 = new SqlConnection(strCon2);
             con2.Open();
-            string strGetID = "SELECT MAX(SUBSTRING(RefundID, 2, 4)) AS OrderID FROM Orders";
+            string strGetID = "SELECT MAX(SUBSTRING(OrderID, 2, 4)) AS OrderID FROM Orders";
             SqlCommand command2 = new SqlCommand(strGetID, con2);
             string getNextMaxID = (string)command2.ExecuteScalar();
             int ID = Convert.ToInt32(getNextMaxID) + 1;
@@ -64,8 +64,9 @@ namespace MedicalStore
                 // Insert the refund data into the Refund table
                 query = "INSERT INTO Order_Details (OrderID, ProductID, Quantity, Subtotal) VALUES (@OrderID, @ProductID, @Quantity, @Subtotal)";
                 command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@OrderID", OrderID);
+                
                 command.Parameters.AddWithValue("@ProductID", productID);
+                command.Parameters.AddWithValue("@OrderID", OrderID);
                 command.Parameters.AddWithValue("@Quantity", quantity);
                 command.Parameters.AddWithValue("@Subtotal", price);
                 result = command.ExecuteNonQuery();
