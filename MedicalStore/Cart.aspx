@@ -21,10 +21,12 @@
                      <asp:ListView ID="ListView1" runat="server" DataKeyNames="ProductID" DataSourceID="SqlDataSource1">
                          
                             <ItemTemplate>
+ 
                                 <tr style="">
                                     <td>
 
                   <div class="row mb-4 d-flex justify-content-between align-items-center">
+
                     <div class="col-md-2 col-lg-2 col-xl-2">
                       <img
                         src="Images/ProductImg/<%# Eval("ImageName") %>"
@@ -36,42 +38,60 @@
                     </div>
 
 
-                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
   <button class="btn btn-link px-2"
-      onclick="event.preventDefault(); document.getElementById('quantity').stepDown(); updateSubtotal()">
+      onclick="event.preventDefault(); document.getElementById('quantity_<%# Eval("ProductID") %>').stepDown(); updateSubtotal('<%# Eval("ProductID") %>')"
+      >
       <i class="fas fa-minus"></i>
   </button>
-  <input id="quantity" min="0" name="quantity" value="1" type="number"
-      class="form-control form-control-sm" onchange="updateSubtotal()" />
+  <input id="quantity_<%# Eval("ProductID") %>" min="0" name="quantity_<%# Eval("ProductID") %>" value="<%# Eval("Quantity") %>" type="number"
+      class="form-control form-control-sm" onchange="updateSubtotal('<%# Eval("ProductID") %>')"  />
   <button class="btn btn-link px-2"
-      onclick="event.preventDefault(); document.getElementById('quantity').stepUp(); updateSubtotal()">
+      onclick="event.preventDefault(); document.getElementById('quantity_<%# Eval("ProductID") %>').stepUp(); updateSubtotal('<%# Eval("ProductID") %>')">
       <i class="fas fa-plus"></i>
   </button>
+   
 </div>
 
+<%--<asp:Button ID="addToCartButton" runat="server" Text="Add to Cart" OnClick="UpdateProduct" CommandArgument='<%# Eval("ProductID") + "|" + quantity.toString() + "|" + Eval("Price") %>' OnCommand="UpdateProduct" />--%>
+   
+<%--  <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+    <asp:LinkButton runat="server" CssClass="text-muted" CommandArgument='<%# Eval("ProductID") %>' OnCommand="RemoveProduct"><i class="fas fa-times"></i></asp:LinkButton>
+</div>--%>
+
 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-  <h6 class="mb-0 subtotal" id="subtotal"><%# String.Format("{0:F2}", Eval("SubTotal")) %></h6>
+  <h6 class="mb-0 subtotal" id="subtotal_<%# Eval("ProductID") %>"><%# String.Format("{0:F2}", Eval("SubTotal")) %></h6>
 </div>
 
 <script>
-    function updateSubtotal() {
-        var quantity = document.getElementById('quantity').value;
+ 
+    function updateSubtotal(productID) {
+        var quantity = document.getElementById('quantity_' + productID).value;
         var price = <%# Eval("Price") %>;
         var subtotal = quantity * price;
-        document.getElementById('subtotal').innerHTML = subtotal.toFixed(2);
-        updateTotal(); // Add this line to update the total
+      
+        document.getElementById('subtotal_' + productID).innerHTML = subtotal.toFixed(2);
+
+        updateTotal();
+
     }
+
+
 </script>
                     <script>
                         let deliveryCharge = 0;
-
+                        let deliveryCheck = "Pick Up";
                         function deliveryOptions() {
                             const deliverySelect = document.querySelector('#delivery-select');
                             const selectedOption = deliverySelect.value;
                             if (selectedOption === '1') {
                                 deliveryCharge = 5.00;
+                                deliveryCheck = "Delivery";
                             } else if (selectedOption === '2') {
                                 deliveryCharge = 10.00;
+                                deliveryCheck = "Delivery";
+                            } else {
+                                deliveryCheck = "Pick Up";
                             }
                             updateTotal();
                         }
@@ -82,18 +102,35 @@
                             const subtotalElems = document.querySelectorAll('.subtotal');
                             let total = 0;
                             let itemCount = 0;
+                            let total2 = 0;
+                            const subtotalMap = new Map();
                             subtotalElems.forEach((elem) => {
+                                const productID = elem.id.split('_')[1];
                                 const subtotal = parseFloat(elem.innerText);
                                 if (!isNaN(subtotal)) {
                                     total += subtotal;
+                                    total2 = total + deliveryCharge;
                                     itemCount++;
+                                    if (!subtotalMap.has(productID)) {
+                                        subtotalMap.set(productID, 0);
+                                    }
+                                    subtotalMap.set(productID, subtotalMap.get(productID) + subtotal);
                                 }
                             });
-                            const total2 = total + deliveryCharge;
                             document.getElementById('item-count').innerText = itemCount;
                             document.getElementById('total-price').innerText = total.toFixed(2);
                             document.getElementById('total-price2').innerText = total2.toFixed(2);
+                            subtotalMap.forEach((subtotal, productID) => {
+                                document.getElementById('subtotal_' + productID).innerText = subtotal.toFixed(2);
+                            });
+
+                            const hdnTotal = document.getElementById('hdnTotal');
+                            hdnTotal.value = total.toFixed(2);
+                            const hdnDelivery = document.getElementById('hdnDelivery');
+                            hdnDelivery.value = deliveryCheck;
+
                         }
+
 
                         const quantityInputs = document.querySelectorAll('input[name="quantity"]');
                         quantityInputs.forEach((elem) => {
@@ -103,64 +140,16 @@
                         });
 
                         updateTotal();
-                    </script>
-
-<%--<script>
-    function updateTotal() {
-        // Get all subtotal elements
-        const subtotalElems = document.querySelectorAll('.subtotal');
-        // Calculate total and number of items
-        let total = 0;
-        let totalA = 0;
-        let itemCount = 0;
-        let deliveryCharge = 0;
-
-        subtotalElems.forEach((elem) => {
-            const subtotal = parseFloat(elem.innerText);
-            if (!isNaN(subtotal)) {
-                total += subtotal;
-                itemCount++;
-            }
-        });
-
-        //// Add delivery charge to total price
-        totalA = total + deliveryCharge;
-
-        // Update item count and total price elements
-        document.getElementById('item-count').innerText = itemCount;
-        document.getElementById('total-price').innerText = total.toFixed(2);
-        document.getElementById('total-price2').innerText = totalA.toFixed(2);
-    }
-
-    // Call updateTotal whenever a quantity input changes
-    const quantityInputs = document.querySelectorAll('input[name="quantity"]');
-    quantityInputs.forEach((elem) => {
-        elem.addEventListener('change', () => {
-            updateTotal();
-        });
-    });
-    // Call updateTotal whenever delivery option changes
-    const selectElem = document.querySelector('.select');
-    selectElem.addEventListener('change', () => {
-        const optionElem = selectElem.options[selectElem.selectedIndex];
-        const deliveryChargeStr = optionElem.value.split('-')[1].trim();
-        deliveryCharge = parseFloat(deliveryChargeStr);
-        updateTotal();
-    });
+</script>
 
 
-    // Call updateTotal on page load
-    updateTotal();
-</script>--%>
-
-
-<%--                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                      <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
-                    </div>--%>
-
-                      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-    <asp:LinkButton runat="server" CssClass="text-muted" ><i class="fas fa-times"></i></asp:LinkButton>
+                       
+  <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+    <asp:LinkButton runat="server" CssClass="text-muted" CommandArgument='<%# Eval("ProductID") %>' OnCommand="RemoveProduct"><i class="fas fa-times"></i></asp:LinkButton>
 </div>
+<%--<div class="col-md-1 col-lg-1 col-xl-1 text-end">
+    <asp:LinkButton runat="server" CssClass="text-muted" CommandArgument='<%# Eval("ProductID") + "|" + quantity + "|" + Eval("Price") %>' OnCommand="UpdateProduct"><i class="fas fa-times"></i></asp:LinkButton>
+</div>--%>
                   </div>
 
                     </tr>
@@ -198,8 +187,8 @@ float total = 0; // Declare and initialize the total variable
                   <h5 class="text-uppercase mb-3">Shipping</h5>
 
 <div class="mb-4 pb-2">
-  <select id="delivery-select" class="select">
-    <option value="0">Select Delivery Option</option>
+  <select id="delivery-select" class="select" onchange="deliveryOptions()">
+    <option value="0">Pick Up</option>
     <option value="1">Standard Delivery - €5.00</option>
     <option value="2">Express Delivery - €10.00</option>
   </select>
@@ -207,14 +196,11 @@ float total = 0; // Declare and initialize the total variable
 
 
 
+
+
                   <h5 class="text-uppercase mb-3">Give code</h5>
 
-                  <div class="mb-5">
-                    <div class="form-outline">
-                      <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplea2">Enter your code</label>
-                    </div>
-                  </div>
+
 
                   <hr class="my-4">
 
@@ -222,7 +208,9 @@ float total = 0; // Declare and initialize the total variable
   <h5 class="text-uppercase">Total price</h5>
   <h5>€<span id="total-price2"><%=total.ToString("0.00")%></span></h5>
 </div>
-                    <asp:Button ID="btnCheckout" CssClass="btn btn-dark btn-block btn-lg" Text="Checkout" runat="server" OnClick="btnCheckout_Click" />
+                    <asp:Button ID="btnCheckout" CssClass="btn btn-dark btn-block btn-lg" Text="Checkout" runat="server" OnClick="btnCheckout_Click" CommandArgument='<%# Eval("OrderID") %>' />
+<input type="hidden" id="hdnTotal" runat="server" />
+<input type="hidden" id="hdnDelivery" runat="server" />
                 </div>
               </div>
             </div>
