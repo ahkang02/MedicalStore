@@ -17,6 +17,17 @@
                     <h6 class="mb-0 text-muted">3 items</h6>
                   </div>
                   <hr class="my-4">
+<form>
+  <!-- Other form elements here -->
+<input type="hidden" id="hdnTotal" name="hdnTotal" value="" />
+<input type="hidden" id="hdnDelivery" name="hdnDelivery" value="" />
+<input type="hidden" id="hdnSubtotal" name="hdnSubtotal" value="" />
+<input type="hidden" id="hdnQuantity" name="hdnQuantity" value="" />
+<input type="hidden" id="hdnProductID" name="hdnProductID" value="" />
+<input type="hidden" id="hdnPrice" name="hdnPrice" value="" />
+<input type="hidden" id="hdnDeli" name="hdnDeli" value="" />
+  <!-- Other form elements here -->
+</form>
 
                      <asp:ListView ID="ListView1" runat="server" DataKeyNames="ProductID" DataSourceID="SqlDataSource1">
                          
@@ -33,7 +44,6 @@
                         class="img-fluid rounded-3"  alt="product.title" >
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
-                     <%-- <h6 class="text-muted"><%# Eval("Name") %></h6>--%>
                       <h6 class="text-black mb-0"><%# Eval("Name") %></h6>
                     </div>
 
@@ -53,46 +63,70 @@
    
 </div>
 
-<%--<asp:Button ID="addToCartButton" runat="server" Text="Add to Cart" OnClick="UpdateProduct" CommandArgument='<%# Eval("ProductID") + "|" + quantity.toString() + "|" + Eval("Price") %>' OnCommand="UpdateProduct" />--%>
    
-<%--  <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-    <asp:LinkButton runat="server" CssClass="text-muted" CommandArgument='<%# Eval("ProductID") %>' OnCommand="RemoveProduct"><i class="fas fa-times"></i></asp:LinkButton>
-</div>--%>
 
 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
   <h6 class="mb-0 subtotal" id="subtotal_<%# Eval("ProductID") %>"><%# String.Format("{0:F2}", Eval("SubTotal")) %></h6>
 </div>
 
+
 <script>
- 
-    function updateSubtotal(productID) {
+    var currentQuantity = {}; 
+   
+    function updateSubtotal(productID)
+    {
+
         var quantity = document.getElementById('quantity_' + productID).value;
         var price = <%# Eval("Price") %>;
         var subtotal = quantity * price;
-      
-        document.getElementById('subtotal_' + productID).innerHTML = subtotal.toFixed(2);
 
+        document.getElementById('subtotal_' + productID).innerHTML = subtotal.toFixed(2);
         updateTotal();
 
+        
+        const hdnQuantity = document.getElementById('hdnQuantity');
+        hdnQuantity.value = document.getElementById('quantity_' + productID).value;
+
+        const hdnSubtotal = document.getElementById('hdnSubtotal');
+        hdnSubtotal.value = subtotal;
+
+        const hdnProductID = document.getElementById('hdnProductID');
+        hdnProductID.value = productID;
     }
 
 
 </script>
                     <script>
                         let deliveryCharge = 0;
-                        let deliveryCheck = "Pick Up";
+
                         function deliveryOptions() {
                             const deliverySelect = document.querySelector('#delivery-select');
                             const selectedOption = deliverySelect.value;
                             if (selectedOption === '1') {
                                 deliveryCharge = 5.00;
-                                deliveryCheck = "Delivery";
+                                const hdnDelivery = document.getElementById('hdnDelivery');
+                                hdnDelivery.value = "Standard Delivery";
+
+                                const hdnDeli = document.getElementById('hdnDeli');
+                                hdnDeli.value = 1;
+
                             } else if (selectedOption === '2') {
                                 deliveryCharge = 10.00;
-                                deliveryCheck = "Delivery";
+                                const hdnDelivery = document.getElementById('hdnDelivery');
+                                hdnDelivery.value = "Express Delivery";
+
+                                const hdnDeli = document.getElementById('hdnDeli');
+                                hdnDeli.value = 2;
+                                
                             } else {
-                                deliveryCheck = "Pick Up";
+                                const hdnDelivery = document.getElementById('hdnDelivery');
+                                hdnDelivery.value = "Pick Up";
+
+                                const hdnDeli = document.getElementById('hdnDeli');
+                                hdnDeli.value = 0;
                             }
+
+
                             updateTotal();
                         }
 
@@ -125,9 +159,8 @@
                             });
 
                             const hdnTotal = document.getElementById('hdnTotal');
-                            hdnTotal.value = total.toFixed(2);
-                            const hdnDelivery = document.getElementById('hdnDelivery');
-                            hdnDelivery.value = deliveryCheck;
+                            hdnTotal.value = total2.toFixed(2);
+
 
                         }
 
@@ -140,16 +173,14 @@
                         });
 
                         updateTotal();
-</script>
+                    </script>
 
 
                        
   <div class="col-md-1 col-lg-1 col-xl-1 text-end">
     <asp:LinkButton runat="server" CssClass="text-muted" CommandArgument='<%# Eval("ProductID") %>' OnCommand="RemoveProduct"><i class="fas fa-times"></i></asp:LinkButton>
 </div>
-<%--<div class="col-md-1 col-lg-1 col-xl-1 text-end">
-    <asp:LinkButton runat="server" CssClass="text-muted" CommandArgument='<%# Eval("ProductID") + "|" + quantity + "|" + Eval("Price") %>' OnCommand="UpdateProduct"><i class="fas fa-times"></i></asp:LinkButton>
-</div>--%>
+
                   </div>
 
                     </tr>
@@ -209,8 +240,8 @@ float total = 0; // Declare and initialize the total variable
   <h5>€<span id="total-price2"><%=total.ToString("0.00")%></span></h5>
 </div>
                     <asp:Button ID="btnCheckout" CssClass="btn btn-dark btn-block btn-lg" Text="Checkout" runat="server" OnClick="btnCheckout_Click" CommandArgument='<%# Eval("OrderID") %>' />
-<input type="hidden" id="hdnTotal" runat="server" />
-<input type="hidden" id="hdnDelivery" runat="server" />
+
+
                 </div>
               </div>
             </div>
