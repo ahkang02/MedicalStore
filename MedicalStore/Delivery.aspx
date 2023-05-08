@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-lg-8 text-center">
                     <h1>Delivery Tracking History</h1>
-                    <asp:Repeater ID="repeaterOrder" runat="server" DataSourceID="SqlDataSource1">
+                    <asp:Repeater ID="repeaterOrder" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="repeaterOrder_ItemCommand">
                         <HeaderTemplate>
                             <table class="table table-hover table-striped table-bordered table-responsive">
                                 <tr>
@@ -42,6 +42,7 @@
                                     <th>Delivery Fee</th>
                                     <th>Delivery Address</th>
                                     <th>Delivery Status</th>
+                                    <th>Actions</th>
                                 </tr>
                         </HeaderTemplate>
                         <ItemTemplate>
@@ -51,6 +52,8 @@
                                 <td><%#DataBinder.Eval(Container.DataItem, "Fee") %></td>
                                 <td><%#DataBinder.Eval(Container.DataItem, "Address") %></td>
                                 <td><%#DataBinder.Eval(Container.DataItem, "Status") %></td>
+                                <td>
+                                    <asp:Button ID="btnEdit" CssClass="btn btn-sm btn-primary ms-2" Text="Order Received" runat="server" CommandName="Received" CommandArgument='<%#Eval ("DeliveryID") %>' UseSubmitBehavior="false" CausesValidation="false" /></td>
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>
