@@ -8,6 +8,8 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
+using System.Net;
+using System.Net.Mail;
 
 namespace MedicalStore
 {
@@ -17,8 +19,9 @@ namespace MedicalStore
         string password;
         string repeatPassword;
         string email;
+        string enteredOTP;
         string errorString = "";
-
+        string successString = "";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -31,6 +34,8 @@ namespace MedicalStore
             password = txtPassword.Text;
             repeatPassword = txtRepeatPw.Text;
             email = txtEmail.Text;
+            enteredOTP = txtOTP.Text;
+            string savedOTP = Session["OTP"] as string;
 
             string id;
             SqlConnection con;
@@ -57,6 +62,14 @@ namespace MedicalStore
             else if (string.IsNullOrEmpty(email))
             {
                 errorString += "Error: Email cannot be empty.";
+            }
+            else if (string.IsNullOrEmpty(enteredOTP))
+            {
+                errorString += "Error: OTP cannot be empty.";
+            }
+            else if (enteredOTP != savedOTP)
+            {
+                errorString += "Error: Invalid OTP. Please enter the correct OTP sent to your email.";
             }
             else if (!formCheck.Checked)
             {
@@ -90,7 +103,7 @@ namespace MedicalStore
                     int n = cmdAdd.ExecuteNonQuery();
                     if (n > 0)
                     {
-                        errorString += "Successfully registered as a user!";
+                        successString += "Successfully registered as a user!";
                     }
                     else
                     {
@@ -100,7 +113,7 @@ namespace MedicalStore
             }
 
             lblError.Text = errorString;
-
+            lblMsg.Text = successString;
         }
 
         public static string idGenerator()
@@ -172,10 +185,70 @@ namespace MedicalStore
                 return hashString;
             }
         }
-
-        protected void txtName_TextChanged(object sender, EventArgs e)
+        private static string GenerateOTP()
         {
+            // Generate a random 6-digit OTP
+            using (RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider())
+            {
+                byte[] data = new byte[4];
+                provider.GetBytes(data);
+                int value = BitConverter.ToInt32(data, 0) % 1000000;
+                return value.ToString("D6");
+            }
+        }
 
+        protected void btnOtp_Click(object sender, EventArgs e)
+        {
+            email = txtEmail.Text;
+            string otp = GenerateOTP();
+            Session["OTP"] = otp;
+            string subject = "Email Verification - Your OTP";
+            string body = "Dear user, Your OTP for email verification is " + otp + ". Thank you for registering!";
+
+            if (string.IsNullOrEmpty(email))
+            {
+                errorString += "Error: Email cannot be empty.";
+            }
+            else
+            {
+                // Create a new MailMessage object
+
+                try
+                {
+                    var fromAddress = new MailAddress("e-healthy@outlook.com", "From Name");
+                var toAddress = new MailAddress(email, "To Name");
+
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp-mail.outlook.com",
+                    Port = 587, // or 465 for SSL
+                    EnableSsl = true, // set to true for SSL or TLS connections
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential("e-healthy@outlook.com", "asdf1234!!")
+                };
+
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = subject,
+                    Body = body
+                })
+                {
+                    smtp.Send(message);
+                }
+
+                successString += "An OTP has been sent to your email address. Please enter it below to verify your email.";
+            }
+                catch (Exception ex)
+            {
+                errorString += "Error sending email: " + ex.Message;
+            }
+        }
+
+
+
+            lblMsg.Text = successString;
+            lblError.Text = errorString;
         }
     }
 }
