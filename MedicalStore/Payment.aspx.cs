@@ -20,7 +20,7 @@ namespace MedicalStore
             if (!IsPostBack)
             {
                 // Initialize the session variables
-                Session["TotalPaymentAmount"] = "1563.60";
+                Session["TotalPaymentAmount"] = "1505.00";
                 if (Session["TotalPaymentAmount"] != null)
                 {
                     decimal totalPaymentAmount = Convert.ToDecimal(Session["TotalPaymentAmount"]);

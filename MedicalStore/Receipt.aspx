@@ -65,35 +65,11 @@
                                 <tbody>
                                     <tr>
                                         <td class="center">1</td>
-                                        <td class="left strong">Iphone 10X</td>
-                                        <td class="left">Iphone 10X with headphone</td>
-                                        <td class="right">$1500</td>
-                                        <td class="center">10</td>
-                                        <td class="right">$15,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="center">2</td>
-                                        <td class="left">Iphone 8X</td>
-                                        <td class="left">Iphone 8X with extended warranty</td>
-                                        <td class="right">$1200</td>
-                                        <td class="center">10</td>
-                                        <td class="right">$12,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="center">3</td>
-                                        <td class="left">Samsung 4C</td>
-                                        <td class="left">Samsung 4C with extended warranty</td>
-                                        <td class="right">$800</td>
-                                        <td class="center">10</td>
-                                        <td class="right">$8000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="center">4</td>
-                                        <td class="left">Google Pixel</td>
-                                        <td class="left">Google prime with Amazon prime membership</td>
-                                        <td class="right">$500</td>
-                                        <td class="center">10</td>
-                                        <td class="right">$5000</td>
+                                        <td class="left strong">Panadol</td>
+                                        <td class="left">Panadol activefast</td>
+                                        <td class="right">RM15.00</td>
+                                        <td class="center">100</td>
+                                        <td class="right">RM1500.00</td>
                                     </tr>
                                 </tbody>
                             </table>
