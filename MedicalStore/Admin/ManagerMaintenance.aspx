@@ -16,7 +16,7 @@
     </div>
 
     <div class="d-flex container-fluid justify-content-end align-items-end">
-        <asp:Button ID="btnNew" CssClass="btn btn-primary" runat="server" data-bs-toggle="modal" data-bs-target="#newModal" Text="New" OnClientClick="return false;" />
+        <asp:Button ID="btnNew" CssClass="btn btn-primary" runat="server" data-bs-toggle="modal" data-bs-target="#newModal" Text="New" OnClientClick="return false;" CausesValidation="false" />
     </div>
 
     <!-- Modal -->
@@ -81,7 +81,7 @@
 
     <!-- Repeater -->
     <div class="container-fluid">
-        <asp:Repeater ID="repeatUser" runat="server">
+        <asp:Repeater ID="repeatUser" runat="server" OnItemCommand="repeatUser_ItemCommand">
             <HeaderTemplate>
                 <table class="table table-hover table-responsive table-bordered">
                     <tr>
@@ -97,7 +97,7 @@
                     <td><%#DataBinder.Eval(Container.DataItem, "Name") %></td>
                     <td><%#DataBinder.Eval(Container.DataItem, "RoleName") %></td>
                     <td>
-                        <asp:Button ID="btnEdit" CssClass="btn btn-sm btn-primary ms-2" Text="Edit" runat="server" CommandName="Edit" CommandArgument='<%#Eval ("StaffID") %>' UseSubmitBehavior="false" CausesValidation="false" />
+                        <asp:Button ID="btnEdit" CssClass="btn btn-sm btn-primary ms-2" Text="Edit" runat="server" CommandName="Edit" CommandArgument='<%#Eval ("StaffID") %>' UseSubmitBehavior="false" CausesValidation="false" />                      
                         <asp:Button ID="btnDelete" CssClass="btn btn-sm btn-danger ms-2" Text="Delete" runat="server" CommandName="Delete" CommandArgument='<%#Eval ("StaffID") %>' UseSubmitBehavior="false" OnClientClick="if (!confirm('Are you sure you want delete?')) return false;" CausesValidation="false" />
                     </td>
                 </tr>

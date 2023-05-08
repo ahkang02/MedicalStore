@@ -44,7 +44,6 @@ namespace MedicalStore.Admin
             {
                 Response.Redirect("../Login.aspx");
             }
-                
         }
 
         protected void btnSubmitNew_Click(object sender, EventArgs e)
