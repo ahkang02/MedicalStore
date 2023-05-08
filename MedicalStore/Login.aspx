@@ -37,6 +37,11 @@
 
                                     <form id="loginForm" class="mx-1 mx-md-4" runat="server">
 
+
+                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                            <asp:Label ID="lblMsg" runat="server" CssClass="text-success"></asp:Label>
+                                        </div>
+
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <asp:Label ID="lblError" runat="server" CssClass="text-danger"></asp:Label>
                                         </div>
@@ -59,6 +64,14 @@
                                         </div>
 
 
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <asp:TextBox ID="txtOtp" CssClass="form-control" runat="server" ToolTip="OTP" TextMode="Password"></asp:TextBox>
+                                                <label class="form-label" for="txtOtp">Otp</label>
+                                            </div>
+                                        </div>
+
                                         <div class="d-flex justify-content-center mx-4 mb-2 mb-lg-4">
                                             <label class="form-check-label" for="form2Example3">
                                                 Don't Have An Account Yet? Register <a href="Register.aspx">Here</a>
@@ -67,6 +80,9 @@
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <asp:Button ID="btnLogin" CssClass="btn btn-primary btn-lg" Text="Login" runat="server" OnClick="btnLogin_Click" />
+                                        </div>
+                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                            <asp:Button ID="btnOtp" CssClass="btn btn-primary btn-lg" Text="Generate OTP" runat="server" OnClick="btnOtp_Click" />
                                         </div>
                                     </form>
 

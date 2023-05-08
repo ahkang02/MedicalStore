@@ -33,6 +33,15 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
+        /// lblMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsg;
+
+        /// <summary>
         /// txtUsername control.
         /// </summary>
         /// <remarks>
@@ -69,6 +78,15 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.TextBox txtRepeatPw;
 
         /// <summary>
+        /// txtOTP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOTP;
+
+        /// <summary>
         /// formCheck control.
         /// </summary>
         /// <remarks>
@@ -76,6 +94,15 @@ namespace MedicalStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox formCheck;
+
+        /// <summary>
+        /// btnOtp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOtp;
 
         /// <summary>
         /// btnRegister control.
