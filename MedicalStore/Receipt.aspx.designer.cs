@@ -51,13 +51,13 @@ namespace MedicalStore
         protected global::System.Web.UI.WebControls.Label lblPaymentMethod;
 
         /// <summary>
-        /// lblDelieryName control.
+        /// lblDeliveryName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDelieryName;
+        protected global::System.Web.UI.WebControls.Label lblDeliveryName;
 
         /// <summary>
         /// lblDeliveryAddress control.
@@ -76,6 +76,24 @@ namespace MedicalStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDeliveryPhoneNo;
+
+        /// <summary>
+        /// lblSubtotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSubtotal;
+
+        /// <summary>
+        /// lblDeliveryFee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDeliveryFee;
 
         /// <summary>
         /// lblPaymentAmount control.

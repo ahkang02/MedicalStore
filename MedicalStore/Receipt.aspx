@@ -39,13 +39,12 @@
                     <div class="card-body">
                         <div class="row mb-4">
                             <div class="col-sm-6">
-                                <h5 class="mb-3">>Payment Method : </h5>
-                                <br>
+                                <h5 class="mb-3">Payment Method : </h5>
                                 <div><asp:Label ID="lblPaymentMethod" runat="server"></asp:Label></div>
                             </div>
                             <div class="col-sm-6 ">
                                 <h5 class="mb-3">Shipped To:</h5>
-                                <h3 class="text-dark mb-1"><asp:Label ID="lblDelieryName" runat="server"></asp:Label></h3>
+                                <h3 class="text-dark mb-1"><asp:Label ID="lblDeliveryName" runat="server"></asp:Label></h3>
                                 <div><asp:Label ID="lblDeliveryAddress" runat="server"></asp:Label></div>
                                 <div>Phone: <asp:Label ID="lblDeliveryPhoneNo" runat="server"></asp:Label></div>
 
@@ -109,20 +108,20 @@
                                             <td class="left">
                                                 <strong class="text-dark">Subtotal</strong>
                                             </td>
-                                            <td class="right">RM1566.00</td>
+                                            <td class="right">RM<asp:Label ID="lblSubtotal" runat="server"></asp:Label></td>
                                         </tr>
                                         <tr>
                                             <td class="left">
                                                 <strong class="text-dark">Shipment Fee</strong>
                                             </td>
-                                            <td class="right">RM5.00</td>
+                                            <td class="right">RM<asp:Label ID="lblDeliveryFee" runat="server"></asp:Label></td>
                                         </tr>
                                         <tr>
                                             <td class="left">
                                                 <strong class="text-dark">Total</strong>
                                             </td>
                                             <td class="right">
-                                                <strong class="text-dark">RM <asp:Label ID="lblPaymentAmount" runat="server"></asp:Label></strong>
+                                                <strong class="text-dark">RM<asp:Label ID="lblPaymentAmount" runat="server"></asp:Label></strong>
                                             </td>
                                         </tr>
                                     </tbody>
