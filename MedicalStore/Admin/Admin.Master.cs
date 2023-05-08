@@ -13,13 +13,13 @@ namespace MedicalStore.Admin
         {
             if (this.Session["Staffs"] != null)
             {
-                lblUser.Text = "Staff";
+                lblUser.Text = "Welcome Staff";
             }else if (this.Session["Managers"] != null)
             {
-                lblUser.Text = "Manager";
+                lblUser.Text = "Welcome Manager";
             }else if (this.Session["Admin"] != null)
             {
-                lblUser.Text = "Admin";
+                lblUser.Text = "Welcome Admin";
             }
         }
 
