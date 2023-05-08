@@ -92,6 +92,9 @@
                         <a href="ManagerMaintenance.aspx" class="list-group-item list-group-item-action py-2 ripple">
                             <i class="fas fa-users fa-fw me-3"></i><span>Managers</span>
                         </a>
+                        <a href="UserReport.aspx" class="list-group-item list-group-item-action py-2 ripple">
+                            <i class="fas fa-users fa-fw me-3"></i><span>Managers</span>
+                        </a>
                         <%} %>
                     </div>
                 </div>

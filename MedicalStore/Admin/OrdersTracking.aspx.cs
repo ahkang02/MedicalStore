@@ -16,8 +16,16 @@ namespace MedicalStore.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            repeatUser.DataSource = SqlDataSource1;
-            repeatUser.DataBind();
+            if (Session["Staffs"] != null || Session["Manager"] != null || Session["Admin"] != null)
+            {
+                repeatUser.DataSource = SqlDataSource1;
+                repeatUser.DataBind();
+            }
+            else
+            {
+                Response.Redirect("../Login.aspx");
+            }
+
         }
 
         protected void repeatUser_ItemCommand(object source, RepeaterCommandEventArgs e)

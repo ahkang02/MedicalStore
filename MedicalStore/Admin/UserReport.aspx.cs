@@ -13,42 +13,65 @@ namespace MedicalStore.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SqlConnection con;
-            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            con = new SqlConnection(strCon);
-            con.Open();
 
-            string sqlRetrieveCust = "Select count(*) from customers";
-
-            SqlCommand cmdRetrieve = new SqlCommand(sqlRetrieveCust, con);
-            int count = (int)cmdRetrieve.ExecuteScalar();
-
-            int staffCount = 0;
-            int ManagerCount = 0;
-
-            SqlConnection con1;
-            string strCon1 = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            con1 = new SqlConnection(strCon1);
-            con1.Open();
-
-            string sqlRetrieveStaff = "Select * from staffs";
-
-            SqlCommand cmdRetrieve1 = new SqlCommand(sqlRetrieveStaff, con1);
-            SqlDataReader dr = cmdRetrieve1.ExecuteReader();
-
-            if (dr.Read())
+            if (Session["Admin"] != null)
             {
-                if (string.Equals(dr["roleID"], "R002"))
+                SqlConnection con;
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                con = new SqlConnection(strCon);
+                con.Open();
+
+                string sqlRetrieveCust = "Select count(*) from customers";
+
+                SqlCommand cmdRetrieve = new SqlCommand(sqlRetrieveCust, con);
+                int custCount = (int)cmdRetrieve.ExecuteScalar();
+                con.Close();
+
+                int staffCount = 0;
+                int ManagerCount = 0;
+                int AdminCount = 0;
+                int total = 0;
+                SqlConnection con1;
+                string strCon1 = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                con1 = new SqlConnection(strCon1);
+                con1.Open();
+
+                string sqlRetrieveStaff = "Select * from staffs";
+
+                SqlCommand cmdRetrieve1 = new SqlCommand(sqlRetrieveStaff, con1);
+                SqlDataReader dr = cmdRetrieve1.ExecuteReader();
+
+                while (dr.Read())
                 {
+                    if (string.Equals(dr["roleID"], "R002"))
+                    {
+                        staffCount++;
+                    }
+                    else if (string.Equals(dr["roleID"], "R003"))
+                    {
+                        ManagerCount++;
+                    }
+                    else if (string.Equals(dr["roleID"], "R004"))
+                    {
+                        AdminCount++;
+                    }
 
                 }
-                else if (string.Equals(dr["roleID"], "R003"))
-                {
+                con1.Close();
 
-                }
-                
+                total = custCount + staffCount + ManagerCount + AdminCount;
+
+                lblCustCnt.Text = custCount.ToString();
+                lblStaffCnt.Text = staffCount.ToString();
+                lblManagerCnt.Text = ManagerCount.ToString();
+                lblAdminCnt.Text = AdminCount.ToString();
+                lblTotalCnt.Text = total.ToString();
             }
-
+            else
+            {
+                Response.Redirect("../Login.aspx");
+            }
+            
         }
     }
 }
