@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Customer.Master" AutoEventWireup="true" CodeBehind="Product.aspx.cs" Inherits="MedicalStore.Product" %>
+<%@ Page Language="C#" MasterPageFile="~/Customer.Master" AutoEventWireup="true" CodeBehind="Product.aspx.cs" Inherits="MedicalStore.Product" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -271,10 +271,10 @@
 
                                                     <div class="d-grid gap-2 my-4">
 
-                                                <%-- <a href="#" class="btn btn-warning bold-btn">add to cart</a>--%>
-                                                       <asp:Button ID="addToCartButton" runat="server" Text="Add to Cart" OnClick="addToCartButton_Click" CommandArgument='<%# Eval("ProductID") %>' CommandName='<%# Eval("Price") %>' />
+                                                        <a href="#" class="btn btn-warning bold-btn">add to cart</a>
+                                                      <%-- <asp:Button ID="addToCartButton" runat="server" Text="Add to Cart" OnClick="addToCartButton_Click" <%--CommandArgument='<%# Eval("ProductID") %>' CommandName='<%# Eval("Price") %>'--%> />--%>
 
-
+                                                        
                                                     </div>
                                                     <div class="clearfix mb-1">
 
