@@ -100,10 +100,10 @@ namespace MedicalStore
 
                 // CVV validation (3 or 4 digits)
                 string cvv = txtBillingCvv.Text.Trim();
-                if (!Regex.IsMatch(cvv, @"^\d{3,4}$"))
+                if (!Regex.IsMatch(cvv, @"^\d{3}$"))
                 {
                     // Display an error message
-                    lblErrorMessage.Text = "Please enter a valid 3 or 4-digit CVV.";
+                    lblErrorMessage.Text = "Please enter a valid 3 digit CVV.";
                     lblErrorMessage.Visible = true;
                     return;
                 }
