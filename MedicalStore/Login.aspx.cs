@@ -184,6 +184,10 @@ namespace MedicalStore
             {
                 email = dr1["email"].ToString();
             }
+            else
+            {
+                errorString += "Error: Invalid username or username does not exist, please try again.";
+            }
             con.Close();
 
             string otp = GenerateOTP();
@@ -223,7 +227,7 @@ namespace MedicalStore
                         smtp.Send(message);
                     }
 
-                    successString += "An OTP has been sent to your email address. Please enter it below to verify your email.";
+                    successString += "An OTP has been sent to your email address. Please enter it below to verify your login.";
                 }
                 catch (Exception ex)
                 {
@@ -246,5 +250,108 @@ namespace MedicalStore
                 }
 
             }
+
+        public static string GeneratePassword(int length = 8)
+        {
+            const string validChars = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*?_-";
+            var random = new Random();
+
+            var chars = new char[length];
+            for (int i = 0; i < length; i++)
+            {
+                chars[i] = validChars[random.Next(validChars.Length)];
+            }
+
+            return new string(chars);
         }
+
+        protected void btnForgot_Click(object sender, EventArgs e)
+        {
+            string email = "";
+            username = txtUsername.Text;
+
+
+            SqlConnection con;
+            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            con = new SqlConnection(strCon);
+            con.Open();
+
+
+            string cmdSelectCust = "select * from customers where username = @username";
+            SqlCommand command1 = new SqlCommand(cmdSelectCust, con);
+            command1.Parameters.AddWithValue("@username", username);
+            SqlDataReader dr1 = command1.ExecuteReader();
+
+
+            if (dr1.Read())
+            {
+                email = dr1["email"].ToString();
+            }
+            con.Close();
+
+            password = GeneratePassword();
+
+            
+
+
+            string subject = "Login Authentication - Your OTP";
+            string body = "Dear user,Your OTP for login is " + password + ". Thank you for using our website!";
+
+            if (string.IsNullOrEmpty(username))
+            {
+                errorString += "Error: Username cannot be empty.";
+            }
+            else
+            {
+                // Create a new MailMessage object
+
+                try
+                {
+                    //SqlConnection con;
+                    //string strCon1 = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                    //con = new SqlConnection(strCon);
+                    con.Open();
+
+
+                    string cmdUpdatePass = "update customers set password = @password where username = @username";
+                    SqlCommand command2 = new SqlCommand(cmdUpdatePass, con);
+                    command2.Parameters.AddWithValue("@username", username);
+                    command2.Parameters.AddWithValue("@password", EncryptPassword(password));
+                    command2.ExecuteNonQuery();
+
+                    con.Close();
+
+                    var fromAddress = new MailAddress("e-healthy@outlook.com", "From Name");
+                    var toAddress = new MailAddress(email, "To Name");
+
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp-mail.outlook.com",
+                        Port = 587, // or 465 for SSL
+                        EnableSsl = true, // set to true for SSL or TLS connections
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential("e-healthy@outlook.com", "asdf1234!!")
+                    };
+
+                    using (var message = new MailMessage(fromAddress, toAddress)
+                    {
+                        Subject = subject,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(message);
+                    }
+
+                    successString += "A password has been sent to your email address.";
+                }
+                catch (Exception ex)
+                {
+                    errorString += "Error sending email: " + ex.Message;
+                }
+                lblMsg.Text = successString;
+                lblError.Text = errorString;
+            }
+        }
+    }
     }

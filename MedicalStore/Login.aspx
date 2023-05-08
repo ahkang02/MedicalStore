@@ -79,11 +79,14 @@
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                            <asp:Button ID="btnOtp" CssClass="btn btn-primary btn-lg" Text="Generate OTP" runat="server" OnClick="btnOtp_Click" />
+                                            <asp:Button ID="btnForgot" CssClass="btn btn-primary btn-lg" Text="Forgot Password" runat="server" OnClick="btnForgot_Click" />
+                                        </div>
+
+                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <asp:Button ID="btnLogin" CssClass="btn btn-primary btn-lg" Text="Login" runat="server" OnClick="btnLogin_Click" />
                                         </div>
-                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <asp:Button ID="btnOtp" CssClass="btn btn-primary btn-lg" Text="Generate OTP" runat="server" OnClick="btnOtp_Click" />
-                                        </div>
+                                        
                                     </form>
 
                                 </div>
