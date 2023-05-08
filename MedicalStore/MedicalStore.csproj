@@ -70,6 +70,7 @@
     <Content Include="Admin\AdminProfile.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\ProductReport.aspx" />
+    <Content Include="Admin\RefundReport.aspx" />
     <Content Include="Admin\SalesReport.aspx" />
     <Content Include="Admin\UserReport.aspx" />
     <Content Include="Admin\OrdersTracking.aspx" />
@@ -164,6 +165,13 @@
     </Compile>
     <Compile Include="Admin\ProductReport.aspx.designer.cs">
       <DependentUpon>ProductReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RefundReport.aspx.cs">
+      <DependentUpon>RefundReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\RefundReport.aspx.designer.cs">
+      <DependentUpon>RefundReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\SalesReport.aspx.cs">
       <DependentUpon>SalesReport.aspx</DependentUpon>

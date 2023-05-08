@@ -15,6 +15,15 @@ namespace MedicalStore.Admin
     {
 
         /// <summary>
+        /// lblInProgress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInProgress;
+
+        /// <summary>
         /// lblCustCnt control.
         /// </summary>
         /// <remarks>
@@ -31,24 +40,6 @@ namespace MedicalStore.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStaffCnt;
-
-        /// <summary>
-        /// lblManagerCnt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblManagerCnt;
-
-        /// <summary>
-        /// lblAdminCnt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAdminCnt;
 
         /// <summary>
         /// lblTotalCnt control.

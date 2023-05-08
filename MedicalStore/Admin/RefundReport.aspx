@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="RefundReport.aspx.cs" Inherits="MedicalStore.Admin.RefundReport" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -10,35 +11,32 @@
                 <thead>
                     <tr>
 
-                        <th>Product Type</th>
+                        <th>Refund Status</th>
                         <th>Count</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Capsules</td>
-                        <td><asp:Label ID="lblCustCnt" runat="server" Text=""></asp:Label></td>
-
+                        <td>In-Progress</td>
+                        <td>
+                            <asp:Label ID="lblInProgress" runat="server" Text=""></asp:Label></td>
                     </tr>
                     <tr>
-                        <td>Liquid</td>
-                        <td><asp:Label ID="lblStaffCnt" runat="server" Text=""></asp:Label></td>
-
+                        <td>Accept</td>
+                        <td>
+                            <asp:Label ID="lblCustCnt" runat="server" Text=""></asp:Label></td>
                     </tr>
                     <tr>
-                        <td>Injections</td>
-                        <td><asp:Label ID="lblManagerCnt" runat="server" Text=""></asp:Label></td>
-
-                    </tr>
-                    <tr>
-                        <td>Tablets</td>
-                        <td><asp:Label ID="lblAdminCnt" runat="server" Text=""></asp:Label></td>
+                        <td>Reject</td>
+                        <td>
+                            <asp:Label ID="lblStaffCnt" runat="server" Text=""></asp:Label></td>
 
                     </tr>
                     <tr>
                         <td></td>
-                        <td><asp:Label ID="lblTotalCnt" runat="server" Text=""></asp:Label></td>
+                        <td>
+                            <asp:Label ID="lblTotalCnt" runat="server" Text=""></asp:Label></td>
 
                     </tr>
                 </tbody>
