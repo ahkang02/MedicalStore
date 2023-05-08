@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <asp:Label ID="lblName" runat="server" CssClass="text-muted mb-0"></asp:Label>
-                                    
+
                                 </div>
                             </div>
                             <hr>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <asp:Label ID="lblGender" runat="server" CssClass="text-muted mb-0"></asp:Label>
-                                    
+
                                 </div>
                             </div>
                             <hr>
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <asp:Label ID="lblContactNo" runat="server" CssClass="text-muted mb-0"></asp:Label>
-                                    
+
                                 </div>
                             </div>
                             <hr>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <asp:Label ID="lblAddress" runat="server" CssClass="text-muted mb-0"></asp:Label>
-                                    
+
                                 </div>
                             </div>
                             <hr>
@@ -99,6 +99,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
