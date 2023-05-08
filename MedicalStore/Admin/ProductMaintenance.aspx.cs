@@ -234,11 +234,11 @@ namespace MedicalStore
                 string fileName = Path.GetFileName(fuProductEdit.FileName);
                 string path = Server.MapPath("~/Images/ProductImg/" + fileName);
                 fuProductEdit.SaveAs(path);
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Customer Info Updated Successfully.');", true);
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Success", "alert('Product Info Updated Successfully.');", true);
             }
             else
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Update with errors'); location.reload(true)", true);
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Failed", "alert('Update with errors');", true);
             }
 
             con2.Close();
