@@ -37,27 +37,27 @@
 
                         <div class="row g-3">
                             <div class="col-12">
-                                <label for="deliveryname" class="form-label">Full Name</label>
+                                <label for="deliveryname" class="form-label">Full Name<span style="color: red;">*</span></label>
                                 <asp:TextBox ID="txtDeliveryName" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
 
                             <div class="col-12">
-                                <label for="deliveryphoneno" class="form-label">Phone number</label>
+                                <label for="deliveryphoneno" class="form-label">Phone number<span style="color: red;">*</span></label>
                                 <asp:TextBox ID="txtDeliveryPhone" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
 
                             <div class="col-12">
-                                <label for="deliveryaddress" class="form-label">Address</label>
+                                <label for="deliveryaddress" class="form-label">Address<span style="color: red;">*</span></label>
                                 <asp:TextBox ID="txtDeliveryAddress" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
 
                             <div class="col-12">
-                                <label for="deliverygcity" class="form-label">City</label>
+                                <label for="deliverygcity" class="form-label">City<span style="color: red;">*</span></label>
                                 <asp:TextBox ID="txtDeliveryCity" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
 
                             <div class="col-12">
-                                <label for="deliverypostcode" class="form-label">Post code</label>
+                                <label for="deliverypostcode" class="form-label">Post code<span style="color: red;">*</span></label>
                                 <asp:TextBox ID="txtDeliveryPostCode" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
 
@@ -82,15 +82,15 @@
                                     <!-- Content for credit card payment method goes here -->
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="cc-number" class="form-label">Credit card number</label>
+                                            <label for="cc-number" class="form-label">Credit card number<span style="color: red;">*</span></label>
                                             <asp:TextBox ID="txtBillingCardNum" CssClass="form-control" runat="server"></asp:TextBox>
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="cc-expiration" class="form-label">Expiration</label>
+                                            <label for="cc-expiration" class="form-label">Expiration<span style="color: red;">*</span></label>
                                             <asp:TextBox ID="txtBillingExpiry" CssClass="form-control" runat="server"></asp:TextBox>
                                         </div>
                                         <div class="col-md-2">
-                                            <label for="cc-cvv" class="form-label">CVV</label>
+                                            <label for="cc-cvv" class="form-label">CVV<span style="color: red;">*</span></label>
                                             <asp:TextBox ID="txtBillingCvv" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
                                         </div>
                                     </div>
@@ -98,27 +98,27 @@
                                     <h5 class="mb-3">Billing address</h5>
                                     <div class="row g-3">
                                         <div class="col-12">
-                                            <label for="billingname" class="form-label">Full Name</label>
+                                            <label for="billingname" class="form-label">Full Name<span style="color: red;">*</span></label>
                                             <asp:TextBox ID="txtBillingName" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="billingphoneno" class="form-label">Phone number</label>
+                                            <label for="billingphoneno" class="form-label">Phone number<span style="color: red;">*</span></label>
                                             <asp:TextBox ID="txtBillingPhoneNo" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="billingaddress" class="form-label">Address</label>
+                                            <label for="billingaddress" class="form-label">Address<span style="color: red;">*</span></label>
                                             <asp:TextBox ID="txtBillingAddress" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="billingcity" class="form-label">City</label>
+                                            <label for="billingcity" class="form-label">City<span style="color: red;">*</span></label>
                                             <asp:TextBox ID="txtBillingCity" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="billingpostcode" class="form-label">Post code</label>
+                                            <label for="billingpostcode" class="form-label">Post code<span style="color: red;">*</span></label>
                                             <asp:TextBox ID="txtBillingPostCode" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                 </asp:Panel>
@@ -154,6 +154,8 @@
                                 </asp:Panel>
 
                             </div>
+
+                            <asp:Label ID="lblErrorMessage" runat="server" CssClass="text-danger"></asp:Label>
 
                             <hr class="my-4" />
                             <asp:Button ID="btnCheckout" Text="Continue to Checkout" CssClass="btn btn-primary btn-lg w-100" runat="server" OnClick="btnCheckout_Click" />
