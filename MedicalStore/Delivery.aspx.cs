@@ -11,8 +11,16 @@ namespace MedicalStore
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
-		}
+            if (Session["user"] != null)
+            {
+                string[] user = (string[])Session["user"];
+                this.Session["customerID"] = user[0];
+            }
+            else
+            {
+                Response.Redirect("../Login.aspx");
+            }
+        }
 
         protected void lbProfile_Click(object sender, EventArgs e)
         {

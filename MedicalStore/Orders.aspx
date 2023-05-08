@@ -66,7 +66,7 @@
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Orders.OrderID, Orders.OrderDate, Orders.TotalAmount, Orders.Status, Products.Name FROM Order_Details INNER JOIN Orders ON Order_Details.OrderID = Orders.OrderID INNER JOIN Products ON Order_Details.ProductID = Products.ProductID WHERE Orders.CustomerID = @CustomerID">
                         <SelectParameters>
-                            <asp:Parameter DefaultValue="C001" Name="CustomerID" />
+                            <asp:SessionParameter DefaultValue="" Name="CustomerID" SessionField="customerID" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                 </div>

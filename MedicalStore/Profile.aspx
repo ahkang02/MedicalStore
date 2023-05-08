@@ -50,7 +50,6 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <asp:Label ID="lblUsername" runat="server" CssClass="text-muted mb-0"></asp:Label>
-                                    
                                 </div>
                             </div>
                             <hr>
@@ -60,7 +59,6 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <asp:Label ID="lblEmail" runat="server" CssClass="text-muted mb-0"></asp:Label>
-                                    
                                 </div>
                             </div>
                             <hr>
