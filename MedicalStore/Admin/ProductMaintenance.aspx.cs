@@ -37,9 +37,17 @@ namespace MedicalStore
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            repeatUser.DataSource = SqlDataSource2;
-            repeatUser.DataBind();
-            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+            if (Session["Staffs"] != null || Session["Manager"] != null || Session["Admin"] != null)
+            {
+                repeatUser.DataSource = SqlDataSource2;
+                repeatUser.DataBind();
+                ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+            }
+            else
+            {
+                Response.Redirect("../Login.aspx");
+            }
+
         }
 
         protected void btnSubmitNew_Click(object sender, EventArgs e)

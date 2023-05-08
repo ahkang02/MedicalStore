@@ -5,47 +5,47 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container my-5">
-        <h1 class="text-center mb-4">Simple Report</h1>
+        <h1 class="text-center mb-4">User Report</h1>
         <div class="table-responsive">
 
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th></th>
+
                         <th>Role Name</th>
-                        <th>Number</th>
-                        <th>Phone</th>
+                        <th>Count</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>johndoe@example.com</td>
-                        <td>123-456-7890</td>
+                        <td>Customer</td>
+                        <td><asp:Label ID="lblCustCnt" runat="server" Text=""></asp:Label></td>
+
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>Jane Doe</td>
-                        <td>janedoe@example.com</td>
-                        <td>555-555-5555</td>
+                        <td>Staff</td>
+                        <td><asp:Label ID="lblStaffCnt" runat="server" Text=""></asp:Label></td>
+
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>Bob Smith</td>
-                        <td>bobsmith@example.com</td>
-                        <td>555-123-4567</td>
+                        <td>Manager</td>
+                        <td><asp:Label ID="lblManagerCnt" runat="server" Text=""></asp:Label></td>
+
+                    </tr>
+                    <tr>
+                        <td>Admin</td>
+                        <td><asp:Label ID="lblAdminCnt" runat="server" Text=""></asp:Label></td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><asp:Label ID="lblTotalCnt" runat="server" Text=""></asp:Label></td>
+
                     </tr>
                 </tbody>
             </table>
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped">
-                <Columns>
-                    <asp:BoundField DataField="Name" HeaderText="Name" />
-                    <asp:BoundField DataField="Age" HeaderText="Age" />
-                    <asp:BoundField DataField="Gender" HeaderText="Gender" />
-                </Columns>
 
-            </asp:GridView>
         </div>
     </div>
 </asp:Content>
