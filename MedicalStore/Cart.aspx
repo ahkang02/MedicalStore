@@ -14,7 +14,9 @@
                 <div class="p-5">
                   <div class="d-flex justify-content-between align-items-center mb-5">
                     <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                    <h6 class="mb-0 text-muted">3 items</h6>
+                      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+    <asp:LinkButton runat="server" CssClass="text-muted" CommandArgument='<%# Eval("ProductID") %>' OnCommand="addNewOrderButton_Click"><i class="fas fa-times"></i></asp:LinkButton>
+</div>
                   </div>
                   <hr class="my-4">
 <form>
@@ -229,7 +231,7 @@ float total = 0; // Declare and initialize the total variable
 
 
 
-                  <h5 class="text-uppercase mb-3">Give code</h5>
+                  
 
 
 
