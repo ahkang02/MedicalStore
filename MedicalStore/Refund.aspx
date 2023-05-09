@@ -13,7 +13,7 @@
                             <img src="https://www.linkpicture.com/q/Handle-product-returns.png" alt="avatar"
                                 class="rounded-circle img-fluid" style="width: 200px;">
                             <br>
-                            <h5 class="my-3">Refund</h5>
+                            <h5 class="my-3">Refund Request</h5>
                               <br>  <br>  <br>
                       
                         </div>
@@ -25,14 +25,16 @@
                              
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Customer ID</p>
+                                    <p class="mb-0">Order Number</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <asp:TextBox ID="custID" runat="server" CssClass="form-control"></asp:TextBox>
+
+                                    <asp:TextBox ID="orderNo" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                                 </div>
                             </div>
+                            <br>
                             <hr>
-                            <div class="row">
+ <%--                           <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Product ID</p>
                                 </div>
@@ -40,14 +42,14 @@
                                     <asp:TextBox ID="returnID" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
-                            <hr>
+                            <hr>--%>
   
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Refund Reason</p>
                                 </div>
                                 <div class="col-sm-9">
-                                     <asp:DropDownList ID="ddlRefund" runat="server" CssClass="form-control" >
+                                    <asp:DropDownList ID="ddlRefund" runat="server" CssClass="form-control" >
                                         <asp:ListItem Value="Product do not meet requirement">Product do not meet requirement</asp:ListItem>
                                         <asp:ListItem Value="Product are damaged">Product are damaged</asp:ListItem>
                                         <asp:ListItem Value="Delivered wrong product">Delivered wrong product</asp:ListItem>
@@ -55,18 +57,12 @@
                                     </asp:DropDownList>
                                 </div>
                             </div>
+                            <br>
                             <hr>
                           
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Other Reason</p>
-                                     <h9 class="my-3">(If any)</h9>
-                                </div>
-                                <div class="col-sm-9">
-                                    
-                                    <asp:TextBox ID="otherReason" runat="server" CssClass="form-control" PlaceHolder="-"></asp:TextBox>
-                                </div>
+         
                             </div>
+                              <br>
                         </div>
                     </div>
                     <div class="text-end">
