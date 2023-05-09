@@ -40,6 +40,9 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtName" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="No numeric &amp; special characters e.g. @!#%.&quot;" ForeColor="Red" ValidationExpression="^[a-zA-Z\s]+$"></asp:RegularExpressionValidator>
+
                                 </div>
                             </div>
                             <hr>
@@ -49,6 +52,8 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <asp:TextBox ID="txtEmail" Text="" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtEmail" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Invalid email format. !#%.&quot;" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <hr>
@@ -70,6 +75,8 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <asp:TextBox ID="txtContact" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtContact" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtContact" ErrorMessage="Invalid phone number format. eg: 01267938478" ForeColor="Red" ValidationExpression="^(01)[0-46-9]*[0-9]{7,8}$"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <hr>
@@ -79,6 +86,8 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAddress" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtAddress" ErrorMessage="No numeric &amp; special characters e.g. @!#%.&quot;" ForeColor="Red" ValidationExpression="^[a-zA-Z\s]+$"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <hr>

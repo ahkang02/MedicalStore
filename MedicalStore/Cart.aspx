@@ -212,7 +212,7 @@ float total = 0; // Declare and initialize the total variable
 <!-- Code to display the item count and total price -->
 <div class="d-flex justify-content-between mb-4">
   <h5 class="text-uppercase">items <span id="item-count"><%=itemCount%></span></h5>
-  <h5>Total: €<span id="total-price"><%=total.ToString("0.00")%></span></h5>
+  <h5>Total: RM<span id="total-price"><%=total.ToString("0.00")%></span></h5>
 </div>
 
 
@@ -222,8 +222,8 @@ float total = 0; // Declare and initialize the total variable
 <div class="mb-4 pb-2">
   <select id="delivery-select" class="select" onchange="deliveryOptions()">
     <option value="0">Pick Up</option>
-    <option value="1">Standard Delivery - €5.00</option>
-    <option value="2">Express Delivery - €10.00</option>
+    <option value="1">Standard Delivery - RM 5.00</option>
+    <option value="2">Express Delivery - RM 10.00</option>
   </select>
 </div>
 
@@ -239,7 +239,7 @@ float total = 0; // Declare and initialize the total variable
 
    <div class="d-flex justify-content-between mb-5">
   <h5 class="text-uppercase">Total price</h5>
-  <h5>€<span id="total-price2"><%=total.ToString("0.00")%></span></h5>
+  <h5>RM <span id="total-price2"><%=total.ToString("0.00")%></span></h5>
 </div>
                     <asp:Button ID="btnCheckout" CssClass="btn btn-dark btn-block btn-lg" Text="Checkout" runat="server" OnClick="btnCheckout_Click" CommandArgument='<%# Eval("OrderID") %>' />
 

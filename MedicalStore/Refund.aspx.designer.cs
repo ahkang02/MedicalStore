@@ -15,22 +15,13 @@ namespace MedicalStore
     {
 
         /// <summary>
-        /// custID control.
+        /// orderNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox custID;
-
-        /// <summary>
-        /// returnID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox returnID;
+        protected global::System.Web.UI.WebControls.TextBox orderNo;
 
         /// <summary>
         /// ddlRefund control.
@@ -40,15 +31,6 @@ namespace MedicalStore
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlRefund;
-
-        /// <summary>
-        /// otherReason control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox otherReason;
 
         /// <summary>
         /// btnSubmit control.

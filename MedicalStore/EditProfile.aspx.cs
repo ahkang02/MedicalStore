@@ -20,6 +20,7 @@ namespace MedicalStore
                 user = (string[])Session["user"];
                 customerid = user[0];
                 username = user[6];
+                ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             }
             else
             {

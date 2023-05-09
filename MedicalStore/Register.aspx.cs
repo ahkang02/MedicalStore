@@ -225,7 +225,7 @@ namespace MedicalStore
                     EnableSsl = true, // set to true for SSL or TLS connections
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("e-healthy@outlook.com", "asdf1234!!")
+                    Credentials = new NetworkCredential()
                 };
 
                 using (var message = new MailMessage(fromAddress, toAddress)

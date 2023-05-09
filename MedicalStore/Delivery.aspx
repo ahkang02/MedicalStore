@@ -60,7 +60,7 @@
                             </table>
                         </FooterTemplate>
                     </asp:Repeater>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT D.DeliveryID, D.Date, D.Fee, D.Address, D.Status, D.StaffID From Deliveries D, Orders O Where O.DeliveryID = D.DeliveryID AND O.CustomerID = @CustomerID">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT D.DeliveryID, D.Date, D.Fee, D.Address, D.Status, D.StaffID From Deliveries D, Orders O Where O.DeliveryID = D.DeliveryID AND O.CustomerID = @CustomerID" OnSelecting="SqlDataSource1_Selecting">
                         <SelectParameters>
                             <asp:SessionParameter DefaultValue="" Name="CustomerID" SessionField="customerID" />
                         </SelectParameters>
