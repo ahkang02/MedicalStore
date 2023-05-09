@@ -13,10 +13,11 @@ namespace MedicalStore
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string orderID = Request.QueryString["OrderID"];
+            orderNo.Text = orderID;
         }
 
-      protected void btnSubmit_Click(object sender, EventArgs e)
+        protected void btnSubmit_Click(object sender, EventArgs e)
         {
             SqlConnection con2;
             string strCon2 = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -30,7 +31,7 @@ namespace MedicalStore
             string nextID = ID.ToString("000");
             con2.Close();
 
-           
+
 
 
             SqlConnection con;
@@ -40,7 +41,7 @@ namespace MedicalStore
             con = new SqlConnection(strCon);
 
 
-            //string orderID = orderNo.Text;
+            string orderID = orderNo.Text;
             string refundReason = ddlRefund.SelectedValue;
             string refundID = "";
             string status = "In-progress";
@@ -62,7 +63,7 @@ namespace MedicalStore
                 command.Parameters.AddWithValue("@RefundID", refundID);
                 command.Parameters.AddWithValue("@Status", status);
                 command.Parameters.AddWithValue("@Reason", refundReason);
-                //command.Parameters.AddWithValue("@OrderID", orderID);
+                command.Parameters.AddWithValue("@OrderID", orderID);
                 result = command.ExecuteNonQuery();
 
                 Response.Redirect("~/Orders.aspx");
