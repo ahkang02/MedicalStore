@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,7 +20,7 @@ namespace MedicalStore
             if (!IsPostBack)
             {
                 // Initialize the session variables
-                Session["TotalPaymentAmount"] = "1563.60";
+                Session["TotalPaymentAmount"] = "1505.00";
                 if (Session["TotalPaymentAmount"] != null)
                 {
                     decimal totalPaymentAmount = Convert.ToDecimal(Session["TotalPaymentAmount"]);
@@ -77,16 +78,37 @@ namespace MedicalStore
 
             if (paymentMethod.SelectedValue == "Credit Card")
             {
-                if (string.IsNullOrEmpty(txtBillingCardNum.Text) ||
-                    string.IsNullOrEmpty(txtBillingExpiry.Text) ||
-                    string.IsNullOrEmpty(txtBillingCvv.Text))
+                // Credit card number validation (16 digits)
+                string creditCardNumber = txtBillingCardNum.Text.Trim();
+                if (!Regex.IsMatch(creditCardNumber, @"^\d{16}$"))
                 {
                     // Display an error message
-                    lblErrorMessage.Text = "Please fill in all the required credit card details.";
+                    lblErrorMessage.Text = "Please enter a valid 16-digit credit card number.";
+                    lblErrorMessage.Visible = true;
+                    return;
+                }
+
+                // Expiry date validation (MM/YY format)
+                string expiryDate = txtBillingExpiry.Text.Trim();
+                if (!Regex.IsMatch(expiryDate, @"^(0[1-9]|1[0-2])\/\d{2}$"))
+                {
+                    // Display an error message
+                    lblErrorMessage.Text = "Please enter a valid expiry date in the MM/YY format.";
+                    lblErrorMessage.Visible = true;
+                    return;
+                }
+
+                // CVV validation (3 or 4 digits)
+                string cvv = txtBillingCvv.Text.Trim();
+                if (!Regex.IsMatch(cvv, @"^\d{3}$"))
+                {
+                    // Display an error message
+                    lblErrorMessage.Text = "Please enter a valid 3 digit CVV.";
                     lblErrorMessage.Visible = true;
                     return;
                 }
             }
+
 
             // Retrieve the payment information from the session
             decimal paymentAmount = Convert.ToDecimal(Session["TotalPaymentAmount"]);

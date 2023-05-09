@@ -14,7 +14,8 @@ namespace MedicalStore.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
+            if (Session["Admin"] != null)
+            {
                 SqlConnection con;
                 string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
                 con = new SqlConnection(strCon);
@@ -60,7 +61,10 @@ namespace MedicalStore.Admin
                 lblManagerCnt.Text = injectionCount.ToString();
                 lblAdminCnt.Text = tabletCount.ToString();
                 lblTotalCnt.Text = total.ToString();
-            
+            }else
+            {
+                Response.Redirect("../Login.aspx");
+            }
 
 
         }
